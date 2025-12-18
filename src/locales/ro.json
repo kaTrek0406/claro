@@ -1,0 +1,168 @@
+{
+  "nav": { "about": "Despre noi", "services": "Servicii", "portfolio": "Portofoliu", "contacts": "Contacte" },
+  "hero": {
+    "title": "Unde alții încă testează, noi deja aducem clienți.",
+    "altTitle": "Ne înțelegem cu algoritmii Meta, Google și bunul-simț",
+    "marquee": "target • publicitate • creativitate • brand • SMM • rezultat • lead • campanii • conținut • strategie • clicks • atenție • digital • idee • conversie • vânzări • bots • impact",
+    "mainTitle": {
+      "line1": "Lucrăm cu",
+      "data": "date",
+      "line2": "Avem încredere în",
+      "algorithms": "algoritmi",
+      "line3": "Ne concentrăm pe",
+      "result": "rezultat",
+      "line4": "Aducem",
+      "leads": "clienți"
+    }
+  },
+  "about": {
+    "title": "Despre noi",
+    "mainTitle": {
+      "part1": "Facem digital",
+      "part2": "care funcționează",
+      "part3": "nu doar",
+      "part4": "arată frumos"
+    },
+    "greeting": "SALUT!",
+    "text1": "Suntem oameni pasionați care își pasă cu adevărat de afacerea ta, uneori chiar și peste program.",
+    "text2": "Setăm campanii publicitare, creăm landing page-uri și dezvoltăm boți — totul pentru ca tu să poți dormi liniștit când sistemul funcționează. Iubim tabelele și rapoartele, ridicăm un pahar de spumant de fiecare dată când completezi atent un brief.",
+    "text3": "Am putea povesti mult, dar nu te sfătuim să crezi pe cuvânt. Încearcă să lucrezi cu noi =)",
+    "cta": "Începe proiectul"
+  },
+  "services": {
+    "title": "Servicii",
+    "mainTitle": {
+      "part1": "Target,",
+      "part2": "SMM",
+      "part3": "site-uri și",
+      "part4": "automatizare"
+    },
+    "center": "În inima fiecărei idei — rezultatul.\nDigitalul care aduce clienți,\nnu doar acoperire.",
+    "items": [
+      { "title": "Publicitate targetată", "text": "Lansăm campanii care aduc clienți, nu doar cheltuiesc bugetul. Setăm, analizăm și optimizăm cu logică clară și obiective măsurabile." },
+      { "title": "SMM și comunicare", "text": "Construim prezența brandului în rețelele sociale astfel încât să genereze încredere și vizibilitate. Conținutul nu este pentru like-uri, ci pentru relația cu publicul vostru." },
+      { "title": "Creare de site-uri", "text": "Realizăm site-uri simple și eficiente: structură clară, design curat și un scop bine definit — conversia vizitatorului în client." },
+      { "title": "Chatboturi și automatizare", "text": "Nu știți ce anume ar trebui automatizat? Povestiți-ne cum lucrați — poate găsim împreună o soluție simplă care economisește timp și resurse." },
+      { "title": "Rețele neuronale și instrumente noi", "text": "Uneori e greu să înțelegi unde tehnologia ajută cu adevărat și unde e doar un cuvânt la modă. Analizăm nevoile tale și recomandăm ce merită implementat." }
+    ]
+  },
+  "parallax": {
+    "text": "TARGET • REZULTAT • CREȘTERE • CLIENȚI • CONVERSII • METRICI"
+  },
+  "social": {
+    "title": {
+      "part1": "Suntem cel mai",
+      "active": "activi",
+      "part2": "pe",
+      "part3": ". Aici împărtășim",
+      "cases": "cazuri",
+      "insights": "insights",
+      "show": "arătăm",
+      "results": "rezultatele",
+      "part4": "clienților noștri și vorbim despre",
+      "trends": "tendințele digitale"
+    },
+    "cta": {
+      "title1": "Hai să creăm",
+      "title2": "ceva cool!",
+      "button": "Contactează-ne",
+      "description": "Suntem întotdeauna deschiși pentru noi oportunități, colaborări și conexiuni. Dacă ai un proiect pe care ai dori să-l discuți, vrei să vorbim despre muncă sau doar să spui salut - contactează-ne!"
+    }
+  },
+  "portfolio": {
+    "title": "Portofoliu",
+    "hint": "Adun proiecte. În curând.",
+    "modeLabel": "Mod"
+  },
+  "contacts": {
+    "title": "Contacte",
+    "phone": "+373 79 950 191",
+    "instagram": "Claro_md",
+    "address": "Valea Trandafirilor 6/2, Chișinău, Moldova",
+    "newsletter": {
+      "title": "Obține consultanță",
+      "description": "Primește insights, cazuri și sfaturi despre digital marketing",
+      "placeholder": "Email-ul tău",
+      "button": "Abonează-te"
+    }
+  },
+  "floatingBrief": {
+    "button": "Completează brieful! ✨",
+    "title": "Mini-brief",
+    "step": "Pasul",
+    "of": "din",
+    "questions": {
+      "name": { "question": "Numele companiei tale 👋", "placeholder": "Numele companiei" },
+      "service": { 
+        "question": "Ce serviciu îți trebuie? 🎯",
+        "options": ["Publicitate targetată", "SMM", "Dezvoltare web", "SEO", "Altceva"]
+      },
+      "budget": {
+        "question": "Care e bugetul? 💰",
+        "options": ["Până la $500", "$500-$1000", "$1000-$3000", "Peste $3000"]
+      },
+      "contact": { "question": "Cum te contactăm? 📱", "placeholder": "Telefon sau email" }
+    },
+    "buttons": {
+      "back": "← Înapoi",
+      "next": "Următorul →",
+      "submit": "Trimite 🚀"
+    },
+    "successMessage": "Mulțumim! Te vom contacta în curând! 🚀",
+    "successDescription": "Cererea ta a fost trimisă cu succes"
+  },
+  "faq": {
+    "title": {
+      "part1": "Întrebări frecvente",
+      "part2": "și răspunsuri"
+    },
+    "items": [
+      {
+        "question": "Cât costă serviciile voastre?",
+        "answer": "Costul depinde de volumul de muncă și serviciile alese. Publicitate targetată — de la $500/lună, SMM — de la $400/lună, dezvoltare site — de la $1000. Calculăm prețul exact după completarea briefului."
+      },
+      {
+        "question": "Cât durează până la rezultate?",
+        "answer": "Primele rezultate ale campaniilor publicitare sunt vizibile în 7-14 zile. Strategia SMM arată efect în 1-2 luni de muncă regulată. Dezvoltăm site-uri în 2-4 săptămâni în funcție de complexitate."
+      },
+      {
+        "question": "Lucrați cu afaceri mici?",
+        "answer": "Da! Ajutăm atât startup-uri, cât și companii mari. Selectăm soluții pentru orice buget și scară de afacere. Principalul este dorința ta de a crește."
+      },
+      {
+        "question": "Oferiți rapoarte?",
+        "answer": "Desigur! În fiecare săptămână trimitem rapoarte detaliate cu metrici: acoperire, clicuri, conversii, cost per lead. Totul transparent și clar, fără apă."
+      },
+      {
+        "question": "Am nevoie de site pentru publicitate?",
+        "answer": "Nu neapărat! Putem lansa publicitate pe rețelele sociale existente, bot Telegram sau crea landing page la cheie. Totul depinde de produsul și obiectivele tale."
+      }
+    ]
+  },
+  "calculator": {
+    "title": {
+      "part1": "Calculator de",
+      "part2": "preț"
+    },
+    "subtitle": "Alege serviciile și primește costul aproximativ al proiectului",
+    "duration": "Durata colaborării",
+    "services": {
+      "targeting": {
+        "name": "Publicitate targetată",
+        "description": "Configurarea și gestionarea campaniilor publicitare în Meta și Google"
+      },
+      "smm": {
+        "name": "SMM",
+        "description": "Gestionarea rețelelor sociale, conținut și strategie"
+      },
+      "website": {
+        "name": "Dezvoltare site",
+        "description": "Crearea landing page-urilor și site-urilor corporate"
+      },
+      "automation": {
+        "name": "Automatizare",
+        "description": "Boți Telegram, integrări CRM, pâlnii automate"
+      }
+    }
+  }
+}
