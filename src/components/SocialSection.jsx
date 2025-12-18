@@ -1,4 +1,5 @@
 import { useState } from "react";
+import samoletImg from '/samolet.png';
 
 export default function SocialSection({ onContactClick }) {
   const [hoveredSocial, setHoveredSocial] = useState(null);
@@ -160,7 +161,7 @@ export default function SocialSection({ onContactClick }) {
 
               {/* Иконка самолетика */}
               <img
-                src="/samolet.png"
+                src={samoletImg}
                 alt="plane"
                 className="absolute -top-4 -right-16 w-20 h-20 md:w-24 md:h-24 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:translate-x-12 group-hover:-translate-y-8 group-hover:rotate-[25deg]"
                 style={{ transform: 'translateX(0) translateY(0) rotate(0deg)' }}

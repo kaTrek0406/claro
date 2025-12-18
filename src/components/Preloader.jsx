@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logoClaro from '/logo-claro.png';
 
 export default function Preloader({ onComplete }) {
   const [currentWord, setCurrentWord] = useState(0);
@@ -46,7 +47,7 @@ export default function Preloader({ onComplete }) {
       {/* Logo */}
       <div className="mb-16">
         <img
-          src="/logo-claro.png"
+          src={logoClaro}
           alt="CLARO"
           className="h-16 md:h-24 animate-pulse"
         />

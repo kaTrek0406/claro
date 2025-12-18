@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { sendToTelegram } from "../utils/telegram";
+import logoClaro from '/logo-claro.png';
 
 export default function FloatingBrief() {
   const { t } = useTranslation();
@@ -134,17 +135,17 @@ export default function FloatingBrief() {
 
           {/* Летающие логотипы полукругом */}
           <img
-            src="/logo-claro.png"
+            src={logoClaro}
             alt="CLARO"
             className="absolute -left-24 -top-12 w-12 h-12 object-contain opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
           />
           <img
-            src="/logo-claro.png"
+            src={logoClaro}
             alt="CLARO"
             className="absolute -left-28 top-8 w-12 h-12 object-contain opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 group-hover:scale-110 group-hover:-rotate-6"
           />
           <img
-            src="/logo-claro.png"
+            src={logoClaro}
             alt="CLARO"
             className="absolute -left-20 top-24 w-12 h-12 object-contain opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 group-hover:scale-110 group-hover:rotate-6"
           />
