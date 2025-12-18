@@ -164,13 +164,13 @@ export default function FloatingBrief() {
 
       {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 z-[150] transition-all duration-500 ${
+        className={`fixed bottom-4 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 z-[150] transition-all duration-500 ${
           isOpen
             ? "scale-100 opacity-100 translate-y-0"
             : "scale-0 opacity-0 translate-y-10 pointer-events-none"
         }`}
       >
-        <div className="bg-black border-2 border-orange-500 rounded-3xl shadow-2xl w-[380px] overflow-hidden">
+        <div className="bg-black border-2 border-orange-500 rounded-2xl sm:rounded-3xl shadow-2xl w-full sm:w-[380px] max-w-md overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -261,7 +261,7 @@ export default function FloatingBrief() {
                   }
                   placeholder={currentQuestion.placeholder}
                   className="w-full px-4 py-3 bg-neutral-900 border-2 border-neutral-700 focus:border-orange-500 rounded-xl text-white placeholder-neutral-500 outline-none transition-colors"
-                  onKeyPress={(e) => e.key === "Enter" && canProceed && handleNext()}
+                  onKeyDown={(e) => e.key === "Enter" && canProceed && handleNext()}
                 />
               ) : (
                 <div className="space-y-2">

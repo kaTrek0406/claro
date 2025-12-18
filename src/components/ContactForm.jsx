@@ -52,11 +52,11 @@ export default function ContactForm({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-6 animate-[fadeIn_0.3s_ease-out]"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 sm:px-6 animate-[fadeIn_0.3s_ease-out]"
       onClick={onClose}
     >
       <div
-        className="bg-black border border-white/20 rounded-3xl p-8 md:p-12 max-w-md w-full relative animate-[scaleIn_0.4s_ease-out]"
+        className="bg-black border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-md w-full relative animate-[scaleIn_0.4s_ease-out]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}

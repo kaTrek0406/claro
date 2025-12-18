@@ -39,11 +39,11 @@ export default function App() {
 
       <Header />
 
-      <main className="pt-20 relative z-10">
+      <main className="pt-16 sm:pt-20 relative z-10">
         {/* HERO */}
-        <section id="hero" className="min-h-[calc(100vh-5rem)] flex flex-col justify-center px-6">
+        <section id="hero" className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center px-4 sm:px-6">
           <div className="max-w-5xl mx-auto w-full">
-            <h1 className="text-center text-[7vw] md:text-[5.5vw] lg:text-[4.5vw] leading-[0.95] font-black uppercase tracking-tight">
+            <h1 className="text-center text-[10vw] sm:text-[7vw] md:text-[5.5vw] lg:text-[4.5vw] leading-[0.95] font-black uppercase tracking-tight">
               {t("hero.mainTitle.line1")}{" "}
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}
@@ -85,8 +85,8 @@ export default function App() {
         </section>
 
         {/* ABOUT */}
-        <Section id="about" className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <Section id="about" className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left Column - Title */}
             <ScrollReveal animation="fade-right" duration={1000}>
               <div>
@@ -188,11 +188,11 @@ export default function App() {
         </Section>
 
         {/* SERVICES */}
-        <Section id="services" className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <Section id="services" className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             <ScrollReveal animation="fade-up" duration={1000}>
               <div>
-                <h2 className="text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight">
+                <h2 className="text-[10vw] sm:text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight">
                   {t("services.mainTitle.part1")}{" "}
                   <span className="text-orange-500">{t("services.mainTitle.part2")}</span>,{" "}
                   {t("services.mainTitle.part3")}{" "}
@@ -209,7 +209,7 @@ export default function App() {
         </Section>
 
         {/* PORTFOLIO */}
-        <Section id="portfolio" className="max-w-7xl mx-auto px-6">
+        <Section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-6">
           <Portfolio />
         </Section>
 
@@ -220,7 +220,7 @@ export default function App() {
         />
 
         {/* TESTIMONIALS */}
-        <Section id="testimonials" className="max-w-7xl mx-auto">
+        <Section id="testimonials" className="overflow-x-hidden">
           <Testimonials />
         </Section>
 

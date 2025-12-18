@@ -52,6 +52,8 @@ export default function PriceCalculator() {
   const [duration, setDuration] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [showPhoneInput, setShowPhoneInput] = useState(false);
 
   const toggleService = (serviceId) => {
     setSelectedServices((prev) =>
@@ -59,7 +61,46 @@ export default function PriceCalculator() {
         ? prev.filter((id) => id !== serviceId)
         : [...prev, serviceId]
     );
+    // Show phone input when at least one service is selected
+    if (!selectedServices.includes(serviceId)) {
+      setTimeout(() => setShowPhoneInput(true), 300);
+    }
   };
+
+  const validateMoldovanPhone = (phoneNumber) => {
+    // Moldovan phone format: +373 XX XXX XXX or variations
+    // Accepts: +373XXXXXXXX, +373 XX XXX XXX, etc.
+    const cleaned = phoneNumber.replace(/\s/g, '');
+    const regex = /^\+373[0-9]{8}$/;
+    return regex.test(cleaned);
+  };
+
+  const formatPhoneNumber = (value) => {
+    // Remove all non-digits except +
+    const cleaned = value.replace(/[^\d+]/g, '');
+
+    // Ensure it starts with +373
+    if (!cleaned.startsWith('+373')) {
+      if (cleaned.startsWith('373')) {
+        return '+' + cleaned;
+      } else if (cleaned.startsWith('+')) {
+        return '+373';
+      } else if (cleaned.length > 0) {
+        return '+373' + cleaned;
+      }
+      return '+373';
+    }
+
+    // Limit to +373 + 8 digits
+    return cleaned.slice(0, 12);
+  };
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+  };
+
+  const isPhoneValid = validateMoldovanPhone(phone);
 
   const calculateTotal = () => {
     const selectedDuration = durations.find((d) => d.value === duration);
@@ -80,7 +121,7 @@ export default function PriceCalculator() {
   };
 
   const handleSubmit = async () => {
-    if (selectedServices.length === 0 || isSubmitting) return;
+    if (selectedServices.length === 0 || !isPhoneValid || isSubmitting) return;
 
     try {
       setIsSubmitting(true);
@@ -93,7 +134,7 @@ export default function PriceCalculator() {
         .filter(Boolean)
         .join(", ");
 
-      const message = `Калькулятор стоимости:\n\nУслуги: ${selectedServiceNames}\nДлительность: ${duration} мес.\nИтого: $${calculateTotal()}`;
+      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\nУслуги: ${selectedServiceNames}\nДлительность: ${duration} мес.\nИтого: $${calculateTotal()}`;
 
       await sendToTelegram({ message }, "Price Calculator");
 
@@ -102,6 +143,8 @@ export default function PriceCalculator() {
         setIsSuccess(false);
         setSelectedServices([]);
         setDuration(1);
+        setPhone("");
+        setShowPhoneInput(false);
       }, 3000);
     } catch (error) {
       console.error("Error submitting calculator:", error);
@@ -115,12 +158,12 @@ export default function PriceCalculator() {
   const selectedDuration = durations.find((d) => d.value === duration);
 
   return (
-    <div className="px-6">
+    <div className="px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block text-6xl mb-6">💰</div>
-          <h2 className="text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-block text-5xl sm:text-6xl mb-4 sm:mb-6">💰</div>
+          <h2 className="text-[10vw] sm:text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight mb-4">
             {t("calculator.title.part1")}{" "}
             <span className="text-cyan-400">{t("calculator.title.part2")}</span>
           </h2>
@@ -217,7 +260,7 @@ export default function PriceCalculator() {
         )}
 
         {/* Total and CTA */}
-        <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-2 border-white/10 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-2 border-white/10 rounded-2xl p-8 overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <div className="text-neutral-400 text-sm mb-2">Итоговая стоимость</div>
@@ -234,22 +277,68 @@ export default function PriceCalculator() {
               )}
             </div>
 
-            {isSuccess ? (
-              <div className="flex items-center gap-3 px-6 py-4 bg-green-500/20 border-2 border-green-500 rounded-xl">
-                <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="font-bold text-green-400">Спасибо! Скоро свяжемся</span>
-              </div>
-            ) : (
-              <button
-                onClick={handleSubmit}
-                disabled={selectedServices.length === 0 || isSubmitting}
-                className="px-8 py-4 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105"
+            <div className="flex flex-col items-end gap-3">
+              {/* Phone Input - slides down from button */}
+              <div
+                className={`w-full md:w-auto transition-all duration-500 origin-top ${
+                  showPhoneInput && selectedServices.length > 0
+                    ? "opacity-100 max-h-24 translate-y-0"
+                    : "opacity-0 max-h-0 -translate-y-4 pointer-events-none"
+                }`}
               >
-                {isSubmitting ? "Отправка..." : "Получить консультацию →"}
-              </button>
-            )}
+                <div className="relative">
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    placeholder="+373 XX XXX XXX"
+                    className={`w-full md:w-64 px-4 py-3 rounded-xl border-2 bg-neutral-800 text-white font-semibold transition-all ${
+                      phone.length > 0
+                        ? isPhoneValid
+                          ? "border-green-500 focus:border-green-400"
+                          : "border-red-500 focus:border-red-400"
+                        : "border-white/20 focus:border-cyan-400"
+                    } focus:outline-none`}
+                  />
+                  {phone.length > 0 && (
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                      {isPhoneValid ? (
+                        <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {phone.length > 0 && !isPhoneValid && (
+                  <p className="text-xs text-red-400 mt-1 ml-1">
+                    Формат: +373 + 8 цифр
+                  </p>
+                )}
+              </div>
+
+              {/* Button */}
+              {isSuccess ? (
+                <div className="flex items-center gap-3 px-6 py-4 bg-green-500/20 border-2 border-green-500 rounded-xl">
+                  <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-bold text-green-400">Спасибо! Скоро свяжемся</span>
+                </div>
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  disabled={selectedServices.length === 0 || !isPhoneValid || isSubmitting}
+                  className="px-8 py-4 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 whitespace-nowrap"
+                >
+                  {isSubmitting ? "Отправка..." : "Получить консультацию →"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
