@@ -6,9 +6,9 @@ export default function Marquee({ text }) {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="relative py-12">
+    <div className="relative py-12 overflow-visible">
       {/* Серая полоска на заднем фоне */}
-      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 overflow-visible rotate-3 bg-neutral-700">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-3 bg-neutral-700">
         <div className="py-6 whitespace-nowrap overflow-hidden">
           <div
             className="inline-block animate-[marquee-reverse_25s_linear_infinite] pr-16 text-3xl md:text-5xl font-black text-neutral-500 tracking-tighter uppercase"
@@ -35,7 +35,7 @@ export default function Marquee({ text }) {
       </div>
 
       {/* Основная белая полоска */}
-      <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 overflow-visible -rotate-2 bg-white">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-2 bg-white">
         <div className="py-6 whitespace-nowrap overflow-hidden">
           <div
             className="inline-block animate-[marquee_25s_linear_infinite] pr-16 text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"

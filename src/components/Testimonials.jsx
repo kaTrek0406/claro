@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo, memo } from "react";
 
 const testimonials = [
   {
@@ -35,6 +35,40 @@ const testimonials = [
   },
 ];
 
+// Extract TestimonialCard outside to prevent recreation on every render
+const TestimonialCard = memo(({ testimonial, id, hoveredIndex, onHover }) => (
+  <div
+    onMouseEnter={() => onHover(id)}
+    onMouseLeave={() => onHover(null)}
+    className="flex-shrink-0 w-[280px] sm:w-[350px] md:w-[450px] snap-start"
+  >
+    <div
+      className={`h-full ${testimonial.bgColor} rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 transition-all duration-300 cursor-pointer overflow-hidden ${
+        hoveredIndex === id ? "md:scale-105 md:-rotate-3" : "scale-100 rotate-0"
+      }`}
+    >
+      <div className={`${testimonial.textColor} mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed font-semibold`}>
+        "{testimonial.quote}"
+      </div>
+
+      <div className="flex items-center gap-3 sm:gap-4">
+        <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full ${testimonial.textColor} bg-black/10 flex items-center justify-center text-lg sm:text-xl md:text-2xl font-black`}>
+          {testimonial.author.charAt(0)}
+        </div>
+        <div>
+          <div className={`font-black ${testimonial.textColor} uppercase tracking-tight text-sm sm:text-base md:text-lg`}>
+            {testimonial.author}
+          </div>
+          <div className={`text-xs sm:text-sm ${testimonial.textColor} opacity-70`}>{testimonial.position}</div>
+          <div className={`text-xs ${testimonial.textColor} font-bold opacity-80`}>{testimonial.company}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+));
+
+TestimonialCard.displayName = 'TestimonialCard';
+
 export default function Testimonials() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const scrollRef = useRef(null);
@@ -65,36 +99,10 @@ export default function Testimonials() {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  const TestimonialCard = ({ testimonial, id }) => (
-    <div
-      key={id}
-      onMouseEnter={() => setHoveredIndex(id)}
-      onMouseLeave={() => setHoveredIndex(null)}
-      className="flex-shrink-0 w-[280px] sm:w-[350px] md:w-[450px] snap-start"
-    >
-      <div
-        className={`h-full ${testimonial.bgColor} rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 transition-all duration-300 cursor-pointer overflow-hidden ${
-          hoveredIndex === id ? "md:scale-105 md:-rotate-3" : "scale-100 rotate-0"
-        }`}
-      >
-        <div className={`${testimonial.textColor} mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed font-semibold`}>
-          "{testimonial.quote}"
-        </div>
-
-        <div className="flex items-center gap-3 sm:gap-4">
-          <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full ${testimonial.textColor} bg-black/10 flex items-center justify-center text-lg sm:text-xl md:text-2xl font-black`}>
-            {testimonial.author.charAt(0)}
-          </div>
-          <div>
-            <div className={`font-black ${testimonial.textColor} uppercase tracking-tight text-sm sm:text-base md:text-lg`}>
-              {testimonial.author}
-            </div>
-            <div className={`text-xs sm:text-sm ${testimonial.textColor} opacity-70`}>{testimonial.position}</div>
-            <div className={`text-xs ${testimonial.textColor} font-bold opacity-80`}>{testimonial.company}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  // Memoize tripled array to prevent recreation on every render
+  const tripledTestimonials = useMemo(
+    () => [...testimonials, ...testimonials, ...testimonials],
+    []
   );
 
   return (
@@ -108,8 +116,14 @@ export default function Testimonials() {
 
       <div className="pb-8 sm:pb-12 pt-4 pl-4 sm:pl-6 md:pl-[calc((100vw-80rem)/2+1.5rem)] lg:pl-[calc((100vw-80rem)/2+1.5rem)]">
         <div ref={scrollRef} className="flex gap-4 sm:gap-6">
-          {[...testimonials, ...testimonials, ...testimonials].map((testimonial, idx) => (
-            <TestimonialCard key={idx} testimonial={testimonial} id={`card-${idx}`} />
+          {tripledTestimonials.map((testimonial, idx) => (
+            <TestimonialCard
+              key={idx}
+              testimonial={testimonial}
+              id={`card-${idx}`}
+              hoveredIndex={hoveredIndex}
+              onHover={setHoveredIndex}
+            />
           ))}
         </div>
       </div>

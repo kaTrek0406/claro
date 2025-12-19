@@ -33,13 +33,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Parallax Background Shapes */}
       <ParallaxShapes />
 
       <Header />
 
-      <main className="pt-16 sm:pt-20 relative z-10">
+      <main className="pt-16 sm:pt-20 relative z-10 overflow-x-hidden w-full">
         {/* HERO */}
         <section id="hero" className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center px-4 sm:px-6">
           <div className="max-w-5xl mx-auto w-full">

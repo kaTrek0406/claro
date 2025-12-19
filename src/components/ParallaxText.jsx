@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
+import { throttle } from "../utils/throttle";
 
 export default function ParallaxText({ text, onServiceClick }) {
   const [offsetX, setOffsetX] = useState(0);
   const [hoveredWord, setHoveredWord] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
+  // Throttle mouse move handler to reduce state updates from 100+/sec to 60/sec
+  const handleMouseMove = useCallback(
+    throttle((e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    }, 16), // 60fps
+    []
+  );
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollProgress = window.scrollY;
       setOffsetX(scrollProgress * 0.5); // Скорость параллакса
-    };
-
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -23,7 +28,7 @@ export default function ParallaxText({ text, onServiceClick }) {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [handleMouseMove]);
 
   // Разбиваем текст на отдельные слова
   const words = text.split(" • ");
@@ -38,26 +43,27 @@ export default function ParallaxText({ text, onServiceClick }) {
     "text-blue-400",   // МЕТРИКИ
   ];
 
-  // Создаем массив слов с цветами для 100 повторений
-  const coloredWords = [];
-  for (let i = 0; i < 100; i++) {
-    words.forEach((word, idx) => {
-      coloredWords.push({
-        text: word,
-        color: colors[idx % colors.length],
-        service: word.toLowerCase()
+  // Memoize coloredWords array to prevent creating 600 objects every render
+  const coloredWords = useMemo(() => {
+    const result = [];
+    for (let i = 0; i < 100; i++) {
+      words.forEach((word, idx) => {
+        result.push({
+          text: word,
+          color: colors[idx % colors.length],
+          service: word.toLowerCase()
+        });
       });
-    });
-  }
+    }
+    return result;
+  }, [text]); // Only recreate if text prop changes
 
-  // Получаем текущее наведенное слово
-  const getHoveredItem = () => {
+  // Memoize hovered item calculation
+  const hoveredItem = useMemo(() => {
     if (!hoveredWord) return null;
     const [, idx] = hoveredWord.split('-');
     return coloredWords[parseInt(idx)];
-  };
-
-  const hoveredItem = getHoveredItem();
+  }, [hoveredWord, coloredWords]);
 
   return (
     <div className="overflow-hidden py-8 bg-black relative">

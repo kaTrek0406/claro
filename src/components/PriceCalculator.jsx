@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { sendToTelegram } from "../utils/telegram";
 
@@ -46,6 +46,9 @@ const durations = [
   { value: 12, label: "12 месяцев", multiplier: 0.85, discount: "15%" },
 ];
 
+// Regex constant to avoid recreation on every validation call
+const MOLDOVAN_PHONE_REGEX = /^\+373[0-9]{8}$/;
+
 export default function PriceCalculator() {
   const { t } = useTranslation();
   const [selectedServices, setSelectedServices] = useState([]);
@@ -67,15 +70,15 @@ export default function PriceCalculator() {
     }
   };
 
-  const validateMoldovanPhone = (phoneNumber) => {
+  // Memoize phone validation to avoid recreation
+  const validateMoldovanPhone = useCallback((phoneNumber) => {
     // Moldovan phone format: +373 XX XXX XXX or variations
     // Accepts: +373XXXXXXXX, +373 XX XXX XXX, etc.
     const cleaned = phoneNumber.replace(/\s/g, '');
-    const regex = /^\+373[0-9]{8}$/;
-    return regex.test(cleaned);
-  };
+    return MOLDOVAN_PHONE_REGEX.test(cleaned);
+  }, []);
 
-  const formatPhoneNumber = (value) => {
+  const formatPhoneNumber = useCallback((value) => {
     // Remove all non-digits except +
     const cleaned = value.replace(/[^\d+]/g, '');
 
@@ -93,32 +96,37 @@ export default function PriceCalculator() {
 
     // Limit to +373 + 8 digits
     return cleaned.slice(0, 12);
-  };
+  }, []);
 
-  const handlePhoneChange = (e) => {
+  const handlePhoneChange = useCallback((e) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhone(formatted);
-  };
+  }, [formatPhoneNumber]);
 
-  const isPhoneValid = validateMoldovanPhone(phone);
+  // Memoize phone validation result
+  const isPhoneValid = useMemo(
+    () => validateMoldovanPhone(phone),
+    [phone, validateMoldovanPhone]
+  );
 
-  const calculateTotal = () => {
+  // Memoize total calculation to prevent recalculation on every render (was called 6x per render)
+  const total = useMemo(() => {
     const selectedDuration = durations.find((d) => d.value === duration);
-    let total = 0;
+    let sum = 0;
 
     selectedServices.forEach((serviceId) => {
       const service = services.find((s) => s.id === serviceId);
       if (service) {
         if (service.oneTime) {
-          total += service.pricePerMonth;
+          sum += service.pricePerMonth;
         } else {
-          total += service.pricePerMonth * duration * selectedDuration.multiplier;
+          sum += service.pricePerMonth * duration * selectedDuration.multiplier;
         }
       }
     });
 
-    return Math.round(total);
-  };
+    return Math.round(sum);
+  }, [selectedServices, duration]);
 
   const handleSubmit = async () => {
     if (selectedServices.length === 0 || !isPhoneValid || isSubmitting) return;
@@ -134,7 +142,7 @@ export default function PriceCalculator() {
         .filter(Boolean)
         .join(", ");
 
-      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\nУслуги: ${selectedServiceNames}\nДлительность: ${duration} мес.\nИтого: $${calculateTotal()}`;
+      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\nУслуги: ${selectedServiceNames}\nДлительность: ${duration} мес.\nИтого: $${total}`;
 
       await sendToTelegram({ message }, "Price Calculator");
 
@@ -154,7 +162,6 @@ export default function PriceCalculator() {
     }
   };
 
-  const total = calculateTotal();
   const selectedDuration = durations.find((d) => d.value === duration);
 
   return (
