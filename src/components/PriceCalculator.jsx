@@ -49,6 +49,21 @@ const durations = [
 // Regex constant to avoid recreation on every validation call
 const MOLDOVAN_PHONE_REGEX = /^\+373[0-9]{8}$/;
 
+// Multi-service discount tiers
+const getMultiServiceDiscount = (serviceCount) => {
+  if (serviceCount >= 4) return 0.8; // 20% discount
+  if (serviceCount >= 3) return 0.85; // 15% discount
+  if (serviceCount >= 2) return 0.9; // 10% discount
+  return 1; // No discount
+};
+
+const getMultiServiceDiscountLabel = (serviceCount) => {
+  if (serviceCount >= 4) return "20%";
+  if (serviceCount >= 3) return "15%";
+  if (serviceCount >= 2) return "10%";
+  return null;
+};
+
 export default function PriceCalculator() {
   const { t } = useTranslation();
   const [selectedServices, setSelectedServices] = useState([]);
@@ -110,7 +125,7 @@ export default function PriceCalculator() {
   );
 
   // Memoize total calculation to prevent recalculation on every render (was called 6x per render)
-  const total = useMemo(() => {
+  const { total, originalTotal, multiServiceDiscount } = useMemo(() => {
     const selectedDuration = durations.find((d) => d.value === duration);
     let sum = 0;
 
@@ -125,7 +140,16 @@ export default function PriceCalculator() {
       }
     });
 
-    return Math.round(sum);
+    const originalTotal = Math.round(sum);
+    const multiServiceMultiplier = getMultiServiceDiscount(selectedServices.length);
+    const discountLabel = getMultiServiceDiscountLabel(selectedServices.length);
+    const finalTotal = Math.round(sum * multiServiceMultiplier);
+
+    return {
+      total: finalTotal,
+      originalTotal: originalTotal,
+      multiServiceDiscount: discountLabel
+    };
   }, [selectedServices, duration]);
 
   const handleSubmit = async () => {
@@ -270,15 +294,43 @@ export default function PriceCalculator() {
         <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-2 border-white/10 rounded-2xl p-8 overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <div className="text-neutral-400 text-sm mb-2">Итоговая стоимость</div>
-              <div className="text-5xl font-black text-white">
-                ${total}
-                {selectedServices.length > 0 && selectedDuration.discount && (
-                  <span className="ml-3 text-sm text-green-400">
-                    скидка {selectedDuration.discount}
+              <div className="text-neutral-400 text-sm mb-2">
+                Итоговая стоимость
+                {multiServiceDiscount && (
+                  <span className="ml-2 text-green-400 font-bold">
+                    🎉 Скидка за {selectedServices.length} услуги
                   </span>
                 )}
               </div>
+
+              {/* Show original price crossed out if multi-service discount applies */}
+              {multiServiceDiscount && originalTotal !== total ? (
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <div className="text-3xl font-black text-neutral-500 line-through">
+                    ${originalTotal}
+                  </div>
+                  <div className="text-5xl font-black text-white">
+                    ${total}
+                  </div>
+                  <div className="px-3 py-1 bg-green-500/20 border border-green-500 rounded-full">
+                    <span className="text-green-400 font-black text-sm">
+                      -{multiServiceDiscount}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-5xl font-black text-white">
+                  ${total}
+                </div>
+              )}
+
+              {/* Duration discount badge */}
+              {selectedServices.length > 0 && selectedDuration.discount && (
+                <div className="text-sm text-cyan-400 mt-2">
+                  + скидка {selectedDuration.discount} за длительность
+                </div>
+              )}
+
               {selectedServices.length === 0 && (
                 <div className="text-sm text-neutral-500 mt-2">Выберите услуги</div>
               )}

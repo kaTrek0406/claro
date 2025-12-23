@@ -39,11 +39,11 @@ export default function App() {
 
       <Header />
 
-      <main className="pt-16 sm:pt-20 relative z-10 overflow-x-hidden w-full">
+      <main className="pt-20 sm:pt-24 lg:pt-28 relative z-10 overflow-x-hidden w-full">
         {/* HERO */}
-        <section id="hero" className="min-h-[calc(100vh-4rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center px-4 sm:px-6">
-          <div className="max-w-5xl mx-auto w-full">
-            <h1 className="text-center text-[10vw] sm:text-[7vw] md:text-[5.5vw] lg:text-[4.5vw] leading-[0.95] font-black uppercase tracking-tight">
+        <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto w-full">
+            <h1 className="text-center text-[10vw] sm:text-[7vw] md:text-[5.5vw] lg:text-[4vw] xl:text-6xl 2xl:text-7xl leading-[0.95] font-black uppercase tracking-tight">
               {t("hero.mainTitle.line1")}{" "}
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}

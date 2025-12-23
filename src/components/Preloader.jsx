@@ -6,11 +6,11 @@ export default function Preloader({ onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
 
   const words = [
-    "CAMPAIGNS",
-    "LEADS",
-    "ANALYTICS",
-    "REACH",
-    "OPTIMIZATION"
+    { text: "CAMPAIGNS", color: "text-white" },
+    { text: "LEADS", color: "text-yellow-400" },
+    { text: "ANALYTICS", color: "text-cyan-400" },
+    { text: "REACH", color: "text-pink-400" },
+    { text: "OPTIMIZATION", color: "text-orange-500" }
   ];
 
   useEffect(() => {
@@ -32,14 +32,16 @@ export default function Preloader({ onComplete }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center transition-opacity duration-700 ${
-        isExiting ? 'opacity-0' : 'opacity-100'
+      className={`fixed inset-0 z-[200] bg-black flex flex-col items-center justify-center transition-all duration-700 ${
+        isExiting ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'
       }`}
     >
-      {/* Orange Progress Bar - Top */}
+      {/* Progress Bar - Top (color changes with current word) */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-neutral-900">
         <div
-          className="h-full bg-orange-500 transition-all duration-500 ease-out"
+          className={`h-full transition-all duration-500 ease-out ${
+            currentWord < words.length ? words[currentWord].color.replace('text-', 'bg-') : 'bg-cyan-400'
+          }`}
           style={{ width: `${(currentWord / words.length) * 100}%` }}
         />
       </div>
@@ -58,8 +60,8 @@ export default function Preloader({ onComplete }) {
         <div className="relative w-full max-w-4xl flex items-center justify-center" style={{ minHeight: '8rem' }}>
           {words.map((word, index) => (
             <div
-              key={word}
-              className={`absolute text-orange-500 font-black text-4xl md:text-6xl uppercase tracking-tight transition-all duration-700 ease-in-out whitespace-nowrap ${
+              key={word.text}
+              className={`absolute ${word.color} font-black text-4xl md:text-6xl uppercase tracking-tight transition-all duration-700 ease-in-out whitespace-nowrap ${
                 index === currentWord
                   ? 'opacity-100 translate-y-0 scale-100'
                   : index < currentWord
@@ -78,7 +80,7 @@ export default function Preloader({ onComplete }) {
                 }`
               }}
             >
-              {word}
+              {word.text}
             </div>
           ))}
         </div>
@@ -86,20 +88,18 @@ export default function Preloader({ onComplete }) {
 
       {/* Loading Dots */}
       <div className="flex gap-2">
-        <div className="w-3 h-3 bg-orange-500 rounded-full animate-[wave_1.4s_ease-in-out_infinite]"></div>
-        <div className="w-3 h-3 bg-orange-500 rounded-full animate-[wave_1.4s_ease-in-out_0.2s_infinite]"></div>
-        <div className="w-3 h-3 bg-orange-500 rounded-full animate-[wave_1.4s_ease-in-out_0.4s_infinite]"></div>
+        <div className="w-3 h-3 rounded-full bg-white animate-[wave_1.4s_ease-in-out_infinite]"></div>
+        <div className="w-3 h-3 rounded-full bg-white animate-[wave_1.4s_ease-in-out_0.2s_infinite]"></div>
+        <div className="w-3 h-3 rounded-full bg-white animate-[wave_1.4s_ease-in-out_0.4s_infinite]"></div>
       </div>
 
       <style>{`
         @keyframes wave {
           0%, 100% {
             transform: translateY(0);
-            opacity: 1;
           }
           50% {
             transform: translateY(-10px);
-            opacity: 0.5;
           }
         }
       `}</style>
