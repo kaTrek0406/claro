@@ -1,28 +1,33 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ScrollReveal from "./ScrollReveal";
 
 const projects = [
   {
+    id: "nedvizhimost",
     name: "Недвижимость в Кишиневе",
     tags: ["Meta Ads", "Landing", "CRM"],
-    color: "text-purple-400",
+    color: "text-yellow-400",
+    bgColor: "bg-yellow-400/20",
     rotation: "rotate-6",
     metrics: {
       icon: "🏠",
       growth: "+245%",
       label: "Рост заявок",
       stats: [
-        { value: "1.2K", label: "Заявки", color: "text-purple-400" },
+        { value: "1.2K", label: "Заявки", color: "text-yellow-400" },
         { value: "₽45", label: "CPL", color: "text-cyan-400" },
         { value: "4.2", label: "ROAS", color: "text-pink-400" },
       ],
-      gradient: "from-purple-600/20 to-cyan-600/20",
+      gradient: "from-yellow-600/20 to-cyan-600/20",
     },
   },
   {
+    id: "medical",
     name: "Медицинский центр",
     tags: ["Google Ads", "SEO", "Analytics"],
     color: "text-cyan-400",
+    bgColor: "bg-cyan-400/20",
     rotation: "-rotate-6",
     metrics: {
       icon: "⚕️",
@@ -30,16 +35,18 @@ const projects = [
       label: "Рост записей",
       stats: [
         { value: "850", label: "Записи", color: "text-cyan-400" },
-        { value: "₽120", label: "CPL", color: "text-blue-400" },
-        { value: "3.8", label: "ROAS", color: "text-purple-400" },
+        { value: "₽120", label: "CPL", color: "text-pink-400" },
+        { value: "3.8", label: "ROAS", color: "text-orange-500" },
       ],
-      gradient: "from-cyan-600/20 to-blue-600/20",
+      gradient: "from-cyan-600/20 to-pink-600/20",
     },
   },
   {
+    id: "ecommerce",
     name: "E-commerce магазин",
     tags: ["Meta Ads", "Telegram Bot", "Автоматизация"],
     color: "text-pink-400",
+    bgColor: "bg-pink-400/20",
     rotation: "rotate-6",
     metrics: {
       icon: "🛍️",
@@ -47,33 +54,36 @@ const projects = [
       label: "Рост продаж",
       stats: [
         { value: "2.5K", label: "Заказы", color: "text-pink-400" },
-        { value: "₽35", label: "CAC", color: "text-orange-400" },
-        { value: "5.6", label: "ROAS", color: "text-yellow-400" },
+        { value: "₽35", label: "CAC", color: "text-orange-500" },
+        { value: "5.6", label: "ROAS", color: "text-purple-400" },
       ],
       gradient: "from-pink-600/20 to-orange-600/20",
     },
   },
   {
+    id: "education",
     name: "Образовательный центр",
     tags: ["SMM", "Контент", "Таргет"],
-    color: "text-orange-400",
+    color: "text-orange-500",
+    bgColor: "bg-orange-500/20",
     rotation: "-rotate-6",
     metrics: {
       icon: "📚",
       growth: "+195%",
       label: "Рост студентов",
       stats: [
-        { value: "680", label: "Заявки", color: "text-orange-400" },
-        { value: "₽90", label: "CPL", color: "text-yellow-400" },
-        { value: "4.5", label: "ROAS", color: "text-green-400" },
+        { value: "680", label: "Заявки", color: "text-orange-500" },
+        { value: "₽90", label: "CPL", color: "text-purple-400" },
+        { value: "4.5", label: "ROAS", color: "text-yellow-400" },
       ],
-      gradient: "from-orange-600/20 to-yellow-600/20",
+      gradient: "from-orange-600/20 to-purple-600/20",
     },
   },
 ];
 
 export default function Portfolio() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <div className="relative">
@@ -104,6 +114,7 @@ export default function Portfolio() {
               <div
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => navigate(`/category/${project.id}`)}
                 className="border-b border-white/10 py-6 cursor-pointer group"
               >
                 <div className="flex flex-col gap-4">
@@ -118,7 +129,7 @@ export default function Portfolio() {
                       <span
                         key={i}
                         className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          i === 0 ? "bg-purple-500/20 text-purple-300" : "bg-white/10 text-neutral-300"
+                          i === 0 ? `${project.bgColor} ${project.color}` : "bg-white/10 text-neutral-300"
                         }`}
                       >
                         {tag}
@@ -188,10 +199,6 @@ export default function Portfolio() {
           }
         `}</style>
       </div>
-
-      <p className="mt-12 text-center text-neutral-400">
-        Собираю кейсы. Скоро покажу реальные результаты 📈
-      </p>
     </div>
   );
 }

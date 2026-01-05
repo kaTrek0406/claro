@@ -4,46 +4,37 @@ import { sendToTelegram } from "../utils/telegram";
 
 const services = [
   {
-    id: "targeting",
+    id: "google_ads",
     icon: "🎯",
     pricePerMonth: 500,
-    color: "text-purple-400",
-    borderColor: "border-purple-400",
-    bgColor: "bg-purple-400/10",
+    color: "text-yellow-400",
+    borderColor: "border-yellow-400",
+    bgColor: "bg-yellow-400/10",
   },
   {
-    id: "smm",
-    icon: "📱",
-    pricePerMonth: 400,
+    id: "meta_ads",
+    icon: "📣",
+    pricePerMonth: 600,
     color: "text-cyan-400",
     borderColor: "border-cyan-400",
     bgColor: "bg-cyan-400/10",
   },
   {
-    id: "website",
-    icon: "💻",
-    pricePerMonth: 1000,
+    id: "youtube_ads",
+    icon: "▶️",
+    pricePerMonth: 700,
     color: "text-pink-400",
     borderColor: "border-pink-400",
     bgColor: "bg-pink-400/10",
-    oneTime: true,
   },
   {
-    id: "automation",
-    icon: "🤖",
-    pricePerMonth: 600,
-    color: "text-orange-400",
-    borderColor: "border-orange-400",
-    bgColor: "bg-orange-400/10",
-    oneTime: true,
+    id: "telegram_ads",
+    icon: "💬",
+    pricePerMonth: 400,
+    color: "text-orange-500",
+    borderColor: "border-orange-500",
+    bgColor: "bg-orange-500/10",
   },
-];
-
-const durations = [
-  { value: 1, label: "1 месяц", multiplier: 1 },
-  { value: 3, label: "3 месяца", multiplier: 0.95, discount: "5%" },
-  { value: 6, label: "6 месяцев", multiplier: 0.9, discount: "10%" },
-  { value: 12, label: "12 месяцев", multiplier: 0.85, discount: "15%" },
 ];
 
 // Regex constant to avoid recreation on every validation call
@@ -67,7 +58,6 @@ const getMultiServiceDiscountLabel = (serviceCount) => {
 export default function PriceCalculator() {
   const { t } = useTranslation();
   const [selectedServices, setSelectedServices] = useState([]);
-  const [duration, setDuration] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [phone, setPhone] = useState("");
@@ -124,19 +114,14 @@ export default function PriceCalculator() {
     [phone, validateMoldovanPhone]
   );
 
-  // Memoize total calculation to prevent recalculation on every render (was called 6x per render)
+  // Memoize total calculation to prevent recalculation on every render
   const { total, originalTotal, multiServiceDiscount } = useMemo(() => {
-    const selectedDuration = durations.find((d) => d.value === duration);
     let sum = 0;
 
     selectedServices.forEach((serviceId) => {
       const service = services.find((s) => s.id === serviceId);
       if (service) {
-        if (service.oneTime) {
-          sum += service.pricePerMonth;
-        } else {
-          sum += service.pricePerMonth * duration * selectedDuration.multiplier;
-        }
+        sum += service.pricePerMonth;
       }
     });
 
@@ -150,7 +135,7 @@ export default function PriceCalculator() {
       originalTotal: originalTotal,
       multiServiceDiscount: discountLabel
     };
-  }, [selectedServices, duration]);
+  }, [selectedServices]);
 
   const handleSubmit = async () => {
     if (selectedServices.length === 0 || !isPhoneValid || isSubmitting) return;
@@ -166,7 +151,7 @@ export default function PriceCalculator() {
         .filter(Boolean)
         .join(", ");
 
-      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\nУслуги: ${selectedServiceNames}\nДлительность: ${duration} мес.\nИтого: $${total}`;
+      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\nУслуги: ${selectedServiceNames}\nИтого: $${total}`;
 
       await sendToTelegram({ message }, "Price Calculator");
 
@@ -174,7 +159,6 @@ export default function PriceCalculator() {
       setTimeout(() => {
         setIsSuccess(false);
         setSelectedServices([]);
-        setDuration(1);
         setPhone("");
         setShowPhoneInput(false);
       }, 3000);
@@ -186,14 +170,11 @@ export default function PriceCalculator() {
     }
   };
 
-  const selectedDuration = durations.find((d) => d.value === duration);
-
   return (
     <div className="px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-block text-5xl sm:text-6xl mb-4 sm:mb-6">💰</div>
           <h2 className="text-[10vw] sm:text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight mb-4">
             {t("calculator.title.part1")}{" "}
             <span className="text-cyan-400">{t("calculator.title.part2")}</span>
@@ -259,37 +240,6 @@ export default function PriceCalculator() {
           })}
         </div>
 
-        {/* Duration Selector */}
-        {selectedServices.some(id => !services.find(s => s.id === id)?.oneTime) && (
-          <div className="mb-8">
-            <h3 className="text-xl font-black uppercase tracking-tight mb-4">
-              {t("calculator.duration")}
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {durations.map((dur) => (
-                <button
-                  key={dur.value}
-                  onClick={() => setDuration(dur.value)}
-                  className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                    duration === dur.value
-                      ? "border-cyan-400 bg-cyan-400/10 scale-105"
-                      : "border-white/10 bg-neutral-900/50 hover:border-white/20"
-                  }`}
-                >
-                  <div className={`font-black ${duration === dur.value ? "text-cyan-400" : "text-white"}`}>
-                    {dur.label}
-                  </div>
-                  {dur.discount && (
-                    <div className="text-xs text-green-400 mt-1">
-                      -{dur.discount}
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Total and CTA */}
         <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-2 border-white/10 rounded-2xl p-8 overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -321,13 +271,6 @@ export default function PriceCalculator() {
               ) : (
                 <div className="text-5xl font-black text-white">
                   ${total}
-                </div>
-              )}
-
-              {/* Duration discount badge */}
-              {selectedServices.length > 0 && selectedDuration.discount && (
-                <div className="text-sm text-cyan-400 mt-2">
-                  + скидка {selectedDuration.discount} за длительность
                 </div>
               )}
 

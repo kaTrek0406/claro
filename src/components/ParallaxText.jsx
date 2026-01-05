@@ -33,14 +33,14 @@ export default function ParallaxText({ text, onServiceClick }) {
   // Разбиваем текст на отдельные слова
   const words = text.split(" • ");
 
-  // Цвета для каждого слова (как на скрине)
+  // Цвета для каждого слова (единая палитра)
   const colors = [
-    "text-yellow-400", // ТАРГЕТ
-    "text-orange-500", // РЕЗУЛЬТАТ
-    "text-pink-400",   // РОСТ
-    "text-cyan-400",   // ЗАЯВКИ
-    "text-purple-400", // КОНВЕРСИИ
-    "text-blue-400",   // МЕТРИКИ
+    "text-cyan-400",    // ТАРГЕТ
+    "text-pink-400",    // РЕЗУЛЬТАТ
+    "text-pink-400",    // РОСТ
+    "text-orange-500",  // ЗАЯВКИ
+    "text-yellow-400",  // КОНВЕРСИИ
+    "text-cyan-400",    // МЕТРИКИ
   ];
 
   // Memoize coloredWords array to prevent creating 600 objects every render

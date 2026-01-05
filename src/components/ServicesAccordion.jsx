@@ -1,21 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function ServicesAccordion() {
   const { t } = useTranslation();
   const items = t("services.items", { returnObjects: true });
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const accordionRef = useRef(null);
 
   const colors = [
-    "text-orange-500",
+    "text-yellow-400",
     "text-cyan-400",
     "text-pink-400",
-    "text-yellow-400",
+    "text-orange-500",
     "text-purple-400"
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setTimeout(() => {
+              setOpen(0);
+              setHasAnimated(true);
+            }, 300);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (accordionRef.current) {
+      observer.observe(accordionRef.current);
+    }
+
+    return () => {
+      if (accordionRef.current) {
+        observer.unobserve(accordionRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
   return (
-    <div className="space-y-0">
+    <div ref={accordionRef} className="space-y-0">
       {items.map((it, idx) => {
         const isOpen = open === idx;
         const color = colors[idx % colors.length];

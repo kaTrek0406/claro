@@ -17,7 +17,7 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden sm:flex gap-4 md:gap-6 lg:gap-8 text-xs md:text-sm lg:text-base text-white font-semibold">
+          <nav className="hidden sm:flex gap-4 md:gap-6 lg:gap-8 text-base md:text-lg lg:text-xl xl:text-2xl text-white font-bold">
             <a href="#about" className="relative py-2 transition-colors hover:text-cyan-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.about")}</a>
             <a href="#services" className="relative py-2 transition-colors hover:text-orange-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full">{t("nav.services")}</a>
             <a href="#portfolio" className="relative py-2 transition-colors hover:text-pink-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.portfolio")}</a>

@@ -147,22 +147,166 @@
     "subtitle": "Alege serviciile și primește costul aproximativ al proiectului",
     "duration": "Durata colaborării",
     "services": {
-      "targeting": {
-        "name": "Publicitate targetată",
-        "description": "Configurarea și gestionarea campaniilor publicitare în Meta și Google"
+      "google_ads": {
+        "name": "Publicitate Google",
+        "description": "Configurarea și gestionarea campaniilor publicitare în Google Ads pentru atragerea publicului țintă"
       },
-      "smm": {
-        "name": "SMM",
-        "description": "Gestionarea rețelelor sociale, conținut și strategie"
+      "meta_ads": {
+        "name": "Publicitate Meta (FB + Instagram)",
+        "description": "Publicitate targetată pe Facebook și Instagram pentru acoperire și conversii maxime"
       },
-      "website": {
-        "name": "Dezvoltare site",
-        "description": "Crearea landing page-urilor și site-urilor corporate"
+      "youtube_ads": {
+        "name": "Publicitate YouTube",
+        "description": "Publicitate video pe YouTube pentru creșterea notorietății brandului și atragerea clienților"
       },
-      "automation": {
-        "name": "Automatizare",
-        "description": "Boți Telegram, integrări CRM, pâlnii automate"
+      "telegram_ads": {
+        "name": "Publicitate Telegram",
+        "description": "Publicitate în canalele Telegram și chatboți pentru interacțiune directă cu publicul"
       }
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "copyright": "© Claro Plus SRL",
+    "privacyPolicy": "Politica de confidențialitate",
+    "callUs": "Contactează"
+  },
+  "privacy": {
+    "title": "Politica de confidențialitate — Claro Plus SRL",
+    "effectiveDate": "Data intrării în vigoare",
+    "lastUpdated": "Ultima actualizare",
+    "website": "Site-ul",
+    "intro": "Această Politică de confidențialitate (denumită în continuare 'Politica') descrie modul în care Claro Plus SRL (denumită în continuare 'Compania', 'noi') prelucrează datele cu caracter personal ale vizitatorilor site-ului și ale persoanelor care apelează la serviciile noastre: configurarea reclamei, automatizare, crearea și întreținerea site-urilor.",
+    "section1": {
+      "title": "1. Operator de date și contacte",
+      "company": "CLARO PLUS S.R.L.",
+      "address": "Adresă: mun. Chisinau, str. Moara Rosie 30/1 ap. 49",
+      "fiscalCode": "Cod fiscal: 1025600052414",
+      "administrator": "Administrator: Juraveli Vitalia",
+      "phone": "Tel. 069200775"
+    },
+    "section2": {
+      "title": "2. Ce date colectăm și prelucrăm",
+      "intro": "Putem prelucra următoarele categorii de date:",
+      "voluntary": {
+        "title": "2.1. Date pe care le furnizați voluntar",
+        "items": [
+          "nume (dacă indicați), e-mail, telefon, contact în messenger;",
+          "conținutul mesajului/briefului/cererii;",
+          "fișiere și materiale pe care le trimiteți (TZ, logo-uri, accese — după necesitate);",
+          "detalii pentru contract/factură (dacă deveniți client)."
+        ]
+      },
+      "technical": {
+        "title": "2.2. Date tehnice la vizitarea Site-ului",
+        "items": [
+          "Adresa IP (sau forma sa prescurtată/anonimizată — dacă este activată în analiză), cookies/identificatori;",
+          "tipul de dispozitiv și browser, limba, data/ora accesului;",
+          "sursa de referință (referrer), parametri UTM;",
+          "acțiuni pe Site (vizualizări de pagini, clicuri, trimiterea formularului, alte evenimente)."
+        ]
+      }
+    },
+    "section3": {
+      "title": "3. Scopurile prelucrării",
+      "intro": "Prelucrăm datele pentru:",
+      "items": [
+        "procesarea cererilor și feedback-ului;",
+        "pregătirea ofertei comerciale și încheierea contractului;",
+        "furnizarea serviciilor (publicitate, automatizare, dezvoltare/suport site-uri);",
+        "comunicare de proiect și suport tehnic;",
+        "analiză și îmbunătățirea Site-ului, calitatea serviciului;",
+        "asigurarea securității și prevenirea abuzurilor;",
+        "îndeplinirea obligațiilor juridice (contabilitate, raportare)."
+      ]
+    },
+    "section4": {
+      "title": "4. Bazele legale de prelucrare",
+      "intro": "Prelucrarea se efectuează pe baza uneia sau mai multor baze (în funcție de situație):",
+      "items": [
+        "consimțământ (de exemplu, pentru cookies/pixeli de marketing și/sau newsletter, dacă se aplică);",
+        "necesitatea de încheiere/executare a contractului (furnizarea serviciilor, emiterea facturilor);",
+        "interese legitime (asigurarea funcționării și securității Site-ului, analiza de bază și îmbunătățiri — respectând echilibrul intereselor);",
+        "obligații juridice (contabilitate/fiscalitate etc., dacă se aplică)."
+      ]
+    },
+    "section5": {
+      "title": "5. Cookies, analiză și tehnologii publicitare (Meta și Google)",
+      "intro": "Site-ul folosește cookies și tehnologii similare.",
+      "essential": {
+        "title": "5.1. Cookies esențiale",
+        "text": "Necesare pentru funcționarea corectă a Site-ului (de exemplu, salvarea setărilor, securitate, funcționalitate de bază)."
+      },
+      "analytics": {
+        "title": "5.2. Analiză (Google)",
+        "intro": "Putem folosi:",
+        "items": [
+          "Google Analytics (analiza traficului și comportamentului utilizatorilor);",
+          "Google Tag Manager (gestionarea etichetelor/evenimentelor)."
+        ]
+      },
+      "advertising": {
+        "title": "5.3. Publicitate și măsurarea conversiilor (Meta și Google)",
+        "intro": "Putem folosi:",
+        "items": [
+          "Meta Pixel (și dacă este necesar Conversions API) pentru măsurarea eficacității publicității, construirea audienței de remarketing/audienței similare, optimizarea afișărilor;",
+          "Google Ads Conversion Tracking (prin etichete/evenimente) pentru măsurarea conversiilor și optimizarea campaniilor publicitare."
+        ],
+        "important": "Important: utilizarea cookies-urilor analitice/de marketing poate necesita consimțământul dvs. (prin banner-ul de cookies), în funcție de cerințele aplicabile și setări."
+      },
+      "management": {
+        "title": "Gestionarea cookies:",
+        "text": "Puteți limita sau dezactiva cookies-urile în setările browserului. Dacă pe Site se folosește un banner de cookies, puteți gestiona categoriile de cookies acolo."
+      }
+    },
+    "section6": {
+      "title": "6. Cui transmitem datele",
+      "intro": "Nu vindem date cu caracter personal. Transmiterea este posibilă doar în volumul necesar pentru scopurile din secțiunea 3, următoarelor categorii de destinatari:",
+      "items": [
+        "furnizori de hosting/domeniu și infrastructură (poștă, cloud);",
+        "servicii de analiză și publicitate (Google, Meta) — la utilizarea instrumentelor corespunzătoare;",
+        "CRM/task-manageri/messengeri, dacă interacționați cu noi prin acestea;",
+        "bănci/furnizori de plăți (la plată);",
+        "autorități de stat — dacă este cerut de lege."
+      ]
+    },
+    "section7": {
+      "title": "7. Transfer internațional de date",
+      "text": "Unii destinatari (de exemplu, Google și Meta) pot prelucra datele pe servere în afara Republicii Moldova. Aplicăm măsuri organizatorice și contractuale rezonabile de protecție, în măsura aplicabilă în cadrul serviciilor utilizate."
+    },
+    "section8": {
+      "title": "8. Termene de stocare",
+      "intro": "Stocăm datele nu mai mult decât este necesar:",
+      "items": [
+        "cereri/apeluri: de obicei până la 12-24 de luni de la data ultimului contact;",
+        "date client conform contractului: durata contractului + 5-7 ani (sau alt termen necesar pentru contabilitate/protecția drepturilor);",
+        "cookies/analiză: conform duratei de viață a cookies-urilor și setărilor instrumentelor, sau până la retragerea consimțământului/ștergerea cookies-urilor."
+      ]
+    },
+    "section9": {
+      "title": "9. Măsuri de protecție a datelor",
+      "text": "Aplicăm măsuri tehnice și organizatorice rezonabile: controlul accesului, limitarea drepturilor, actualizări software, backup, canale de transmisie protejate — proporțional cu riscurile."
+    },
+    "section10": {
+      "title": "10. Drepturile utilizatorului",
+      "intro": "Puteți solicita:",
+      "items": [
+        "acces la date, clarificare/corectare;",
+        "ștergere (când este permis);",
+        "restricționarea prelucrării;",
+        "obiecție la prelucrare (inclusiv marketing);",
+        "retragerea consimțământului (dacă prelucrarea se bazează pe consimțământ)."
+      ],
+      "contact": "Trimiteți solicitările la:",
+      "verification": "Putem solicita confirmarea identității pentru a proteja datele dvs."
+    },
+    "section11": {
+      "title": "11. Mesaje de marketing",
+      "text": "Dacă ați dat consimțământul pentru comunicări de marketing, vă putem trimite informații despre servicii/materiale. Vă puteți dezabona oricând, scriind la adresa de email indicată (sau prin linkul de dezabonare, dacă este folosit)."
+    },
+    "section12": {
+      "title": "12. Modificări ale politicii",
+      "text": "Putem actualiza Politica. Versiunea actuală este publicată pe Site."
     }
   }
 }

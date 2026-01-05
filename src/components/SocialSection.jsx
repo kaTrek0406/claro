@@ -1,16 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import samoletImg from '/samolet.png';
 
 export default function SocialSection({ onContactClick }) {
   const [hoveredSocial, setHoveredSocial] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // Disable hover on tablets and mobile
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseMove = (e) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
+    if (!isMobile) {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    }
+  };
+
+  const handleMouseEnter = (social, e) => {
+    setHoveredSocial(social);
+    if (!isMobile) {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    }
   };
 
   const socialLinks = {
-    twitter: null,
+    threads: "https://www.threads.net/",
     linkedin: null,
     facebook: "https://www.facebook.com/claro.md",
     instagram: "https://www.instagram.com/claro_md/",
@@ -18,7 +38,7 @@ export default function SocialSection({ onContactClick }) {
 
   const getSocialLabel = (social) => {
     const labels = {
-      twitter: "TWITTER",
+      threads: "THREADS",
       linkedin: "LINKEDIN",
       facebook: "FACEBOOK",
       instagram: "INSTAGRAM FLEX",
@@ -28,7 +48,7 @@ export default function SocialSection({ onContactClick }) {
 
   const getSocialColor = (social) => {
     const colors = {
-      twitter: "text-blue-400 border-blue-400",
+      threads: "text-gray-100 border-gray-100",
       linkedin: "text-blue-600 border-blue-600",
       facebook: "text-blue-600 border-blue-600",
       instagram: "text-pink-500 border-pink-500",
@@ -64,16 +84,16 @@ export default function SocialSection({ onContactClick }) {
         }
       `}</style>
       <div className="max-w-5xl mx-auto">
-        {/* Плашка для соцсетей */}
-        {hoveredSocial && (
+        {/* Плашка для соцсетей - только на десктопе */}
+        {!isMobile && hoveredSocial && (
           <div
-            className="fixed pointer-events-none z-50"
+            className="fixed pointer-events-none z-50 transition-all duration-75"
             style={{
               left: `${mousePos.x + 20}px`,
-              top: `${mousePos.y - 30}px`,
+              top: `${mousePos.y - 220}px`,
             }}
           >
-            <div className={`${getSocialColor(hoveredSocial)} bg-neutral-900 border-2 px-6 py-3 rounded-xl whitespace-nowrap`}>
+            <div className={`${getSocialColor(hoveredSocial)} bg-neutral-900 border-2 px-6 py-3 rounded-xl whitespace-nowrap shadow-xl`}>
               <span className="text-xl md:text-2xl font-black uppercase tracking-tight flex items-center gap-2">
                 {getSocialLabel(hoveredSocial)}
                 <span className="text-2xl">😍</span>
@@ -86,22 +106,22 @@ export default function SocialSection({ onContactClick }) {
         <div className="mb-16 relative">
           <h2 className="text-[6vw] md:text-[4vw] lg:text-[2.5vw] leading-tight font-black uppercase tracking-tight max-w-6xl mx-auto text-center">
             <span className="inline-block">Мы наиболее</span>{" "}
-            <span className="inline-block text-cyan-400">активны</span>{" "}
+            <span className="inline-block text-yellow-400">активны</span>{" "}
             <span className="inline-block">в</span>{" "}
             <button
-              onClick={(e) => handleSocialClick("twitter", e)}
-              onMouseEnter={() => setHoveredSocial("twitter")}
+              onClick={(e) => handleSocialClick("threads", e)}
+              onMouseEnter={(e) => handleMouseEnter("threads", e)}
               onMouseLeave={() => setHoveredSocial(null)}
-              className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-blue-400 rounded-lg text-white hover:scale-110 transition-transform duration-300 cursor-pointer rotate-6"
+              className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gray-800 rounded-lg text-white hover:scale-110 transition-transform duration-300 cursor-pointer rotate-6"
             >
-              <svg className="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 192 192">
+                <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
               </svg>
             </button>
             <span>,</span>{" "}
             <button
               onClick={(e) => handleSocialClick("linkedin", e)}
-              onMouseEnter={() => setHoveredSocial("linkedin")}
+              onMouseEnter={(e) => handleMouseEnter("linkedin", e)}
               onMouseLeave={() => setHoveredSocial(null)}
               className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-lg text-white hover:scale-110 transition-transform duration-300 cursor-pointer -rotate-6"
             >
@@ -112,7 +132,7 @@ export default function SocialSection({ onContactClick }) {
             <span>,</span>{" "}
             <button
               onClick={(e) => handleSocialClick("facebook", e)}
-              onMouseEnter={() => setHoveredSocial("facebook")}
+              onMouseEnter={(e) => handleMouseEnter("facebook", e)}
               onMouseLeave={() => setHoveredSocial(null)}
               className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-lg text-white hover:scale-110 transition-transform duration-300 cursor-pointer rotate-6"
             >
@@ -123,7 +143,7 @@ export default function SocialSection({ onContactClick }) {
             <span> и </span>
             <button
               onClick={(e) => handleSocialClick("instagram", e)}
-              onMouseEnter={() => setHoveredSocial("instagram")}
+              onMouseEnter={(e) => handleMouseEnter("instagram", e)}
               onMouseLeave={() => setHoveredSocial(null)}
               className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-lg text-white hover:scale-110 transition-transform duration-300 cursor-pointer -rotate-6"
             >
@@ -132,12 +152,12 @@ export default function SocialSection({ onContactClick }) {
               </svg>
             </button>
             <span>. Здесь мы делимся</span>{" "}
-            <span className="inline-block text-pink-400">кейсами</span>
+            <span className="inline-block text-cyan-400">кейсами</span>
             <span>,</span>{" "}
-            <span className="inline-block text-orange-500">инсайтами</span>
+            <span className="inline-block text-pink-400">инсайтами</span>
             <span>,</span>{" "}
             <span className="inline-block">показываем</span>{" "}
-            <span className="inline-block text-yellow-400">результаты</span>{" "}
+            <span className="inline-block text-orange-500">результаты</span>{" "}
             <span className="inline-block">наших клиентов и рассказываем о</span>{" "}
             <span className="inline-block text-purple-400">digital-трендах</span>
             <span>.</span>
@@ -152,8 +172,10 @@ export default function SocialSection({ onContactClick }) {
           </h3>
 
           <div className="relative inline-flex mb-8">
-            <button
-              onClick={onContactClick}
+            <a
+              href="https://t.me/Grigorii314"
+              target="_blank"
+              rel="noreferrer"
               className="group inline-flex items-center gap-3 px-12 py-6 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all duration-300 text-2xl md:text-3xl relative z-10 overflow-visible"
             >
               Связаться с нами
@@ -166,7 +188,7 @@ export default function SocialSection({ onContactClick }) {
                 className="absolute -top-4 -right-16 w-20 h-20 md:w-24 md:h-24 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:translate-x-12 group-hover:-translate-y-8 group-hover:rotate-[25deg]"
                 style={{ transform: 'translateX(0) translateY(0) rotate(0deg)' }}
               />
-            </button>
+            </a>
           </div>
 
           <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">

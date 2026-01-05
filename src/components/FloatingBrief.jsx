@@ -124,14 +124,14 @@ export default function FloatingBrief() {
             : "scale-100 opacity-100"
         } ${
           scrolled
-            ? "right-6"
+            ? "right-4 sm:right-6"
             : "left-1/2 -translate-x-1/2"
         }`}
       >
         <div className="relative group">
           {/* Пульсирующие круги */}
-          <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-75"></div>
-          <div className="absolute inset-0 rounded-full bg-orange-500 animate-pulse"></div>
+          <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-75 pointer-events-none"></div>
+          <div className="absolute inset-0 rounded-full bg-orange-500 animate-pulse pointer-events-none"></div>
 
           {/* Летающие логотипы полукругом */}
           <img
@@ -151,10 +151,10 @@ export default function FloatingBrief() {
           />
 
           {/* Основная кнопка */}
-          <div className="relative bg-orange-500 hover:bg-orange-600 text-white rounded-full p-5 shadow-2xl transition-all duration-300 group-hover:scale-110">
-            <div className="flex items-center gap-3">
-              <span className="font-black text-lg whitespace-nowrap">{t("floatingBrief.button")}</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="relative bg-orange-500 hover:bg-orange-600 text-white rounded-full p-2 sm:p-5 shadow-2xl transition-all duration-300 group-hover:scale-110">
+            <div className="flex items-center gap-1.5 sm:gap-3">
+              <span className="font-black text-xs sm:text-lg whitespace-nowrap">{t("floatingBrief.button")}</span>
+              <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>

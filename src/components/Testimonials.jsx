@@ -77,17 +77,53 @@ export default function Testimonials() {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let scrollPosition = 0;
-    const scrollSpeed = 1.5; // pixels per frame
-    const cardWidth = 450 + 24; // width + gap in pixels (1.5rem = 24px)
-    const totalWidth = cardWidth * testimonials.length;
+    // Calculate responsive card width and gap
+    const getCardWidth = () => {
+      const width = window.innerWidth;
+      let cardWidth = 280; // mobile default
+      let gap = 16; // gap-4 = 1rem = 16px
+
+      if (width >= 640) { // sm breakpoint
+        cardWidth = 350;
+        gap = 24; // gap-6 = 1.5rem = 24px
+      }
+      if (width >= 768) { // md breakpoint
+        cardWidth = 450;
+        gap = 24; // gap-6 = 1.5rem = 24px
+      }
+
+      return cardWidth + gap;
+    };
+
+    let totalCardWidth = getCardWidth();
+    let singleSetWidth = totalCardWidth * testimonials.length;
+
+    // Start from the middle set (second set of 4 cards)
+    let scrollPosition = singleSetWidth;
+    let scrollSpeed = 1.5; // pixels per frame
+
+    // Update on resize
+    const handleResize = () => {
+      const oldCardWidth = totalCardWidth;
+      totalCardWidth = getCardWidth();
+      singleSetWidth = totalCardWidth * testimonials.length;
+
+      // Adjust scroll position proportionally to maintain visual position
+      scrollPosition = (scrollPosition / oldCardWidth) * totalCardWidth;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Set initial position immediately
+    scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
 
     const scroll = () => {
       scrollPosition += scrollSpeed;
 
-      // Reset position when we've scrolled one full set
-      if (scrollPosition >= totalWidth) {
-        scrollPosition = 0;
+      // When we reach the end of second set, reset to start of second set
+      // This creates seamless infinite loop
+      if (scrollPosition >= singleSetWidth * 2) {
+        scrollPosition = singleSetWidth;
       }
 
       scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
@@ -96,7 +132,10 @@ export default function Testimonials() {
 
     const animationFrame = requestAnimationFrame(scroll);
 
-    return () => cancelAnimationFrame(animationFrame);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Memoize tripled array to prevent recreation on every render
