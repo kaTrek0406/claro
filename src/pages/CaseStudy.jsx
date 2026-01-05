@@ -1071,13 +1071,13 @@ export default function CaseStudy() {
                 onMouseLeave={() => setHoveredProblem(null)}
                 className={`group cursor-pointer flex items-start gap-3 p-4 rounded-xl bg-white/5 border transition-all duration-300 ${
                   hoveredProblem === i
-                    ? 'border-red-400/50 bg-red-400/10 scale-105 shadow-lg shadow-red-400/20 -translate-y-1'
-                    : 'border-white/10 hover:border-red-400/30'
+                    ? 'border-orange-400/50 bg-orange-400/10 scale-105 shadow-lg shadow-orange-400/20 -translate-y-1'
+                    : 'border-white/10 hover:border-orange-400/30'
                 }`}
               >
                 <div className={`text-xl mt-1 transition-all duration-300 ${
-                  hoveredProblem === i ? 'text-red-400 scale-125 rotate-12' : 'text-red-400'
-                }`}>❌</div>
+                  hoveredProblem === i ? 'text-orange-400 scale-125' : 'text-orange-400'
+                }`}>▪️</div>
                 <div className={`text-neutral-300 transition-colors duration-300 ${
                   hoveredProblem === i ? 'text-white font-semibold' : ''
                 }`}>{problem}</div>
