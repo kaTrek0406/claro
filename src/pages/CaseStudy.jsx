@@ -927,7 +927,6 @@ export default function CaseStudy() {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredProblem, setHoveredProblem] = useState(null);
-  const [hoveredStep, setHoveredStep] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -1082,49 +1081,6 @@ export default function CaseStudy() {
                 <div className={`text-neutral-300 transition-colors duration-300 ${
                   hoveredProblem === i ? 'text-white font-semibold' : ''
                 }`}>{problem}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="py-16 px-4 sm:px-6 border-t border-white/10">
-        <div className="max-w-5xl mx-auto">
-          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-8 ${colors.text}`}>
-            {caseData.solution.title}
-          </h2>
-          <p className="text-neutral-300 text-lg sm:text-xl leading-relaxed mb-12">
-            {caseData.solution.description}
-          </p>
-          <div className="space-y-8">
-            {caseData.solution.steps.map((step, i) => (
-              <div
-                key={i}
-                onMouseEnter={() => setHoveredStep(i)}
-                onMouseLeave={() => setHoveredStep(null)}
-                className={`group cursor-pointer p-6 sm:p-8 rounded-2xl border-2 transition-all duration-500 ${
-                  hoveredStep === i
-                    ? `${colors.border.replace('/30', '')} ${colors.bg.replace('/10', '/20')} scale-105 shadow-2xl ${colors.hoverShadow} -translate-y-2`
-                    : `${colors.border} ${colors.bg}`
-                }`}
-              >
-                <div className="flex items-start gap-4 sm:gap-6">
-                  <div className={`flex-shrink-0 transition-all duration-500 ${
-                    hoveredStep === i ? 'text-6xl sm:text-7xl rotate-12 scale-110' : 'text-5xl sm:text-6xl'
-                  }`}>{step.icon}</div>
-                  <div className="flex-1">
-                    <h3 className={`text-xl sm:text-2xl font-black mb-3 transition-colors duration-300 ${
-                      hoveredStep === i ? colors.text : ''
-                    }`}>
-                      {step.title}
-                      {hoveredStep === i && <span className="ml-2 inline-block animate-pulse">✨</span>}
-                    </h3>
-                    <p className={`leading-relaxed transition-all duration-300 ${
-                      hoveredStep === i ? 'text-white text-lg' : 'text-neutral-300'
-                    }`}>{step.description}</p>
-                  </div>
-                </div>
               </div>
             ))}
           </div>

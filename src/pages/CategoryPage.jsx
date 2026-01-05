@@ -197,7 +197,7 @@ export default function CategoryPage() {
               {category.clients.map((client, idx) => {
                 const clientName = t(`categoryPage.categories.${categoryId}.clients.${client.id}.name`);
                 const clientDescription = t(`categoryPage.categories.${categoryId}.clients.${client.id}.description`);
-                const clientResult = t(`categoryPage.categories.${categoryId}.clients.${client.id}.result`);
+                const clientSolution = t(`categoryPage.categories.${categoryId}.clients.${client.id}.solution`);
 
                 return (
                   <div
@@ -239,8 +239,9 @@ export default function CategoryPage() {
                         {hoveredIndex === idx && <span className="ml-2 inline-block animate-pulse">→</span>}
                       </h3>
                       <p className="text-neutral-400 text-sm mb-4 group-hover:text-neutral-300 transition-colors duration-300">{clientDescription}</p>
-                      <div className={`inline-block px-4 py-2 rounded-full bg-black border-2 ${colors.text.replace('text-', 'border-')} group-hover:scale-110 transition-transform duration-300`}>
-                        <span className={`font-black ${colors.text}`}>{clientResult}</span>
+                      <div className={`p-4 rounded-xl bg-black border-2 ${colors.border} group-hover:border-opacity-100 transition-all duration-300`}>
+                        <div className="text-neutral-500 text-xs font-bold mb-2 uppercase">{t('categoryPage.solutionLabel')}</div>
+                        <p className={`text-sm leading-relaxed ${colors.text}`}>{clientSolution}</p>
                       </div>
                     </div>
                   </div>

@@ -176,6 +176,7 @@
     },
     "ourClients": "Clienții noștri",
     "viewCase": "Vezi cazul",
+    "solutionLabel": "Soluție",
     "cta": {
       "title": "Vrei aceleași rezultate?",
       "description": "Vom explica cum am făcut-o și vom ajuta afacerea ta",
@@ -189,17 +190,17 @@
           "premium-estate": {
             "name": "Premium Estate",
             "description": "Agenție imobiliară premium",
-            "result": "+245% cereri"
+            "solution": "Strategie complexă cu Meta Ads și landing page nou cu integrare în AmoCRM"
           },
           "city-realty": {
             "name": "City Realty",
             "description": "Vânzări de apartamente în ansambluri rezidențiale noi",
-            "result": "+180% vânzări"
+            "solution": "Ecosistem digital cu site optimizat SEO, publicitate contextuală și email marketing"
           },
           "smart-homes": {
             "name": "Smart Homes",
             "description": "Imobiliare la țară",
-            "result": "+320% apeluri"
+            "solution": "Publicitate țintită către publicul premium cu creative exclusive și geotargeting"
           }
         }
       },
@@ -210,12 +211,12 @@
           "zdorovie-plus": {
             "name": "Sănătate+",
             "description": "Clinică multidisciplinară",
-            "result": "+180% programări"
+            "solution": "Publicitate țintită cu focus pe servicii și programare online prin chatbot în Telegram"
           },
           "dental-clinic": {
             "name": "Stomatologie SmilePro",
             "description": "Clinică stomatologică",
-            "result": "+220% pacienți"
+            "solution": "Marketing Instagram cu cazuri înainte/după și sistem de notificări automate"
           }
         }
       },
@@ -226,12 +227,12 @@
           "gadget-store": {
             "name": "Gadget Store",
             "description": "Magazin online de electronică",
-            "result": "+320% vânzări"
+            "solution": "Automatizare email, retargeting dinamic și optimizarea coșului de cumpărături"
           },
           "fashion-shop": {
             "name": "Fashion Boutique",
             "description": "Magazin de haine online",
-            "result": "+265% comenzi"
+            "solution": "Instagram Shopping, colaborări cu micro-influenceri și recomandări personalizate"
           }
         }
       },
@@ -242,12 +243,12 @@
           "speakup": {
             "name": "SpeakUp",
             "description": "Școală de limba engleză",
-            "result": "+195% studenți"
+            "solution": "Pâlnie de webinarii cu lecții gratuite și calificare automată a lead-urilor prin chatbot"
           },
           "coding-academy": {
             "name": "Coding Academy",
             "description": "Școală de programare",
-            "result": "+280% elevi"
+            "solution": "Conținut YouTube cu integrare în pâlnia de vânzări și targeting pe specialiști IT"
           }
         }
       }
