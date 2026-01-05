@@ -1087,37 +1087,6 @@ export default function CaseStudy() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-16 px-4 sm:px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-12 text-center">
-            Визуальные результаты
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {caseData.gallery.map((item, i) => (
-              <div
-                key={i}
-                onClick={() => setSelectedImage(item)}
-                className="group cursor-pointer"
-              >
-                <div className="relative rounded-2xl overflow-hidden mb-4">
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-4xl">🔍</div>
-                  </div>
-                </div>
-                <h3 className="font-bold mb-2">{item.title}</h3>
-                <p className="text-sm text-neutral-400">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Results Section */}
       <section className="py-16 px-4 sm:px-6 border-t border-white/10 bg-black">
         <div className="max-w-5xl mx-auto">
@@ -1162,6 +1131,37 @@ export default function CaseStudy() {
                 <div className="text-neutral-400 text-sm">{caseData.results.quote.position}</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-16 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-12 text-center">
+            Визуальные результаты
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {caseData.gallery.map((item, i) => (
+              <div
+                key={i}
+                onClick={() => setSelectedImage(item)}
+                className="group cursor-pointer"
+              >
+                <div className="relative rounded-2xl overflow-hidden mb-4">
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="text-white text-4xl">🔍</div>
+                  </div>
+                </div>
+                <h3 className="font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-neutral-400">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
