@@ -165,6 +165,122 @@
       }
     }
   },
+  "categoryPage": {
+    "notFound": "Категория не найдена",
+    "backToHome": "Вернуться на главную",
+    "toHome": "На главную",
+    "stats": {
+      "clients": "Клиентов",
+      "satisfied": "Довольны",
+      "growth": "Средний рост"
+    },
+    "ourClients": "Наши клиенты",
+    "viewCase": "Смотреть кейс",
+    "cta": {
+      "title": "Хотите такие же результаты?",
+      "description": "Расскажем, как мы это сделали и поможем вашему бизнесу",
+      "button": "Обсудить проект"
+    },
+    "categories": {
+      "nedvizhimost": {
+        "name": "Недвижимость",
+        "description": "Помогаем агентствам недвижимости и застройщикам привлекать покупателей через digital-каналы",
+        "clients": {
+          "premium-estate": {
+            "name": "Premium Estate",
+            "description": "Агентство недвижимости премиум-класса",
+            "result": "+245% заявок"
+          },
+          "city-realty": {
+            "name": "City Realty",
+            "description": "Продажа квартир в новостройках",
+            "result": "+180% продаж"
+          },
+          "smart-homes": {
+            "name": "Smart Homes",
+            "description": "Загородная недвижимость",
+            "result": "+320% обращений"
+          }
+        }
+      },
+      "medical": {
+        "name": "Медицина",
+        "description": "Digital-решения для клиник, медицинских центров и частных практик",
+        "clients": {
+          "zdorovie-plus": {
+            "name": "Здоровье+",
+            "description": "Многопрофильная клиника",
+            "result": "+180% записей"
+          },
+          "dental-clinic": {
+            "name": "Стоматология SmilePro",
+            "description": "Стоматологическая клиника",
+            "result": "+220% пациентов"
+          }
+        }
+      },
+      "ecommerce": {
+        "name": "E-commerce",
+        "description": "Автоматизация и рост продаж для интернет-магазинов",
+        "clients": {
+          "gadget-store": {
+            "name": "Gadget Store",
+            "description": "Интернет-магазин электроники",
+            "result": "+320% продаж"
+          },
+          "fashion-shop": {
+            "name": "Fashion Boutique",
+            "description": "Магазин одежды онлайн",
+            "result": "+265% заказов"
+          }
+        }
+      },
+      "education": {
+        "name": "Образование",
+        "description": "SMM и таргет для образовательных центров и онлайн-школ",
+        "clients": {
+          "speakup": {
+            "name": "SpeakUp",
+            "description": "Школа английского языка",
+            "result": "+195% студентов"
+          },
+          "coding-academy": {
+            "name": "Coding Academy",
+            "description": "Школа программирования",
+            "result": "+280% учеников"
+          }
+        }
+      }
+    }
+  },
+  "caseStudy": {
+    "notFound": "Кейс не найден",
+    "backToHome": "Вернуться на главную",
+    "backToCategory": "Назад к категории",
+    "viewFullImage": "Смотреть в полном размере",
+    "meta": {
+      "client": "Клиент",
+      "industry": "Индустрия",
+      "period": "Период"
+    },
+    "cta": {
+      "title": "Хотите такие же результаты?",
+      "description": "Давайте обсудим ваш проект и найдем лучшее решение для вашего бизнеса",
+      "button": "Обсудить проект"
+    },
+    "form": {
+      "title": "Обсудить проект",
+      "description": "Заполните форму, и мы свяжемся с вами в ближайшее время",
+      "name": "Ваше имя",
+      "namePlaceholder": "Как вас зовут?",
+      "contact": "Телефон или Email",
+      "contactPlaceholder": "+373 или email@example.com",
+      "message": "Сообщение",
+      "messagePlaceholder": "Расскажите о вашем проекте...",
+      "submit": "Отправить заявку",
+      "success": "Спасибо! Мы свяжемся с вами в ближайшее время!"
+    }
+  },
   "footer": {
     "contact": "Контакт",
     "copyright": "© Claro Plus SRL",

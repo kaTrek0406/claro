@@ -165,6 +165,122 @@
       }
     }
   },
+  "categoryPage": {
+    "notFound": "Categoria nu a fost găsită",
+    "backToHome": "Înapoi la pagina principală",
+    "toHome": "La pagina principală",
+    "stats": {
+      "clients": "Clienți",
+      "satisfied": "Mulțumiți",
+      "growth": "Creștere medie"
+    },
+    "ourClients": "Clienții noștri",
+    "viewCase": "Vezi cazul",
+    "cta": {
+      "title": "Vrei aceleași rezultate?",
+      "description": "Vom explica cum am făcut-o și vom ajuta afacerea ta",
+      "button": "Discută proiectul"
+    },
+    "categories": {
+      "nedvizhimost": {
+        "name": "Imobiliare",
+        "description": "Ajutăm agențiile imobiliare și dezvoltatorii să atragă cumpărători prin canale digitale",
+        "clients": {
+          "premium-estate": {
+            "name": "Premium Estate",
+            "description": "Agenție imobiliară premium",
+            "result": "+245% cereri"
+          },
+          "city-realty": {
+            "name": "City Realty",
+            "description": "Vânzări de apartamente în ansambluri rezidențiale noi",
+            "result": "+180% vânzări"
+          },
+          "smart-homes": {
+            "name": "Smart Homes",
+            "description": "Imobiliare la țară",
+            "result": "+320% apeluri"
+          }
+        }
+      },
+      "medical": {
+        "name": "Medicină",
+        "description": "Soluții digitale pentru clinici, centre medicale și cabinete private",
+        "clients": {
+          "zdorovie-plus": {
+            "name": "Sănătate+",
+            "description": "Clinică multidisciplinară",
+            "result": "+180% programări"
+          },
+          "dental-clinic": {
+            "name": "Stomatologie SmilePro",
+            "description": "Clinică stomatologică",
+            "result": "+220% pacienți"
+          }
+        }
+      },
+      "ecommerce": {
+        "name": "E-commerce",
+        "description": "Automatizare și creșterea vânzărilor pentru magazine online",
+        "clients": {
+          "gadget-store": {
+            "name": "Gadget Store",
+            "description": "Magazin online de electronică",
+            "result": "+320% vânzări"
+          },
+          "fashion-shop": {
+            "name": "Fashion Boutique",
+            "description": "Magazin de haine online",
+            "result": "+265% comenzi"
+          }
+        }
+      },
+      "education": {
+        "name": "Educație",
+        "description": "SMM și targeting pentru centre educaționale și școli online",
+        "clients": {
+          "speakup": {
+            "name": "SpeakUp",
+            "description": "Școală de limba engleză",
+            "result": "+195% studenți"
+          },
+          "coding-academy": {
+            "name": "Coding Academy",
+            "description": "Școală de programare",
+            "result": "+280% elevi"
+          }
+        }
+      }
+    }
+  },
+  "caseStudy": {
+    "notFound": "Cazul nu a fost găsit",
+    "backToHome": "Înapoi la pagina principală",
+    "backToCategory": "Înapoi la categorie",
+    "viewFullImage": "Vezi imaginea completă",
+    "meta": {
+      "client": "Client",
+      "industry": "Industrie",
+      "period": "Perioadă"
+    },
+    "cta": {
+      "title": "Vrei aceleași rezultate?",
+      "description": "Hai să discutăm proiectul tău și să găsim cea mai bună soluție pentru afacerea ta",
+      "button": "Discută proiectul"
+    },
+    "form": {
+      "title": "Discută proiectul",
+      "description": "Completează formularul și te vom contacta în curând",
+      "name": "Numele tău",
+      "namePlaceholder": "Cum te cheamă?",
+      "contact": "Telefon sau Email",
+      "contactPlaceholder": "+373 sau email@example.com",
+      "message": "Mesaj",
+      "messagePlaceholder": "Spune-ne despre proiectul tău...",
+      "submit": "Trimite cererea",
+      "success": "Mulțumim! Te vom contacta în curând!"
+    }
+  },
   "footer": {
     "contact": "Contact",
     "copyright": "© Claro Plus SRL",

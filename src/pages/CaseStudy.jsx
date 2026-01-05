@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // Данные кейсов организованы по категориям и клиентам
 const cases = {
@@ -923,6 +924,7 @@ const colorVariants = {
 export default function CaseStudy() {
   const { categoryId, clientId } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredProblem, setHoveredProblem] = useState(null);
   const [hoveredStep, setHoveredStep] = useState(null);
@@ -940,7 +942,7 @@ export default function CaseStudy() {
     e.preventDefault();
     // Здесь можно добавить отправку данных на сервер
     console.log('Form submitted:', formData);
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время!');
+    alert(t('caseStudy.form.success'));
     setIsFormOpen(false);
     setFormData({ name: '', contact: '', message: '' });
   };
@@ -956,12 +958,12 @@ export default function CaseStudy() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-black mb-4">Кейс не найден</h1>
+          <h1 className="text-4xl font-black mb-4">{t('caseStudy.notFound')}</h1>
           <button
             onClick={() => navigate('/')}
             className="px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600"
           >
-            Вернуться на главную
+            {t('caseStudy.backToHome')}
           </button>
         </div>
       </div>
@@ -982,7 +984,7 @@ export default function CaseStudy() {
             <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="font-semibold">Назад к категории</span>
+            <span className="font-semibold">{t('caseStudy.backToCategory')}</span>
           </button>
           <div className="text-2xl">{caseData.emoji}</div>
         </div>
@@ -1013,15 +1015,15 @@ export default function CaseStudy() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8 text-sm">
             <div>
-              <div className="text-neutral-500 mb-1">Клиент</div>
+              <div className="text-neutral-500 mb-1">{t('caseStudy.meta.client')}</div>
               <div className="font-bold">{caseData.client}</div>
             </div>
             <div>
-              <div className="text-neutral-500 mb-1">Индустрия</div>
+              <div className="text-neutral-500 mb-1">{t('caseStudy.meta.industry')}</div>
               <div className="font-bold">{caseData.industry}</div>
             </div>
             <div>
-              <div className="text-neutral-500 mb-1">Период</div>
+              <div className="text-neutral-500 mb-1">{t('caseStudy.meta.period')}</div>
               <div className="font-bold">{caseData.period}</div>
             </div>
           </div>
@@ -1212,16 +1214,16 @@ export default function CaseStudy() {
       <section className="py-20 px-4 sm:px-6 border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-black uppercase mb-6">
-            Хотите такие же результаты?
+            {t('caseStudy.cta.title')}
           </h2>
           <p className="text-neutral-400 text-lg mb-8">
-            Давайте обсудим ваш проект и найдем лучшее решение для вашего бизнеса
+            {t('caseStudy.cta.description')}
           </p>
           <button
             onClick={() => setIsFormOpen(true)}
             className="px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-black uppercase tracking-tight rounded-full hover:scale-105 transition-all shadow-lg hover:shadow-orange-500/50"
           >
-            Обсудить проект
+            {t('caseStudy.cta.button')}
           </button>
         </div>
       </section>
@@ -1269,10 +1271,10 @@ export default function CaseStudy() {
             {/* Header */}
             <div className="text-center mb-8">
               <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight mb-4">
-                Обсудить проект
+                {t('caseStudy.form.title')}
               </h2>
               <p className="text-neutral-400">
-                Заполните форму, и мы свяжемся с вами в ближайшее время
+                {t('caseStudy.form.description')}
               </p>
             </div>
 
@@ -1280,7 +1282,7 @@ export default function CaseStudy() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-bold mb-2 text-neutral-300">
-                  Ваше имя
+                  {t('caseStudy.form.name')}
                 </label>
                 <input
                   type="text"
@@ -1290,13 +1292,13 @@ export default function CaseStudy() {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 focus:outline-none text-white placeholder-neutral-500 transition-colors"
-                  placeholder="Как вас зовут?"
+                  placeholder={t('caseStudy.form.namePlaceholder')}
                 />
               </div>
 
               <div>
                 <label htmlFor="contact" className="block text-sm font-bold mb-2 text-neutral-300">
-                  Телефон или Email
+                  {t('caseStudy.form.contact')}
                 </label>
                 <input
                   type="text"
@@ -1306,13 +1308,13 @@ export default function CaseStudy() {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 focus:outline-none text-white placeholder-neutral-500 transition-colors"
-                  placeholder="+373 или email@example.com"
+                  placeholder={t('caseStudy.form.contactPlaceholder')}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-bold mb-2 text-neutral-300">
-                  Сообщение
+                  {t('caseStudy.form.message')}
                 </label>
                 <textarea
                   id="message"
@@ -1321,7 +1323,7 @@ export default function CaseStudy() {
                   onChange={handleInputChange}
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-orange-500 focus:outline-none text-white placeholder-neutral-500 transition-colors resize-none"
-                  placeholder="Расскажите о вашем проекте..."
+                  placeholder={t('caseStudy.form.messagePlaceholder')}
                 />
               </div>
 
@@ -1329,7 +1331,7 @@ export default function CaseStudy() {
                 type="submit"
                 className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-black uppercase tracking-tight rounded-full hover:scale-105 transition-all shadow-lg hover:shadow-orange-500/50"
               >
-                Отправить заявку
+                {t('caseStudy.form.submit')}
               </button>
             </form>
           </div>
