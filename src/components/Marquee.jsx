@@ -6,12 +6,12 @@ export default function Marquee({ text }) {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="relative py-12 overflow-visible">
+    <div className="relative py-8 sm:py-12 overflow-visible">
       {/* Серая полоска на заднем фоне */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-3 bg-neutral-700">
-        <div className="py-6 whitespace-nowrap overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-2 sm:rotate-3 bg-neutral-700">
+        <div className="py-3 sm:py-6 whitespace-nowrap overflow-hidden">
           <div
-            className="inline-block animate-[marquee-reverse_25s_linear_infinite] pr-16 text-3xl md:text-5xl font-black text-neutral-500 tracking-tighter uppercase"
+            className="inline-block animate-[marquee-reverse_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-neutral-500 tracking-tighter uppercase"
             style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
           >
             {[...Array(3)].map((_, idx) => (
@@ -19,13 +19,13 @@ export default function Marquee({ text }) {
                 {words.map((word, i) => (
                   <span key={`${idx}-${i}`} className="inline-flex items-center">
                     <span
-                      className="marquee-word inline-block px-3 transition-all duration-300 cursor-default hover:scale-110 hover:-translate-y-1 hover:text-neutral-300"
+                      className="marquee-word inline-block px-2 sm:px-3 transition-all duration-300 cursor-default sm:hover:scale-110 sm:hover:-translate-y-1 sm:hover:text-neutral-300"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
                     >
                       {word}
                     </span>
-                    <span className="inline-block px-3">•</span>
+                    <span className="inline-block px-2 sm:px-3">•</span>
                   </span>
                 ))}
               </span>
@@ -35,10 +35,10 @@ export default function Marquee({ text }) {
       </div>
 
       {/* Основная белая полоска */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-2 bg-white">
-        <div className="py-6 whitespace-nowrap overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-1 sm:-rotate-2 bg-white">
+        <div className="py-3 sm:py-6 whitespace-nowrap overflow-hidden">
           <div
-            className="inline-block animate-[marquee_25s_linear_infinite] pr-16 text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"
+            className="inline-block animate-[marquee_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"
             style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
           >
             {[...Array(3)].map((_, idx) => (
@@ -46,13 +46,13 @@ export default function Marquee({ text }) {
                 {words.map((word, i) => (
                   <span key={`${idx}-${i}`} className="inline-flex items-center">
                     <span
-                      className="marquee-word inline-block px-3 transition-all duration-300 cursor-default hover:scale-110 hover:-translate-y-1 hover:text-neutral-800"
+                      className="marquee-word inline-block px-2 sm:px-3 transition-all duration-300 cursor-default sm:hover:scale-110 sm:hover:-translate-y-1 sm:hover:text-neutral-800"
                       onMouseEnter={() => setIsPaused(true)}
                       onMouseLeave={() => setIsPaused(false)}
                     >
                       {word}
                     </span>
-                    <span className="inline-block px-3">•</span>
+                    <span className="inline-block px-2 sm:px-3">•</span>
                   </span>
                 ))}
               </span>

@@ -33,9 +33,9 @@
     "title": "Servicii",
     "mainTitle": {
       "part1": "Target,",
-      "part2": "SMM",
+      "part2": "SMM,",
       "part3": "site-uri și",
-      "part4": "automatizare"
+      "part4": "automatizare."
     },
     "center": "În inima fiecărei idei — rezultatul.\nDigitalul care aduce clienți,\nnu doar acoperire.",
     "items": [
@@ -142,7 +142,7 @@
   "calculator": {
     "title": {
       "part1": "Calculator de",
-      "part2": "preț"
+      "part2": "preț."
     },
     "subtitle": "Alege serviciile și primește costul aproximativ al proiectului.",
     "duration": "Durata colaborării",

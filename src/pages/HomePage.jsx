@@ -44,7 +44,7 @@ export default function HomePage() {
         {/* HERO */}
         <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6">
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight">
+            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl leading-[0.95] font-black uppercase tracking-tight">
               {t("hero.mainTitle.line1")}{" "}
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}

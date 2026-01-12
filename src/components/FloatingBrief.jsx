@@ -17,10 +17,19 @@ export default function FloatingBrief() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollThreshold = window.innerHeight * 0.5;
+
+      // Check if near footer
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const isFooterVisible = footerRect.top <= window.innerHeight;
+        setIsNearFooter(isFooterVisible);
+      }
 
       if (window.scrollY > scrollThreshold && !scrolled && !isTransitioning) {
         // Начинаем переход: сначала исчезаем
@@ -130,8 +139,12 @@ export default function FloatingBrief() {
       >
         <div className="relative group">
           {/* Пульсирующие круги */}
-          <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-75 pointer-events-none"></div>
-          <div className="absolute inset-0 rounded-full bg-orange-500 animate-pulse pointer-events-none"></div>
+          <div className={`absolute inset-0 rounded-full animate-ping opacity-75 pointer-events-none ${
+            isNearFooter ? 'bg-cyan-400' : 'bg-orange-500'
+          }`}></div>
+          <div className={`absolute inset-0 rounded-full animate-pulse pointer-events-none ${
+            isNearFooter ? 'bg-cyan-400' : 'bg-orange-500'
+          }`}></div>
 
           {/* Летающие логотипы полукругом */}
           <img
@@ -151,9 +164,15 @@ export default function FloatingBrief() {
           />
 
           {/* Основная кнопка */}
-          <div className="relative bg-orange-500 hover:bg-orange-600 text-white rounded-full p-2 sm:p-5 shadow-2xl transition-all duration-300 group-hover:scale-110">
+          <div className={`relative rounded-full p-2 sm:p-5 shadow-2xl transition-all duration-300 group-hover:scale-110 ${
+            isNearFooter
+              ? 'bg-black border-2 border-cyan-400 hover:bg-neutral-900'
+              : 'bg-orange-500 hover:bg-orange-600'
+          }`}>
             <div className="flex items-center gap-1.5 sm:gap-3">
-              <span className="font-black text-xs sm:text-lg whitespace-nowrap">{t("floatingBrief.button")}</span>
+              <span className={`font-black text-xs sm:text-lg whitespace-nowrap ${
+                isNearFooter ? 'text-cyan-400' : 'text-white'
+              }`}>{t("floatingBrief.button")}</span>
               <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
