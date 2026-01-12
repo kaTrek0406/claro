@@ -2,7 +2,7 @@
   "nav": { "about": "Despre noi", "services": "Servicii", "portfolio": "Portofoliu", "contacts": "Contacte" },
   "hero": {
     "title": "Unde alții încă testează, noi deja aducem clienți.",
-    "altTitle": "Ne înțelegem cu algoritmii Meta, Google și bunul-simț",
+    "altTitle": "Ne înțelegem cu algoritmii Meta, Google și bunul-simț.",
     "marquee": "target • publicitate • creativitate • brand • SMM • rezultat • lead • campanii • conținut • strategie • clicks • atenție • digital • idee • conversie • vânzări • bots • impact",
     "mainTitle": {
       "line1": "Lucrăm cu",
@@ -66,7 +66,7 @@
       "title1": "Hai să creăm",
       "title2": "ceva cool!",
       "button": "Contactează-ne",
-      "description": "Suntem întotdeauna deschiși pentru noi oportunități, colaborări și conexiuni. Dacă ai un proiect pe care ai dori să-l discuți, vrei să vorbim despre muncă sau doar să spui salut - contactează-ne!"
+      "description": "Suntem întotdeauna deschiși pentru noi oportunități, colaborări și conexiuni. Dacă ai un proiect pe care ai dori să-l discuți, vrei să vorbim despre muncă sau doar să spui salut — contactează-ne!"
     }
   },
   "portfolio": {
@@ -81,7 +81,7 @@
     "address": "Valea Trandafirilor 6/2, Chișinău, Moldova",
     "newsletter": {
       "title": "Obține consultanță",
-      "description": "Primește insights, cazuri și sfaturi despre digital marketing",
+      "description": "Primește insights, cazuri și sfaturi despre digital marketing.",
       "placeholder": "Email-ul tău",
       "button": "Abonează-te"
     }
@@ -144,24 +144,24 @@
       "part1": "Calculator de",
       "part2": "preț"
     },
-    "subtitle": "Alege serviciile și primește costul aproximativ al proiectului",
+    "subtitle": "Alege serviciile și primește costul aproximativ al proiectului.",
     "duration": "Durata colaborării",
     "services": {
       "google_ads": {
         "name": "Publicitate Google",
-        "description": "Configurarea și gestionarea campaniilor publicitare în Google Ads pentru atragerea publicului țintă"
+        "description": "Configurarea și gestionarea campaniilor publicitare în Google Ads pentru atragerea publicului țintă."
       },
       "meta_ads": {
         "name": "Publicitate Meta (FB + Instagram)",
-        "description": "Publicitate targetată pe Facebook și Instagram pentru acoperire și conversii maxime"
+        "description": "Publicitate targetată pe Facebook și Instagram pentru acoperire și conversii maxime."
       },
       "youtube_ads": {
         "name": "Publicitate YouTube",
-        "description": "Publicitate video pe YouTube pentru creșterea notorietății brandului și atragerea clienților"
+        "description": "Publicitate video pe YouTube pentru creșterea notorietății brandului și atragerea clienților."
       },
       "telegram_ads": {
         "name": "Publicitate Telegram",
-        "description": "Publicitate în canalele Telegram și chatboți pentru interacțiune directă cu publicul"
+        "description": "Publicitate în canalele Telegram și chatboți pentru interacțiune directă cu publicul."
       }
     }
   },
@@ -179,76 +179,76 @@
     "solutionLabel": "Soluție",
     "cta": {
       "title": "Vrei aceleași rezultate?",
-      "description": "Vom explica cum am făcut-o și vom ajuta afacerea ta",
+      "description": "Vom explica cum am făcut-o și vom ajuta afacerea ta.",
       "button": "Discută proiectul"
     },
     "categories": {
       "nedvizhimost": {
         "name": "Imobiliare",
-        "description": "Ajutăm agențiile imobiliare și dezvoltatorii să atragă cumpărători prin canale digitale",
+        "description": "Ajutăm agențiile imobiliare și dezvoltatorii să atragă cumpărători prin canale digitale.",
         "clients": {
           "premium-estate": {
             "name": "Premium Estate",
-            "description": "Agenție imobiliară premium",
-            "solution": "Strategie complexă cu Meta Ads și landing page nou cu integrare în AmoCRM"
+            "description": "Agenție imobiliară premium.",
+            "solution": "Strategie complexă cu Meta Ads și landing page nou cu integrare în AmoCRM."
           },
           "city-realty": {
             "name": "City Realty",
-            "description": "Vânzări de apartamente în ansambluri rezidențiale noi",
-            "solution": "Ecosistem digital cu site optimizat SEO, publicitate contextuală și email marketing"
+            "description": "Vânzări de apartamente în ansambluri rezidențiale noi.",
+            "solution": "Ecosistem digital cu site optimizat SEO, publicitate contextuală și email marketing."
           },
           "smart-homes": {
             "name": "Smart Homes",
-            "description": "Imobiliare la țară",
-            "solution": "Publicitate țintită către publicul premium cu creative exclusive și geotargeting"
+            "description": "Imobiliare la țară.",
+            "solution": "Publicitate țintită către publicul premium cu creative exclusive și geotargeting."
           }
         }
       },
       "medical": {
         "name": "Medicină",
-        "description": "Soluții digitale pentru clinici, centre medicale și cabinete private",
+        "description": "Soluții digitale pentru clinici, centre medicale și cabinete private.",
         "clients": {
           "zdorovie-plus": {
             "name": "Sănătate+",
-            "description": "Clinică multidisciplinară",
-            "solution": "Publicitate țintită cu focus pe servicii și programare online prin chatbot în Telegram"
+            "description": "Clinică multidisciplinară.",
+            "solution": "Publicitate țintită cu focus pe servicii și programare online prin chatbot în Telegram."
           },
           "dental-clinic": {
             "name": "Stomatologie SmilePro",
-            "description": "Clinică stomatologică",
-            "solution": "Marketing Instagram cu cazuri înainte/după și sistem de notificări automate"
+            "description": "Clinică stomatologică.",
+            "solution": "Marketing Instagram cu cazuri înainte/după și sistem de notificări automate."
           }
         }
       },
       "ecommerce": {
         "name": "E-commerce",
-        "description": "Automatizare și creșterea vânzărilor pentru magazine online",
+        "description": "Automatizare și creșterea vânzărilor pentru magazine online.",
         "clients": {
           "gadget-store": {
             "name": "Gadget Store",
-            "description": "Magazin online de electronică",
-            "solution": "Automatizare email, retargeting dinamic și optimizarea coșului de cumpărături"
+            "description": "Magazin online de electronică.",
+            "solution": "Automatizare email, retargeting dinamic și optimizarea coșului de cumpărături."
           },
           "fashion-shop": {
             "name": "Fashion Boutique",
-            "description": "Magazin de haine online",
-            "solution": "Instagram Shopping, colaborări cu micro-influenceri și recomandări personalizate"
+            "description": "Magazin de haine online.",
+            "solution": "Instagram Shopping, colaborări cu micro-influenceri și recomandări personalizate."
           }
         }
       },
       "education": {
         "name": "Educație",
-        "description": "SMM și targeting pentru centre educaționale și școli online",
+        "description": "SMM și targeting pentru centre educaționale și școli online.",
         "clients": {
           "speakup": {
             "name": "SpeakUp",
-            "description": "Școală de limba engleză",
-            "solution": "Pâlnie de webinarii cu lecții gratuite și calificare automată a lead-urilor prin chatbot"
+            "description": "Școală de limba engleză.",
+            "solution": "Pâlnie de webinarii cu lecții gratuite și calificare automată a lead-urilor prin chatbot."
           },
           "coding-academy": {
             "name": "Coding Academy",
-            "description": "Școală de programare",
-            "solution": "Conținut YouTube cu integrare în pâlnia de vânzări și targeting pe specialiști IT"
+            "description": "Școală de programare.",
+            "solution": "Conținut YouTube cu integrare în pâlnia de vânzări și targeting pe specialiști IT."
           }
         }
       }
@@ -267,12 +267,12 @@
     },
     "cta": {
       "title": "Vrei aceleași rezultate?",
-      "description": "Hai să discutăm proiectul tău și să găsim cea mai bună soluție pentru afacerea ta",
+      "description": "Hai să discutăm proiectul tău și să găsim cea mai bună soluție pentru afacerea ta.",
       "button": "Discută proiectul"
     },
     "form": {
       "title": "Discută proiectul",
-      "description": "Completează formularul și te vom contacta în curând",
+      "description": "Completează formularul și te vom contacta în curând.",
       "name": "Numele tău",
       "namePlaceholder": "Cum te cheamă?",
       "contact": "Telefon sau Email",
