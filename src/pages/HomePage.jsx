@@ -49,7 +49,7 @@ export default function HomePage() {
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}
                 <span className="absolute left-[calc(100%+1rem)] top-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
-                  <img src="/icons/data.svg" alt="Data" className="w-full h-full" />
+                  <img src={`${import.meta.env.BASE_URL}icons/data.svg`} alt="Data" className="w-full h-full" />
                 </span>
               </span>
               ,<br />
@@ -57,7 +57,7 @@ export default function HomePage() {
               <span className="group relative inline-flex items-center text-cyan-400 cursor-default">
                 {t("hero.mainTitle.algorithms")}
                 <span className="absolute left-[calc(100%+1rem)] top-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
-                  <img src="/icons/algorithms.svg" alt="Algorithms" className="w-full h-full" />
+                  <img src={`${import.meta.env.BASE_URL}icons/algorithms.svg`} alt="Algorithms" className="w-full h-full" />
                 </span>
               </span>
               ,<br />
@@ -65,7 +65,7 @@ export default function HomePage() {
               <span className="group relative inline-flex items-center text-pink-400 cursor-default">
                 {t("hero.mainTitle.result")}
                 <span className="absolute left-[calc(100%+1rem)] top-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
-                  <img src="/icons/result.svg" alt="Result" className="w-full h-full" />
+                  <img src={`${import.meta.env.BASE_URL}icons/result.svg`} alt="Result" className="w-full h-full" />
                 </span>
               </span>
               ,<br />
@@ -73,7 +73,7 @@ export default function HomePage() {
               <span className="group relative inline-flex items-center text-orange-500 cursor-default">
                 {t("hero.mainTitle.leads")}
                 <span className="absolute left-[calc(100%+1rem)] top-1/2 -translate-y-1/2 w-24 h-24 md:w-32 md:h-32 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
-                  <img src="/icons/leads.svg" alt="Leads" className="w-full h-full" />
+                  <img src={`${import.meta.env.BASE_URL}icons/leads.svg`} alt="Leads" className="w-full h-full" />
                 </span>
               </span>
               .
