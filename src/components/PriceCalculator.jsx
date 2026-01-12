@@ -179,7 +179,7 @@ export default function PriceCalculator() {
             {t("calculator.title.part1")}{" "}
             <span className="text-cyan-400">{t("calculator.title.part2")}</span>
           </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+          <p className="text-neutral-400 text-lg max-w-2xl mx-auto font-normal">
             {t("calculator.subtitle")}
           </p>
         </div>
@@ -227,7 +227,7 @@ export default function PriceCalculator() {
                 <h3 className={`text-xl font-black uppercase tracking-tight mb-2 ${isSelected ? service.color : "text-white"}`}>
                   {t(`calculator.services.${service.id}.name`)}
                 </h3>
-                <p className="text-sm text-neutral-400 mb-3">
+                <p className="text-sm text-neutral-400 mb-3 font-normal">
                   {t(`calculator.services.${service.id}.description`)}
                 </p>
                 <div className={`text-2xl font-black ${isSelected ? service.color : "text-white"}`}>

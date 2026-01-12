@@ -238,10 +238,10 @@ export default function CategoryPage() {
                         {clientName}
                         {hoveredIndex === idx && <span className="ml-2 inline-block animate-pulse">→</span>}
                       </h3>
-                      <p className="text-neutral-400 text-sm mb-4 group-hover:text-neutral-300 transition-colors duration-300">{clientDescription}</p>
+                      <p className="text-neutral-400 text-sm mb-4 group-hover:text-neutral-300 transition-colors duration-300 font-normal">{clientDescription}</p>
                       <div className={`p-4 rounded-xl bg-black border-2 ${colors.border} group-hover:border-opacity-100 transition-all duration-300`}>
                         <div className="text-neutral-500 text-xs font-bold mb-2 uppercase">{t('categoryPage.solutionLabel')}</div>
-                        <p className={`text-sm leading-relaxed ${colors.text}`}>{clientSolution}</p>
+                        <p className={`text-sm leading-relaxed font-normal ${colors.text}`}>{clientSolution}</p>
                       </div>
                     </div>
                   </div>

@@ -1060,7 +1060,7 @@ export default function CaseStudy() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-8">
             {caseData.challenge.title}
           </h2>
-          <p className="text-neutral-300 text-lg sm:text-xl leading-relaxed mb-8">
+          <p className="text-neutral-300 text-lg sm:text-xl leading-relaxed mb-8 font-normal">
             {caseData.challenge.description}
           </p>
           <div className="grid sm:grid-cols-2 gap-4">

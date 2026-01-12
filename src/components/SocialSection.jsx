@@ -191,7 +191,7 @@ export default function SocialSection({ onContactClick }) {
             </a>
           </div>
 
-          <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
             Мы всегда открыты для новых возможностей, сотрудничества и связей. Если у вас есть проект,
             которым вы хотели бы поделиться, хотите обсудить работу или просто поздороваться -
             свяжитесь с нами!

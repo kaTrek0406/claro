@@ -68,7 +68,7 @@ export default function ServicesAccordion() {
             </div>
 
             <div className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr]"}`}>
-              <div className={`overflow-hidden text-sm leading-relaxed ${
+              <div className={`overflow-hidden text-sm leading-relaxed font-normal ${
                 isOpen ? color : "text-neutral-400"
               }`}>
                 {it.text}

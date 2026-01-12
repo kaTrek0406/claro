@@ -163,7 +163,7 @@ export default function HomePage() {
                 }
               `}</style>
 
-              <div className="text-neutral-300 leading-relaxed space-y-4 mb-12">
+              <div className="text-neutral-300 leading-relaxed space-y-4 mb-12 font-normal">
                 <p>
                   {t("about.text1")}
                 </p>
