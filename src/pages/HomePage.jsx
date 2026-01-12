@@ -44,7 +44,7 @@ export default function HomePage() {
         {/* HERO */}
         <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6">
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-center text-[10vw] sm:text-[7vw] md:text-[5.5vw] lg:text-[4vw] xl:text-6xl 2xl:text-7xl leading-[0.95] font-black uppercase tracking-tight">
+            <h1 className="text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl 2xl:text-9xl leading-[0.95] font-black uppercase tracking-tight">
               {t("hero.mainTitle.line1")}{" "}
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}
@@ -91,7 +91,7 @@ export default function HomePage() {
             {/* Left Column - Title */}
             <ScrollReveal animation="fade-right" duration={1000}>
               <div>
-                <h2 className="text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight mb-8">
+                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight mb-8 max-w-4xl">
                   {t("about.mainTitle.part1")}{" "}
                   <span className="text-cyan-400">{t("about.mainTitle.part2")}</span>,{" "}
                   {t("about.mainTitle.part3")}{" "}
@@ -193,7 +193,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             <ScrollReveal animation="fade-up" duration={1000}>
               <div>
-                <h2 className="text-[10vw] sm:text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight">
+                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight max-w-4xl">
                   {t("services.mainTitle.part1")}{" "}
                   <span className="text-orange-500">{t("services.mainTitle.part2")}</span>,{" "}
                   {t("services.mainTitle.part3")}{" "}

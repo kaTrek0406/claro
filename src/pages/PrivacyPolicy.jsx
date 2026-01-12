@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
       <div className="pt-24 pb-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           {/* Title */}
-          <h1 className="text-[8vw] sm:text-[6vw] md:text-[4vw] lg:text-[3vw] leading-[0.95] font-black uppercase tracking-tight mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] font-black uppercase tracking-tight mb-8">
             {t('privacy.title')}
           </h1>
 

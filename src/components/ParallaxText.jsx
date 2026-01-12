@@ -99,11 +99,11 @@ export default function ParallaxText({ text, onServiceClick }) {
               onMouseEnter={() => setHoveredWord(`row1-${idx}`)}
               onMouseLeave={() => setHoveredWord(null)}
               onClick={() => onServiceClick && onServiceClick(item.service)}
-              className="inline-block text-[4vw] md:text-[3vw] font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
+              className="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
             >
               {item.text}
             </button>
-            <span className="text-neutral-800 text-[4vw] md:text-[3vw] font-black"> • </span>
+            <span className="text-neutral-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black"> • </span>
           </span>
         ))}
       </div>
@@ -121,11 +121,11 @@ export default function ParallaxText({ text, onServiceClick }) {
               onMouseEnter={() => setHoveredWord(`row2-${idx}`)}
               onMouseLeave={() => setHoveredWord(null)}
               onClick={() => onServiceClick && onServiceClick(item.service)}
-              className="inline-block text-[4vw] md:text-[3vw] font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
+              className="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
             >
               {item.text}
             </button>
-            <span className="text-neutral-800 text-[4vw] md:text-[3vw] font-black"> • </span>
+            <span className="text-neutral-800 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black"> • </span>
           </span>
         ))}
       </div>

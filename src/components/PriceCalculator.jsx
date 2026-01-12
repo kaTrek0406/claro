@@ -175,7 +175,7 @@ export default function PriceCalculator() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-[10vw] sm:text-[8vw] md:text-[5vw] lg:text-[3.5vw] leading-[0.95] font-black uppercase tracking-tight mb-4">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight mb-4 max-w-4xl mx-auto">
             {t("calculator.title.part1")}{" "}
             <span className="text-cyan-400">{t("calculator.title.part2")}</span>
           </h2>
