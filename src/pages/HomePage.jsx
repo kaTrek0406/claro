@@ -80,13 +80,13 @@ export default function HomePage() {
             </h1>
           </div>
 
-          <div className="mt-16 md:mt-24">
+          <div className="mt-8 md:mt-16">
             <Marquee text={t("hero.marquee")} />
           </div>
         </section>
 
         {/* ABOUT */}
-        <Section id="about" className="max-w-7xl mx-auto px-4 sm:px-6">
+        <Section id="about" className="max-w-7xl mx-auto px-4 sm:px-6 -mt-8 md:-mt-12">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left Column - Title */}
             <ScrollReveal animation="fade-right" duration={1000}>

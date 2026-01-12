@@ -7,6 +7,14 @@ export default function Marquee({ text }) {
 
   return (
     <div className="relative py-8 sm:py-12 overflow-visible">
+      {/* Дополнительные декоративные полоски по бокам (видны на мобильных) */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-screen overflow-visible rotate-6 md:rotate-4 bg-neutral-800 opacity-40 md:opacity-20">
+        <div className="py-2 sm:py-3"></div>
+      </div>
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-screen overflow-visible -rotate-5 md:-rotate-3 bg-white opacity-20 md:opacity-10">
+        <div className="py-2 sm:py-3"></div>
+      </div>
+
       {/* Серая полоска на заднем фоне */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-2 sm:rotate-3 bg-neutral-700">
         <div className="py-3 sm:py-6 whitespace-nowrap overflow-hidden">
