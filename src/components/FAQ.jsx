@@ -96,7 +96,7 @@ export default function FAQ() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block text-6xl mb-6">💻</div>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight max-w-4xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight max-w-4xl mx-auto">
             Создание <span className="text-cyan-400">сайтов</span>
           </h2>
         </div>

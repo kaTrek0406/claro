@@ -88,12 +88,12 @@ export default function Portfolio() {
   return (
     <div className="relative">
       <ScrollReveal animation="fade-up" duration={1000}>
-        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight text-center mb-16 relative max-w-5xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight text-center mb-16 relative max-w-5xl mx-auto">
           Помогаем брендам расти{" "}
           <span className="relative inline-flex items-center text-cyan-400">
             в digital мире
             <span
-              className="absolute left-[calc(100%+0.5rem)] top-1/2 -translate-y-1/2 text-5xl md:text-6xl lg:text-7xl transition-transform duration-500"
+              className="absolute left-[calc(100%+0.5rem)] top-1/2 -translate-y-1/2 text-4xl md:text-5xl lg:text-6xl transition-transform duration-500"
               style={{
                 transform: hoveredIndex !== null
                   ? `translateY(-50%) rotate(${hoveredIndex % 2 === 0 ? '-6deg' : '6deg'})`

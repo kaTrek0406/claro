@@ -161,7 +161,7 @@ export default function CategoryPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-8xl mb-6 animate-bounce-slow">{category.icon}</div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight mb-6">
               <span className={colors.text}>{categoryName}</span>
             </h1>
             <p className="text-xl sm:text-2xl text-neutral-400 max-w-3xl mx-auto">

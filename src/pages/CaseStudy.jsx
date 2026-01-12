@@ -1005,7 +1005,7 @@ export default function CaseStudy() {
             ))}
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl leading-[0.95] font-black uppercase tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight mb-4">
             {caseData.title}
           </h1>
           <p className={`text-xl sm:text-2xl md:text-3xl font-bold mb-8 ${colors.text}`}>
