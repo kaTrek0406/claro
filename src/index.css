@@ -13,7 +13,7 @@ html, body {
   background:#000;
   color:#fff;
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 500;
   overflow-x: hidden; /* Prevent horizontal scroll on mobile */
   width: 100%;
   position: relative;
