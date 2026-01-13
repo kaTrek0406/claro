@@ -5,7 +5,7 @@ export default function Footer() {
   const { t } = useTranslation();
   const phoneRaw = "+37379950191";
   const telegramLink = "https://t.me/";
-  const addressLink = "https://www.google.com/maps/search/?api=1&query=Valea+Trandafirilor+6%2F2%2C+Chisinau%2C+Moldova";
+  const addressLink = "https://www.google.com/maps/search/?api=1&query=Valea+Trandafirilor+20%2C+Chisinau%2C+Moldova";
 
   return (
     <footer id="contacts" className="bg-orange-500 text-black py-4 px-6">
@@ -39,7 +39,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="text-xs md:text-sm font-semibold hover:underline block"
               >
-                Valea Trandafirilor 6/2, Кишинев, Молдова
+                Valea Trandafirilor 20, Кишинев, Молдова
               </a>
             </div>
           </div>

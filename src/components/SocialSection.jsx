@@ -41,7 +41,7 @@ export default function SocialSection({ onContactClick }) {
       threads: "THREADS",
       linkedin: "LINKEDIN",
       facebook: "FACEBOOK",
-      instagram: "INSTAGRAM FLEX",
+      instagram: "INSTAGRAM",
     };
     return labels[social] || social.toUpperCase();
   };
@@ -176,10 +176,10 @@ export default function SocialSection({ onContactClick }) {
               href="https://t.me/Grigorii314"
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all duration-300 text-xl md:text-2xl relative z-10 overflow-visible"
+              className="group inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all duration-300 text-base md:text-xl lg:text-2xl relative z-10 overflow-visible"
             >
               Связаться с нами
-              <span className="text-3xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+              <span className="text-2xl md:text-3xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
 
               {/* Иконка самолетика */}
               <img

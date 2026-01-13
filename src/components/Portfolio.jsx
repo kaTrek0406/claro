@@ -102,7 +102,7 @@ export default function Portfolio() {
             >
               🌍
             </span>
-          </span>
+          </span>.
         </h2>
       </ScrollReveal>
 
