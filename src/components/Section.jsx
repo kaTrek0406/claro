@@ -5,7 +5,7 @@ export default function Section({ id, className, children }) {
   const { ref, seen } = useInViewOnce();
 
   return (
-    <section id={id} className="py-12 md:py-16">
+    <section id={id} className="py-16">
       <div
         ref={ref}
         className={clsx(
