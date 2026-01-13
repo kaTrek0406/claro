@@ -42,13 +42,13 @@ export default function HomePage() {
 
       <main className="pt-20 sm:pt-24 lg:pt-28 relative z-10 overflow-x-hidden w-full">
         {/* HERO */}
-        <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6">
+        <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl leading-[0.95] font-black uppercase tracking-tight">
+            <h1 className="text-center text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[0.9] sm:leading-[0.95] font-black uppercase tracking-tight">
               {t("hero.mainTitle.line1")}{" "}
               <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
                 {t("hero.mainTitle.data")}
-                <span className="absolute left-[calc(100%+0.25rem)] top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
+                <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/data.svg`} alt="Data" className="w-full h-full" />
                 </span>
               </span>
@@ -56,7 +56,7 @@ export default function HomePage() {
               {t("hero.mainTitle.line2")}{" "}
               <span className="group relative inline-flex items-center text-cyan-400 cursor-default">
                 {t("hero.mainTitle.algorithms")}
-                <span className="absolute left-[calc(100%+0.25rem)] top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
+                <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/algorithms.svg`} alt="Algorithms" className="w-full h-full" />
                 </span>
               </span>
@@ -64,7 +64,7 @@ export default function HomePage() {
               {t("hero.mainTitle.line3")}{" "}
               <span className="group relative inline-flex items-center text-pink-400 cursor-default">
                 {t("hero.mainTitle.result")}
-                <span className="absolute left-[calc(100%+0.25rem)] top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
+                <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/result.svg`} alt="Result" className="w-full h-full" />
                 </span>
               </span>
@@ -72,7 +72,7 @@ export default function HomePage() {
               {t("hero.mainTitle.line4")}{" "}
               <span className="group relative inline-flex items-center text-orange-500 cursor-default">
                 {t("hero.mainTitle.leads")}
-                <span className="absolute left-[calc(100%+0.25rem)] top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
+                <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/leads.svg`} alt="Leads" className="w-full h-full" />
                 </span>
               </span>
@@ -80,13 +80,13 @@ export default function HomePage() {
             </h1>
           </div>
 
-          <div className="mt-8 md:mt-16">
+          <div className="mt-12 sm:mt-16 lg:mt-20">
             <Marquee text={t("hero.marquee")} />
           </div>
         </section>
 
         {/* ABOUT */}
-        <Section id="about" className="max-w-7xl mx-auto px-4 sm:px-6 -mt-8 md:-mt-12">
+        <Section id="about" className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left Column - Title */}
             <ScrollReveal animation="fade-right" duration={1000}>

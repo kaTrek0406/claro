@@ -7,44 +7,14 @@ export default function Marquee({ text }) {
 
   return (
     <div className="relative py-8 sm:py-12 overflow-visible">
-      {/* Дополнительные декоративные полоски по бокам (видны на мобильных) */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-screen overflow-visible rotate-6 md:rotate-4 bg-neutral-800 opacity-40 md:opacity-20">
-        <div className="py-2 sm:py-3"></div>
-      </div>
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-screen overflow-visible -rotate-5 md:-rotate-3 bg-white opacity-20 md:opacity-10">
-        <div className="py-2 sm:py-3"></div>
-      </div>
-
       {/* Серая полоска на заднем фоне */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-2 sm:rotate-3 bg-neutral-700">
-        <div className="py-3 sm:py-6 whitespace-nowrap overflow-hidden">
-          <div
-            className="inline-block animate-[marquee-reverse_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-neutral-500 tracking-tighter uppercase"
-            style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
-          >
-            {[...Array(3)].map((_, idx) => (
-              <span key={idx} className="inline-flex">
-                {words.map((word, i) => (
-                  <span key={`${idx}-${i}`} className="inline-flex items-center">
-                    <span
-                      className="marquee-word inline-block px-2 sm:px-3 transition-all duration-300 cursor-default sm:hover:scale-110 sm:hover:-translate-y-1 sm:hover:text-neutral-300"
-                      onMouseEnter={() => setIsPaused(true)}
-                      onMouseLeave={() => setIsPaused(false)}
-                    >
-                      {word}
-                    </span>
-                    <span className="inline-block px-2 sm:px-3">•</span>
-                  </span>
-                ))}
-              </span>
-            ))}
-          </div>
-        </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-6 sm:-rotate-3 bg-neutral-400">
+        <div className="py-4 sm:py-6"></div>
       </div>
 
       {/* Основная белая полоска */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-1 sm:-rotate-2 bg-white">
-        <div className="py-3 sm:py-6 whitespace-nowrap overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-6 sm:rotate-3 bg-white">
+        <div className="py-4 sm:py-6 whitespace-nowrap overflow-hidden">
           <div
             className="inline-block animate-[marquee_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"
             style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
