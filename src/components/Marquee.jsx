@@ -8,12 +8,29 @@ export default function Marquee({ text }) {
   return (
     <div className="relative py-8 sm:py-12 overflow-visible">
       {/* Серая полоска на заднем фоне */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible -rotate-6 sm:-rotate-3 bg-neutral-400">
-        <div className="py-4 sm:py-6"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-screen overflow-visible -rotate-6 sm:-rotate-3 bg-neutral-400">
+        <div className="py-4 sm:py-6 whitespace-nowrap overflow-hidden">
+          <div
+            className="inline-block animate-[marquee-reverse_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"
+          >
+            {[...Array(3)].map((_, idx) => (
+              <span key={idx} className="inline-flex">
+                {words.map((word, i) => (
+                  <span key={`${idx}-${i}`} className="inline-flex items-center">
+                    <span className="inline-block px-2 sm:px-3">
+                      {word}
+                    </span>
+                    <span className="inline-block px-2 sm:px-3">•</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Основная белая полоска */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-visible rotate-6 sm:rotate-3 bg-white">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-screen overflow-visible rotate-6 sm:rotate-3 bg-white">
         <div className="py-4 sm:py-6 whitespace-nowrap overflow-hidden">
           <div
             className="inline-block animate-[marquee_15s_linear_infinite] pr-8 sm:pr-16 text-xl sm:text-3xl md:text-5xl font-black text-black tracking-tighter uppercase"
