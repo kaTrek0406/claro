@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Калькулятор услуг — прототип</title>
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#111827;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --stroke:rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 800px at 20% 0%, #1f2937 0%, var(--bg) 55%), var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 40px;}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
+      margin-bottom:18px;
+    }
+    h1{font-size:22px; margin:0; letter-spacing:.2px;}
+    .sub{color:var(--muted); margin-top:6px; font-size:13px; line-height:1.35; max-width:720px;}
+
+    .grid{display:grid; grid-template-columns: 1.55fr .95fr; gap:16px;}
+    @media (max-width: 980px){.grid{grid-template-columns:1fr;}}
+
+    .cards{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px;}
+    @media (max-width: 720px){.cards{grid-template-columns:1fr;}}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--stroke);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardHead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:14px 14px 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .left{display:flex; gap:12px; align-items:flex-start;}
+    .badge{
+      width:40px; height:40px; border-radius:14px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      font-weight:700;
+    }
+    .title{font-size:15px; font-weight:700; margin:0;}
+    .meta{color:var(--muted); font-size:12px; margin-top:4px;}
+
+    .selectWrap{display:flex; align-items:center; gap:10px;}
+    .priceTag{font-weight:800; font-size:14px; white-space:nowrap;}
+
+    .toggle{
+      width:26px; height:26px; border-radius:999px;
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.03);
+      transition: transform .12s ease, background .12s ease;
+      flex:0 0 auto;
+    }
+    .toggle svg{opacity:.0; transform: scale(.8); transition: opacity .12s ease, transform .12s ease;}
+
+    .card[data-selected="true"] .toggle{background: rgba(34,197,94,.18); border-color: rgba(34,197,94,.45);}
+    .card[data-selected="true"] .toggle svg{opacity:1; transform: scale(1);}
+
+    .acc{border-top:1px solid var(--stroke); background: rgba(0,0,0,.15);}
+    .accInner{padding:14px; display:none;}
+    .card[data-open="true"] .accInner{display:block;}
+
+    .section{margin-bottom:14px;}
+    .sectionTitle{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 8px;}
+
+    .row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 10px; border:1px solid var(--stroke); border-radius:14px; background: rgba(255,255,255,.02); margin-bottom:8px;}
+    .row label{display:flex; gap:10px; align-items:center; cursor:pointer; width:100%;}
+    .row .rText{display:flex; flex-direction:column; gap:2px;}
+    .row .rName{font-weight:650; font-size:13px;}
+    .row .rHint{font-size:12px; color:var(--muted);}
+    .row .rPrice{font-weight:800; font-size:13px; white-space:nowrap;}
+
+    input[type="checkbox"], input[type="radio"]{accent-color:#22c55e;}
+
+    .budget{
+      display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px;
+    }
+    .bOpt{border:1px solid var(--stroke); border-radius:14px; padding:10px; background: rgba(255,255,255,.02); cursor:pointer;}
+    .bOpt input{margin-right:8px;}
+    .bOpt .bTop{display:flex; align-items:center; gap:6px; justify-content:flex-start;}
+    .bOpt .bLabel{font-weight:750; font-size:13px;}
+    .bOpt .bFee{margin-left:auto; font-weight:850; font-size:13px; white-space:nowrap;}
+    .bOpt .bHint{margin-top:6px; font-size:12px; color:var(--muted); line-height:1.25;}
+
+    .aside{
+      position:sticky; top:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--stroke);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding:14px;
+      height:fit-content;
+    }
+    @media (max-width: 980px){.aside{position:relative; top:auto;}}
+
+    .sumHead{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+    .sumTitle{font-size:14px; font-weight:800; margin:0;}
+    .pill{font-size:12px; color:#86efac; background: rgba(34,197,94,.14); border:1px solid rgba(34,197,94,.35); padding:6px 10px; border-radius:999px; white-space:nowrap;}
+
+    .sumHint{color:var(--muted); font-size:12px; margin:8px 0 10px; line-height:1.35;}
+
+    .line{height:1px; background:var(--stroke); margin:12px 0;}
+
+    .money{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    }
+    .money .old{color:var(--muted); text-decoration:line-through; font-weight:700;}
+    .money .new{font-size:26px; font-weight:900; letter-spacing:.2px;}
+
+    .items{margin-top:10px; display:flex; flex-direction:column; gap:8px;}
+    .item{
+      border:1px solid var(--stroke);
+      border-radius:14px;
+      padding:10px;
+      background: rgba(255,255,255,.02);
+    }
+    .itemTop{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .itemName{font-weight:800; font-size:13px;}
+    .itemPrice{font-weight:900; font-size:13px;}
+    .subitems{margin-top:6px; color:var(--muted); font-size:12px; line-height:1.3;}
+
+    .ctaWrap{margin-top:12px; display:flex; flex-direction:column; gap:10px;}
+    .phone{
+      width:100%; padding:12px 12px; border-radius:14px;
+      border:1px solid var(--stroke); background: rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    .btn{
+      width:100%; padding:12px 12px; border-radius:14px;
+      border:1px solid rgba(34,197,94,.5);
+      background: rgba(34,197,94,.16);
+      color: #d1fae5;
+      font-weight:900; cursor:pointer;
+    }
+    .btn:disabled{opacity:.45; cursor:not-allowed;}
+
+    .note{margin-top:10px; color:var(--muted); font-size:11.5px; line-height:1.35;}
+
+    .toolbar{display:flex; gap:10px; justify-content:flex-end; align-items:center;}
+    .ghost{
+      border:1px solid var(--stroke); background: rgba(255,255,255,.02);
+      color:var(--text); padding:9px 10px; border-radius:14px;
+      cursor:pointer; font-weight:800; font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Калькулятор услуг (прототип)</h1>
+        <div class="sub">
+          Логика: <b>база канала</b> + <b>доп. услуги</b> + <b>уровень бюджета</b>. Скидка за количество каналов применяется <b>только к базам</b> (чтобы не «съедать» допродажи).
+        </div>
+      </div>
+      <div class="toolbar">
+        <button class="ghost" id="resetBtn" type="button">Сбросить</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section>
+        <div class="cards" id="cards"></div>
+      </section>
+
+      <aside class="aside">
+        <div class="sumHead">
+          <p class="sumTitle">Ваш расчёт</p>
+          <span class="pill" id="discountPill" style="display:none">Скидка 0%</span>
+        </div>
+        <div class="sumHint" id="sumHint">Выберите услуги, чтобы увидеть итоговую стоимость.</div>
+
+        <div class="money">
+          <div class="old" id="oldTotal">$0</div>
+          <div class="new" id="newTotal">$0</div>
+        </div>
+
+        <div class="items" id="items"></div>
+
+        <div class="line"></div>
+
+        <div class="ctaWrap">
+          <input class="phone" id="phone" placeholder="+373 XX XXX XXX" inputmode="tel" />
+          <button class="btn" id="cta" type="button" disabled>Получить консультацию</button>
+        </div>
+
+        <div class="note">
+          Итог ориентировочный. Окончательная комплектация и приоритеты уточняются на консультации.
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Настройки скидок по количеству выбранных каналов.
+     * В этой версии скидка применяется только к сумме базовых цен.
+     */
+    const DISCOUNT_BY_COUNT = {
+      0: 0,
+      1: 0,
+      2: 10,
+      3: 15,
+      4: 20
+    };
+
+    /**
+     * Данные услуг (пример). Вы сможете заменить цены/названия.
+     * budget.fee — мягкая надбавка за уровень бюджета.
+     */
+    const SERVICES = [
+      {
+        id: 'meta',
+        icon: 'M',
+        name: 'Meta реклама (FB + Instagram)',
+        base: 200,
+        includes: ['Настройка кабинета', 'Запуск и первичная оптимизация', 'Регулярная отчётность'],
+        addOns: [
+          { id: 'creatives', name: 'Создание макетов для рекламы', hint: 'Статичные креативы', price: 30 },
+          { id: 'video', name: 'Создание видео', hint: '1 единица', price: 40 },
+          { id: 'copy', name: 'Копирайтинг', hint: 'Тексты объявлений', price: 25 },
+          { id: 'siteprep', name: 'Анализ и подготовка сайта', hint: 'Под рекламный трафик', price: 60 },
+          { id: 'auto', name: 'Настройка автоответов', hint: 'Базовая автоматизация', price: 50 }
+        ],
+        budgets: [
+          { id: 'b1', label: '200–300$', fee: 0, hint: 'Базовый объём работ' },
+          { id: 'b2', label: '300–500$', fee: 50, hint: 'Больше тестов и оптимизаций' },
+          { id: 'b3', label: '500+$', fee: 100, hint: 'Повышенная интенсивность' }
+        ]
+      },
+      {
+        id: 'google',
+        icon: 'G',
+        name: 'Google реклама',
+        base: 200,
+        includes: ['Подготовка структуры', 'Запуск поисковых кампаний', 'Оптимизация'],
+        addOns: [
+          { id: 'creatives', name: 'Баннеры для КМС', hint: 'Набор креативов', price: 40 },
+          { id: 'landing', name: 'Аудит посадочной страницы', hint: 'Рекомендации по улучшению', price: 50 },
+          { id: 'copy', name: 'Копирайтинг', hint: 'Тексты объявлений', price: 25 },
+          { id: 'analytics', name: 'Расширенная аналитика', hint: 'GA4/события/цели', price: 70 }
+        ],
+        budgets: [
+          { id: 'b1', label: '200–300$', fee: 0, hint: 'Стартовый уровень' },
+          { id: 'b2', label: '300–500$', fee: 60, hint: 'Больше тестов' },
+          { id: 'b3', label: '500+$', fee: 120, hint: 'Интенсивный рост' }
+        ]
+      },
+      {
+        id: 'youtube',
+        icon: 'Y',
+        name: 'YouTube реклама',
+        base: 200,
+        includes: ['Запуск кампаний', 'Оптимизация', 'Отчётность'],
+        addOns: [
+          { id: 'video', name: 'Создание видео', hint: '1 ролик', price: 70 },
+          { id: 'script', name: 'Сценарий', hint: 'Под ролик', price: 35 },
+          { id: 'design', name: 'Обложка/баннер', hint: 'Для креатива', price: 20 }
+        ],
+        budgets: [
+          { id: 'b1', label: '200–300$', fee: 0, hint: 'Базовая частота' },
+          { id: 'b2', label: '300–500$', fee: 55, hint: 'Больше тестов' },
+          { id: 'b3', label: '500+$', fee: 110, hint: 'Интенсивно' }
+        ]
+      },
+      {
+        id: 'telegram',
+        icon: 'T',
+        name: 'Telegram реклама',
+        base: 200,
+        includes: ['Подбор каналов/площадок', 'Согласование размещений', 'Отчёт'],
+        addOns: [
+          { id: 'copy', name: 'Копирайтинг', hint: 'Текст поста', price: 20 },
+          { id: 'design', name: 'Дизайн креатива', hint: 'Изображение/баннер', price: 30 },
+          { id: 'landing', name: 'Подготовка оффера', hint: 'Структура предложения', price: 40 }
+        ],
+        budgets: [
+          { id: 'b1', label: '200–300$', fee: 0, hint: 'Старт' },
+          { id: 'b2', label: '300–500$', fee: 40, hint: 'Средний объём' },
+          { id: 'b3', label: '500+$', fee: 80, hint: 'Большой объём' }
+        ]
+      }
+    ];
+
+    const state = {
+      selected: new Set(),               // serviceId
+      open: new Set(),                   // serviceId
+      addOns: new Map(),                 // serviceId -> Set(addOnId)
+      budget: new Map(),                 // serviceId -> budgetId
+    };
+
+    const $cards = document.getElementById('cards');
+    const $items = document.getElementById('items');
+    const $oldTotal = document.getElementById('oldTotal');
+    const $newTotal = document.getElementById('newTotal');
+    const $sumHint = document.getElementById('sumHint');
+    const $discountPill = document.getElementById('discountPill');
+    const $phone = document.getElementById('phone');
+    const $cta = document.getElementById('cta');
+    const $resetBtn = document.getElementById('resetBtn');
+
+    const money = (n) => `$${Math.round(n)}`;
+
+    function discountPercent(count){
+      if (count >= 4) return DISCOUNT_BY_COUNT[4];
+      return DISCOUNT_BY_COUNT[count] ?? 0;
+    }
+
+    function ensureAddOnSet(serviceId){
+      if (!state.addOns.has(serviceId)) state.addOns.set(serviceId, new Set());
+      return state.addOns.get(serviceId);
+    }
+
+    function isSelected(serviceId){ return state.selected.has(serviceId); }
+
+    function toggleSelect(serviceId){
+      if (isSelected(serviceId)){
+        state.selected.delete(serviceId);
+        state.open.delete(serviceId);
+        state.addOns.delete(serviceId);
+        state.budget.delete(serviceId);
+      } else {
+        state.selected.add(serviceId);
+        state.open.add(serviceId);
+        // По умолчанию выбираем самый низкий бюджет — чтобы пользователь сразу видел состав.
+        // Если хотите меньше автоматизации, закомментируйте следующую строку.
+        state.budget.set(serviceId, 'b1');
+      }
+      render();
+    }
+
+    function toggleOpen(serviceId){
+      if (!isSelected(serviceId)) return;
+      if (state.open.has(serviceId)) state.open.delete(serviceId);
+      else state.open.add(serviceId);
+      render();
+    }
+
+    function setAddon(serviceId, addOnId, checked){
+      const set = ensureAddOnSet(serviceId);
+      if (checked) set.add(addOnId);
+      else set.delete(addOnId);
+      renderTotals();
+      renderSummary();
+    }
+
+    function setBudget(serviceId, budgetId){
+      state.budget.set(serviceId, budgetId);
+      renderTotals();
+      renderSummary();
+    }
+
+    function compute(){
+      const chosen = SERVICES.filter(s => state.selected.has(s.id));
+      const count = chosen.length;
+
+      const baseSum = chosen.reduce((acc,s) => acc + s.base, 0);
+
+      let addonsSum = 0;
+      let budgetsSum = 0;
+
+      const breakdown = chosen.map(s => {
+        const selectedAddons = Array.from(ensureAddOnSet(s.id)).map(aid => s.addOns.find(a => a.id === aid)).filter(Boolean);
+        const addonsTotal = selectedAddons.reduce((acc,a) => acc + a.price, 0);
+        addonsSum += addonsTotal;
+
+        const bId = state.budget.get(s.id);
+        const b = s.budgets.find(x => x.id === bId) || null;
+        const budgetFee = b ? b.fee : 0;
+        budgetsSum += budgetFee;
+
+        return {
+          service: s,
+          addons: selectedAddons,
+          addonsTotal,
+          budget: b,
+          budgetFee,
+          lineTotal: s.base + addonsTotal + budgetFee
+        };
+      });
+
+      const pct = discountPercent(count);
+      const discount = baseSum * (pct/100);
+
+      const oldTotal = baseSum + addonsSum + budgetsSum;
+      const newTotal = oldTotal - discount;
+
+      return { count, pct, discount, baseSum, addonsSum, budgetsSum, oldTotal, newTotal, breakdown };
+    }
+
+    function render(){
+      renderCards();
+      renderTotals();
+      renderSummary();
+    }
+
+    function renderCards(){
+      $cards.innerHTML = '';
+      for (const s of SERVICES){
+        const selected = isSelected(s.id);
+        const open = state.open.has(s.id);
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.selected = String(selected);
+        card.dataset.open = String(open);
+
+        const head = document.createElement('div');
+        head.className = 'cardHead';
+        head.addEventListener('click', (e) => {
+          // Клик по заголовку: если не выбран — выбираем; если выбран — раскрываем/сворачиваем.
+          if (!selected) toggleSelect(s.id);
+          else toggleOpen(s.id);
+        });
+
+        head.innerHTML = `
+          <div class="left">
+            <div class="badge">${s.icon}</div>
+            <div>
+              <p class="title">${s.name}</p>
+              <div class="meta">База: <b>${money(s.base)}</b> · Включено: ${s.includes.slice(0,2).join(' • ')}${s.includes.length>2?' • …':''}</div>
+            </div>
+          </div>
+          <div class="selectWrap">
+            <div class="priceTag">от ${money(s.base)}</div>
+            <div class="toggle" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="#86efac" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        `;
+
+        // Внутренний контент
+        const acc = document.createElement('div');
+        acc.className = 'acc';
+
+        const accInner = document.createElement('div');
+        accInner.className = 'accInner';
+
+        // Секции: допы + бюджеты
+        const addOnsSet = ensureAddOnSet(s.id);
+        const bId = state.budget.get(s.id) ?? '';
+
+        accInner.innerHTML = `
+          <div class="section">
+            <p class="sectionTitle">Доп. услуги</p>
+            <div id="addons-${s.id}"></div>
+          </div>
+          <div class="section" style="margin-bottom:0">
+            <p class="sectionTitle">Мой рекламный бюджет</p>
+            <div class="budget" id="budget-${s.id}"></div>
+          </div>
+        `;
+
+        acc.appendChild(accInner);
+        card.appendChild(head);
+        card.appendChild(acc);
+        $cards.appendChild(card);
+
+        // Рендер допов
+        const addWrap = accInner.querySelector(`#addons-${s.id}`);
+        for (const a of s.addOns){
+          const row = document.createElement('div');
+          row.className = 'row';
+          const checked = addOnsSet.has(a.id);
+          row.innerHTML = `
+            <label>
+              <input type="checkbox" ${checked ? 'checked' : ''} ${selected ? '' : 'disabled'} />
+              <span class="rText">
+                <span class="rName">${a.name}</span>
+                <span class="rHint">${a.hint ?? ''}</span>
+              </span>
+              <span class="rPrice">+ ${money(a.price)}</span>
+            </label>
+          `;
+          const cb = row.querySelector('input');
+          cb.addEventListener('change', (e) => setAddon(s.id, a.id, e.target.checked));
+          addWrap.appendChild(row);
+        }
+
+        // Рендер бюджета
+        const bWrap = accInner.querySelector(`#budget-${s.id}`);
+        for (const b of s.budgets){
+          const opt = document.createElement('label');
+          opt.className = 'bOpt';
+          opt.innerHTML = `
+            <div class="bTop">
+              <input type="radio" name="budget-${s.id}" value="${b.id}" ${b.id===bId?'checked':''} ${selected ? '' : 'disabled'} />
+              <span class="bLabel">${b.label}</span>
+              <span class="bFee">${b.fee ? '+ '+money(b.fee) : '+ $0'}</span>
+            </div>
+            <div class="bHint">${b.hint}</div>
+          `;
+          const r = opt.querySelector('input');
+          r.addEventListener('change', () => setBudget(s.id, b.id));
+          bWrap.appendChild(opt);
+        }
+
+        // Кнопка выбора: двойной клик/клик по кругу
+        // (упрощение) — отдельный обработчик на карточку не нужен, т.к. head уже обрабатывает.
+        // Добавим возможность быстро снять выбор по Alt+Click на заголовок.
+        head.addEventListener('click', (e) => {
+          if (e.altKey){
+            toggleSelect(s.id);
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }, { capture: true });
+
+        // Если карточка уже выбрана, клик по чек-области должен снимать выбор.
+        head.querySelector('.toggle').addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleSelect(s.id);
+        });
+      }
+    }
+
+    function renderTotals(){
+      const c = compute();
+
+      const hasAny = c.count > 0;
+      $sumHint.textContent = hasAny
+        ? (c.pct ? `Скидка за ${c.count} услуги (применяется к базам): ${c.pct}%` : `Добавьте ещё услуги, чтобы получить скидку.`)
+        : 'Выберите услуги, чтобы увидеть итоговую стоимость.';
+
+      $oldTotal.textContent = money(hasAny ? c.oldTotal : 0);
+      $newTotal.textContent = money(hasAny ? c.newTotal : 0);
+
+      if (hasAny && c.pct){
+        $discountPill.style.display = 'inline-flex';
+        $discountPill.textContent = `Скидка ${c.pct}%`;
+      } else {
+        $discountPill.style.display = 'none';
+      }
+
+      $cta.disabled = !hasAny;
+    }
+
+    function renderSummary(){
+      const c = compute();
+      $items.innerHTML = '';
+      if (c.count === 0) return;
+
+      for (const row of c.breakdown){
+        const div = document.createElement('div');
+        div.className = 'item';
+
+        const addLines = [];
+        if (row.addons.length){
+          for (const a of row.addons) addLines.push(`${a.name}: +${money(a.price)}`);
+        }
+        if (row.budget){
+          addLines.push(`Бюджет ${row.budget.label}: ${row.budget.fee ? '+ '+money(row.budget.fee) : '+ $0'}`);
+        }
+
+        div.innerHTML = `
+          <div class="itemTop">
+            <div class="itemName">${row.service.name} <span style="color:var(--muted); font-weight:700">(база ${money(row.service.base)})</span></div>
+            <div class="itemPrice">${money(row.lineTotal)}</div>
+          </div>
+          <div class="subitems">${addLines.length ? addLines.join('<br/>') : 'Без доп. опций'}</div>
+        `;
+        $items.appendChild(div);
+      }
+
+      // Строка скидки
+      if (c.pct){
+        const d = document.createElement('div');
+        d.className = 'item';
+        d.innerHTML = `
+          <div class="itemTop">
+            <div class="itemName">Скидка за ${c.count} услуги <span style="color:var(--muted); font-weight:700">(только базы)</span></div>
+            <div class="itemPrice" style="color:#86efac">- ${money(c.discount)}</div>
+          </div>
+          <div class="subitems">Базы: ${money(c.baseSum)} · Скидка: ${c.pct}%</div>
+        `;
+        $items.appendChild(d);
+      }
+    }
+
+    $cta.addEventListener('click', () => {
+      const c = compute();
+      const phone = $phone.value.trim();
+      const lines = [];
+      for (const row of c.breakdown){
+        lines.push(`${row.service.name}: ${money(row.lineTotal)}`);
+      }
+      if (c.pct) lines.push(`Скидка: -${money(c.discount)} (только базы)`);
+      lines.push(`Итого: ${money(c.newTotal)}`);
+      alert(`Заявка (демо)\nТелефон: ${phone || 'не указан'}\n\n${lines.join('\n')}`);
+    });
+
+    $resetBtn.addEventListener('click', () => {
+      state.selected.clear();
+      state.open.clear();
+      state.addOns.clear();
+      state.budget.clear();
+      $phone.value = '';
+      render();
+    });
+
+    // Стартовый рендер
+    render();
+  </script>
+</body>
+</html>

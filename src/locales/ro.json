@@ -144,24 +144,91 @@
       "part1": "Calculator de",
       "part2": "preț."
     },
-    "subtitle": "Alege serviciile și primește costul aproximativ al proiectului.",
-    "duration": "Durata colaborării",
+    "subtitle": "Alege serviciile, adaugă opțiuni și primește un calcul detaliat al costului proiectului.",
+    "summaryTitle": "Calculul tău",
+    "summaryEmpty": "Alege serviciile pentru a vedea costul final.",
+    "summaryHintWithDiscount": "Reducere pentru {{count}} servicii (se aplică la bază): {{percent}}%",
+    "summaryHintNoDiscount": "Adaugă mai multe servicii pentru a primi reducere.",
+    "discountPill": "Reducere {{percent}}%",
+    "discountLabel": "Reducere pentru {{count}} servicii",
+    "discountOnlyBases": "doar bază",
+    "priceFrom": "de la",
+    "pricePerMonth": "/lună",
+    "baseLabel": "Bază",
+    "basePriceLabel": "bază",
+    "addOnsTitle": "Servicii suplimentare",
+    "budgetTitle": "Bugetul meu publicitar",
+    "includes": "Inclus",
+    "phonePlaceholder": "+373 XX XXX XXX",
+    "ctaButton": "Obține consultanță",
+    "note": "* Totalul este orientativ. Configurația finală și prioritățile se clarifică la consultanță.",
     "services": {
-      "google_ads": {
-        "name": "Publicitate Google",
-        "description": "Configurarea și gestionarea campaniilor publicitare în Google Ads pentru atragerea publicului țintă."
-      },
       "meta_ads": {
+        "icon": "📣",
         "name": "Publicitate Meta (FB + Instagram)",
-        "description": "Publicitate targetată pe Facebook și Instagram pentru acoperire și conversii maxime."
+        "base": 200,
+        "includes": ["Configurarea contului", "Lansare și optimizare primară", "Raportare regulată"],
+        "addOns": [
+          { "id": "creatives", "name": "Crearea machetelor pentru publicitate", "hint": "Creative statice", "price": 30 },
+          { "id": "video", "name": "Crearea video", "hint": "1 unitate", "price": 40 },
+          { "id": "copy", "name": "Copywriting", "hint": "Texte pentru anunțuri", "price": 25 },
+          { "id": "siteprep", "name": "Analiză și pregătire site", "hint": "Pentru trafic publicitar", "price": 60 },
+          { "id": "auto", "name": "Configurare răspunsuri automate", "hint": "Automatizare de bază", "price": 50 }
+        ],
+        "budgets": [
+          { "id": "b1", "label": "200–300$", "fee": 0, "hint": "Volum de bază" },
+          { "id": "b2", "label": "300–500$", "fee": 50, "hint": "Mai multe teste și optimizări" },
+          { "id": "b3", "label": "500+$", "fee": 100, "hint": "Intensitate crescută" }
+        ]
+      },
+      "google_ads": {
+        "icon": "🎯",
+        "name": "Publicitate Google",
+        "base": 200,
+        "includes": ["Pregătirea structurii", "Lansare campanii de căutare", "Optimizare"],
+        "addOns": [
+          { "id": "creatives", "name": "Bannere pentru GDN", "hint": "Set de creative", "price": 40 },
+          { "id": "landing", "name": "Audit pagină de destinație", "hint": "Recomandări de îmbunătățire", "price": 50 },
+          { "id": "copy", "name": "Copywriting", "hint": "Texte pentru anunțuri", "price": 25 },
+          { "id": "analytics", "name": "Analiză extinsă", "hint": "GA4/evenimente/obiective", "price": 70 }
+        ],
+        "budgets": [
+          { "id": "b1", "label": "200–300$", "fee": 0, "hint": "Nivel de start" },
+          { "id": "b2", "label": "300–500$", "fee": 60, "hint": "Mai multe teste" },
+          { "id": "b3", "label": "500+$", "fee": 120, "hint": "Creștere intensivă" }
+        ]
       },
       "youtube_ads": {
+        "icon": "▶️",
         "name": "Publicitate YouTube",
-        "description": "Publicitate video pe YouTube pentru creșterea notorietății brandului și atragerea clienților."
+        "base": 200,
+        "includes": ["Lansare campanii", "Optimizare", "Raportare"],
+        "addOns": [
+          { "id": "video", "name": "Crearea video", "hint": "1 clip", "price": 70 },
+          { "id": "script", "name": "Scenariu", "hint": "Pentru clip", "price": 35 },
+          { "id": "design", "name": "Copertă/banner", "hint": "Pentru creativ", "price": 20 }
+        ],
+        "budgets": [
+          { "id": "b1", "label": "200–300$", "fee": 0, "hint": "Frecvență de bază" },
+          { "id": "b2", "label": "300–500$", "fee": 55, "hint": "Mai multe teste" },
+          { "id": "b3", "label": "500+$", "fee": 110, "hint": "Intensiv" }
+        ]
       },
       "telegram_ads": {
+        "icon": "💬",
         "name": "Publicitate Telegram",
-        "description": "Publicitate în canalele Telegram și chatboți pentru interacțiune directă cu publicul."
+        "base": 200,
+        "includes": ["Selectarea canalelor/platformelor", "Coordonarea plasărilor", "Raport"],
+        "addOns": [
+          { "id": "copy", "name": "Copywriting", "hint": "Text pentru postare", "price": 20 },
+          { "id": "design", "name": "Design creativ", "hint": "Imagine/banner", "price": 30 },
+          { "id": "landing", "name": "Pregătirea ofertei", "hint": "Structura propunerii", "price": 40 }
+        ],
+        "budgets": [
+          { "id": "b1", "label": "200–300$", "fee": 0, "hint": "Start" },
+          { "id": "b2", "label": "300–500$", "fee": 40, "hint": "Volum mediu" },
+          { "id": "b3", "label": "500+$", "fee": 80, "hint": "Volum mare" }
+        ]
       }
     }
   },
