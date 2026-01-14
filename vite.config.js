@@ -33,7 +33,7 @@ export default defineConfig({
     })
   ],
 
-  base: process.env.NODE_ENV === 'production' ? '/claro/' : '/',
+  base: '/',
 
   build: {
     // Chunk splitting strategy for better caching
