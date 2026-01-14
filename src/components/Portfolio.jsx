@@ -91,7 +91,7 @@ export default function Portfolio() {
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight text-center mb-16 relative max-w-5xl mx-auto">
           Помогаем брендам расти{" "}
           <span className="relative inline-flex items-center text-cyan-400">
-            в digital мире
+            в digital мире.
             <span
               className="absolute left-[calc(100%+0.5rem)] top-1/2 -translate-y-1/2 text-4xl md:text-5xl lg:text-6xl transition-transform duration-500"
               style={{
@@ -102,7 +102,7 @@ export default function Portfolio() {
             >
               🌍
             </span>
-          </span>.
+          </span>
         </h2>
       </ScrollReveal>
 
