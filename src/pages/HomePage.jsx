@@ -195,7 +195,7 @@ export default function HomePage() {
               <div>
                 <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[0.95] font-black uppercase tracking-tight">
                   {t("services.mainTitle.part1")}{" "}
-                  <span className="text-orange-500">{t("services.mainTitle.part2")}</span>,{" "}
+                  <span className="text-orange-500">{t("services.mainTitle.part2")}</span>{" "}
                   {t("services.mainTitle.part3")}{" "}
                   <span className="text-purple-400">{t("services.mainTitle.part4")}</span>
                 </h2>
