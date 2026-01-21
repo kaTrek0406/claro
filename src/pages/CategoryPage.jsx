@@ -166,7 +166,22 @@ export default function CategoryPage() {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">{t('categoryPage.notFound')}</h1>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              navigate('/', { replace: true });
+              setTimeout(() => {
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                  const headerOffset = 80;
+                  const elementPosition = portfolioSection.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }, 100);
+            }}
             className="px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600"
           >
             {t('categoryPage.backToHome')}
@@ -186,7 +201,22 @@ export default function CategoryPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              navigate('/', { replace: true });
+              setTimeout(() => {
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                  const headerOffset = 80;
+                  const elementPosition = portfolioSection.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }, 100);
+            }}
             className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors group"
           >
             <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

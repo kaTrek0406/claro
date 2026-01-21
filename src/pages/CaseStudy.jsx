@@ -1053,7 +1053,22 @@ export default function CaseStudy() {
         <div className="text-center">
           <h1 className="text-4xl font-black mb-4">{t('caseStudy.notFound')}</h1>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => {
+              navigate('/', { replace: true });
+              setTimeout(() => {
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                  const headerOffset = 80;
+                  const elementPosition = portfolioSection.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }, 100);
+            }}
             className="px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600"
           >
             {t('caseStudy.backToHome')}
