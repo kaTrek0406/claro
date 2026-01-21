@@ -934,8 +934,44 @@ export default function CaseStudy() {
     message: ''
   });
 
-  // Получаем данные кейса по categoryId и clientId
-  const caseData = cases[categoryId]?.[clientId];
+  // Получаем данные кейса из переводов
+  const caseDataFromTranslations = t(`cases.${categoryId}.${clientId}`, { returnObjects: true });
+  const caseStaticData = cases[categoryId]?.[clientId];
+
+  // Объединяем статические данные (изображения, цвета) с переводами
+  // Переводы имеют приоритет над статическими данными
+  const caseData = caseStaticData ? {
+    // Базовые поля
+    id: caseStaticData.id,
+    color: caseStaticData.color,
+    emoji: caseStaticData.emoji,
+
+    // Переводимые поля
+    title: caseDataFromTranslations.title || caseStaticData.title,
+    subtitle: caseDataFromTranslations.subtitle || caseStaticData.subtitle,
+    client: caseDataFromTranslations.client || caseStaticData.client,
+    industry: caseDataFromTranslations.industry || caseStaticData.industry,
+    period: caseDataFromTranslations.period || caseStaticData.period,
+    tags: caseDataFromTranslations.tags || caseStaticData.tags,
+
+    // Hero секция
+    hero: {
+      image: caseStaticData.hero.image,
+      stats: caseDataFromTranslations.hero?.stats || caseStaticData.hero.stats
+    },
+
+    // Challenge секция
+    challenge: caseDataFromTranslations.challenge || caseStaticData.challenge,
+
+    // Solution секция
+    solution: caseDataFromTranslations.solution || caseStaticData.solution,
+
+    // Gallery
+    gallery: caseStaticData.gallery,
+
+    // Results секция
+    results: caseDataFromTranslations.results || caseStaticData.results
+  } : null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -1095,25 +1131,29 @@ export default function CaseStudy() {
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            {caseData.results.metrics.map((metric, i) => (
-              <div key={i} className={`p-8 rounded-2xl bg-black border-2 ${colorVariants[metric.color].border} ${colorVariants[metric.color].hoverShadow} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2`}>
-                <div className="text-neutral-400 text-sm mb-3">{metric.label}</div>
-                <div className="flex items-end gap-6 mb-3">
-                  <div>
-                    <div className="text-neutral-500 text-xs mb-1">Было</div>
-                    <div className="text-2xl font-bold line-through text-neutral-600">{metric.before}</div>
+            {caseData.results.metrics.map((metric, i) => {
+              const colors = ['yellow', 'cyan', 'pink', 'orange'];
+              const metricColor = colors[i % 4];
+              return (
+                <div key={i} className={`p-8 rounded-2xl bg-black border-2 ${colorVariants[metricColor].border} ${colorVariants[metricColor].hoverShadow} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2`}>
+                  <div className="text-neutral-400 text-sm mb-3">{metric.label}</div>
+                  <div className="flex items-end gap-6 mb-3">
+                    <div>
+                      <div className="text-neutral-500 text-xs mb-1">{t('cases.labels.was')}</div>
+                      <div className="text-2xl font-bold line-through text-neutral-600">{metric.before}</div>
+                    </div>
+                    <div className="text-3xl text-neutral-600">→</div>
+                    <div>
+                      <div className="text-neutral-400 text-xs mb-1">{t('cases.labels.became')}</div>
+                      <div className={`text-3xl font-black ${colorVariants[metricColor].text}`}>{metric.after}</div>
+                    </div>
                   </div>
-                  <div className="text-3xl text-neutral-600">→</div>
-                  <div>
-                    <div className="text-neutral-400 text-xs mb-1">Стало</div>
-                    <div className={`text-3xl font-black ${colorVariants[metric.color].text}`}>{metric.after}</div>
+                  <div className={`inline-block px-4 py-2 rounded-full ${colorVariants[metricColor].bg} ${colorVariants[metricColor].text} text-sm font-black`}>
+                    {metric.growth}
                   </div>
                 </div>
-                <div className={`inline-block px-4 py-2 rounded-full ${colorVariants[metric.color].bg} ${colorVariants[metric.color].text} text-sm font-black`}>
-                  {metric.growth}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Gallery */}
@@ -1122,26 +1162,30 @@ export default function CaseStudy() {
               {t('caseStudy.galleryTitle')}
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-              {caseData.gallery.map((item, i) => (
-                <div
-                  key={i}
-                  onClick={() => setSelectedImage(item)}
-                  className="group cursor-pointer"
-                >
-                  <div className="relative rounded-2xl overflow-hidden mb-4">
-                    <img
-                      src={item.url}
-                      alt={item.title}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="text-white text-4xl">🔍</div>
+              {(() => {
+                const galleryItems = t(`cases.gallery.${categoryId}.${clientId}`, { returnObjects: true });
+                const staticGallery = caseStaticData.gallery;
+                return galleryItems.map((item, i) => (
+                  <div
+                    key={i}
+                    onClick={() => setSelectedImage({ ...item, url: staticGallery[i].url })}
+                    className="group cursor-pointer"
+                  >
+                    <div className="relative rounded-2xl overflow-hidden mb-4">
+                      <img
+                        src={staticGallery[i].url}
+                        alt={item.title}
+                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-4xl">🔍</div>
+                      </div>
                     </div>
+                    <h3 className="font-bold mb-2">{item.title}</h3>
+                    <p className="text-sm text-neutral-400">{item.description}</p>
                   </div>
-                  <h3 className="font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-neutral-400">{item.description}</p>
-                </div>
-              ))}
+                ));
+              })()}
             </div>
           </div>
 

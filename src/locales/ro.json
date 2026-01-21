@@ -72,7 +72,65 @@
   "portfolio": {
     "title": "Portofoliu",
     "hint": "Adun proiecte. În curând.",
-    "modeLabel": "Mod"
+    "modeLabel": "Mod",
+    "mainTitle": {
+      "part1": "Ajutăm brandurile să crească",
+      "part2": "în lumea digitală."
+    },
+    "projects": {
+      "nedvizhimost": {
+        "name": "Imobiliare în Chișinău",
+        "tags": ["Meta Ads", "Landing", "CRM"],
+        "metrics": {
+          "growth": "+245%",
+          "label": "Creștere cereri",
+          "stats": [
+            { "value": "1.2K", "label": "Cereri" },
+            { "value": "45 lei", "label": "CPL" },
+            { "value": "4.2", "label": "ROAS" }
+          ]
+        }
+      },
+      "medical": {
+        "name": "Centru medical",
+        "tags": ["Google Ads", "SEO", "Analytics"],
+        "metrics": {
+          "growth": "+180%",
+          "label": "Creștere programări",
+          "stats": [
+            { "value": "850", "label": "Programări" },
+            { "value": "120 lei", "label": "CPL" },
+            { "value": "3.8", "label": "ROAS" }
+          ]
+        }
+      },
+      "ecommerce": {
+        "name": "Magazin E-commerce",
+        "tags": ["Meta Ads", "Telegram Bot", "Automatizare"],
+        "metrics": {
+          "growth": "+320%",
+          "label": "Creștere vânzări",
+          "stats": [
+            { "value": "2.5K", "label": "Comenzi" },
+            { "value": "35 lei", "label": "CAC" },
+            { "value": "5.6", "label": "ROAS" }
+          ]
+        }
+      },
+      "education": {
+        "name": "Centru educațional",
+        "tags": ["SMM", "Conținut", "Target"],
+        "metrics": {
+          "growth": "+195%",
+          "label": "Creștere studenți",
+          "stats": [
+            { "value": "680", "label": "Cereri" },
+            { "value": "90 lei", "label": "CPL" },
+            { "value": "4.5", "label": "ROAS" }
+          ]
+        }
+      }
+    }
   },
   "contacts": {
     "title": "Contacte",
@@ -492,6 +550,642 @@
     "section12": {
       "title": "12. Modificări ale politicii",
       "text": "Putem actualiza Politica. Versiunea actuală este publicată pe Site."
+    }
+  },
+  "cases": {
+    "labels": {
+      "was": "Era",
+      "became": "A devenit"
+    },
+    "gallery": {
+      "nedvizhimost": {
+        "premium-estate": [
+          { "title": "Pagina principală a landing-ului", "description": "Hero-block luminos cu o selecție a celor mai bune obiecte" },
+          { "title": "Hartă interactivă", "description": "Hartă cu filtre după cartiere și prețuri" },
+          { "title": "Carduri obiecte", "description": "Informații detaliate cu tur 3D" },
+          { "title": "Formular de cerere", "description": "Formular simplu cu selecție automată" }
+        ],
+        "city-realty": [
+          { "title": "Catalog de apartamente", "description": "Filtre după suprafață, etaj și preț" },
+          { "title": "Planuri 3D", "description": "Vizualizare interactivă a planurilor" },
+          { "title": "Pagina complexului", "description": "Informații detaliate despre complex" },
+          { "title": "Formular de rezervare", "description": "Rezervare online a apartamentului" }
+        ],
+        "smart-homes": [
+          { "title": "Tururi video", "description": "Filmare profesională a obiectelor" },
+          { "title": "Conținut Instagram", "description": "Fotografii lifestyle și stories" },
+          { "title": "Site premium", "description": "Design elegant al catalogului" },
+          { "title": "Tururi virtuale", "description": "Panorame 360° ale caselor" }
+        ]
+      },
+      "medical": {
+        "zdorovie-plus": [
+          { "title": "Pagina principală", "description": "Design medical curat cu accent pe încredere" },
+          { "title": "Programare online", "description": "Sistem simplu de programare la medici" },
+          { "title": "Pagina serviciilor", "description": "Descriere detaliată a procedurilor cu prețuri" },
+          { "title": "Versiune mobilă", "description": "Design adaptiv pentru toate dispozitivele" }
+        ],
+        "dental-clinic": [
+          { "title": "Conținut Instagram", "description": "Postări educaționale despre sănătatea dinților" },
+          { "title": "Înainte/După", "description": "Rezultate reale ale pacienților" },
+          { "title": "Video cu medicii", "description": "Cunoașterea echipei clinicii" },
+          { "title": "Recenzii pacienți", "description": "Povești ale oamenilor reali" }
+        ]
+      },
+      "ecommerce": {
+        "gadget-store": [
+          { "title": "Bot Telegram magazin", "description": "Catalog interactiv cu filtre" },
+          { "title": "Card produs", "description": "Descriere detaliată cu recenzii" },
+          { "title": "Coș și plată", "description": "Plasare simplă a comenzii în 2 click-uri" },
+          { "title": "Urmărire comandă", "description": "Statusuri în timp real" }
+        ],
+        "fashion-shop": [
+          { "title": "Instagram Shopping", "description": "Catalog cu etichete produse" },
+          { "title": "Lookbook", "description": "Ținute profesionale" },
+          { "title": "Colaborări", "description": "Postări cu bloggeri" },
+          { "title": "Reels", "description": "Video virale cu tendințe" }
+        ]
+      },
+      "education": {
+        "speakup": [
+          { "title": "Conținut Instagram", "description": "Carusele educaționale și stories" },
+          { "title": "Video-lecții", "description": "Serie de clipuri scurte despre gramatică" },
+          { "title": "Webinarii online", "description": "Masterclass-uri gratuite pentru atragere" },
+          { "title": "Povești studenți", "description": "Conținut generat de utilizatori și recenzii" }
+        ],
+        "coding-academy": [
+          { "title": "Lecții YouTube", "description": "Video gratuite despre programare" },
+          { "title": "Webinarii online", "description": "Masterclass-uri practice" },
+          { "title": "Comunitatea studenților", "description": "Chat activ și meetup-uri" },
+          { "title": "Povești absolvenți", "description": "Cazuri de angajare" }
+        ]
+      }
+    },
+    "nedvizhimost": {
+      "premium-estate": {
+        "title": "Premium Estate",
+        "subtitle": "Cum am crescut cererile cu 245% în 3 luni",
+        "client": "Agenția Premium Estate",
+        "industry": "Imobiliare",
+        "period": "Ianuarie - Martie 2024",
+        "tags": ["Meta Ads", "Landing Page", "CRM Integration"],
+        "hero": {
+          "stats": [
+            { "value": "245%", "label": "Creștere cereri" },
+            { "value": "45 lei", "label": "Cost cerere" },
+            { "value": "1.2K", "label": "Cereri în 3 luni" },
+            { "value": "4.2", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Agenția imobiliară se confrunta cu costuri mari ale cererilor și conversie scăzută. Publicitatea în Google Ads oferea CPL 280 lei, iar conversia landing-ului era 1.2%.",
+          "problems": [
+            "Cost mare pe click în Google Ads",
+            "Design învechit al landing-ului",
+            "Absența sistemului de analiză",
+            "Fără integrare cu CRM"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am dezvoltat o strategie complexă cu focus pe Meta Ads și am creat un landing de vânzare nou cu integrare în AmoCRM.",
+          "steps": [
+            {
+              "title": "Audit și strategie",
+              "description": "Am realizat o analiză profundă a concurenților, publicului țintă și pieței. Am identificat 3 segmente cheie: familii tinere, investitori și relocare."
+            },
+            {
+              "title": "Landing nou",
+              "description": "Am creat un landing modern cu hartă interactivă a obiectelor, calculator ipotecar și chat online. Conversia a crescut la 4.8%."
+            },
+            {
+              "title": "Campanii Meta Ads",
+              "description": "Am configurat 12 campanii publicitare cu segmentare precisă a audienței. Am folosit creative dinamice și retargeting."
+            },
+            {
+              "title": "CRM și analitică",
+              "description": "Am integrat AmoCRM cu distribuție automată a cererilor. Am configurat analitică end-to-end pentru urmărirea întregii pâlnii."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Cereri", "before": "120/lună", "after": "415/lună", "growth": "+245%" },
+            { "label": "CPL", "before": "280 lei", "after": "45 lei", "growth": "-84%" },
+            { "label": "Conversie", "before": "1.2%", "after": "4.8%", "growth": "+300%" },
+            { "label": "ROAS", "before": "1.8", "after": "4.2", "growth": "+133%" }
+          ],
+          "quote": {
+            "text": "Băieții de la CLARO au schimbat complet abordarea noastră față de marketing. În prima lună am recuperat toate investițiile, iar acum lucrăm cu coadă de clienți!",
+            "author": "Alexandru Popov",
+            "position": "Director Premium Estate"
+          }
+        }
+      },
+      "city-realty": {
+        "title": "City Realty",
+        "subtitle": "Am crescut vânzările de apartamente noi cu 180%",
+        "client": "City Realty",
+        "industry": "Imobiliare",
+        "period": "Februarie - Aprilie 2024",
+        "tags": ["Google Ads", "SEO", "Email Marketing"],
+        "hero": {
+          "stats": [
+            { "value": "180%", "label": "Creștere vânzări" },
+            { "value": "85 lei", "label": "CPL" },
+            { "value": "890", "label": "Cereri" },
+            { "value": "3.9", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Dezvoltatorul vândea apartamente doar prin birouri offline. Trebuia să lansăm vânzări online și să atragem publicul tânăr.",
+          "problems": [
+            "Absența prezenței online",
+            "Dependență de vânzările offline",
+            "Fără bază de clienți",
+            "Concurență cu dezvoltatori mari"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat un ecosistem digital cu site optimizat SEO, publicitate contextuală și email marketing.",
+          "steps": [
+            {
+              "title": "Site-catalog",
+              "description": "Am dezvoltat un site cu planuri 3D, tururi virtuale și rezervare online a apartamentelor."
+            },
+            {
+              "title": "Promovare SEO",
+              "description": "Am optimizat pentru căutări geo și am ajuns în TOP-3 pentru 45 de fraze cheie."
+            },
+            {
+              "title": "Google Ads",
+              "description": "Am configurat publicitate de căutare și display cu retargeting și bannere smart."
+            },
+            {
+              "title": "Pâlnie Email",
+              "description": "Am lansat lanțuri automate de emailuri pentru încălzire și upsell."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Vânzări", "before": "95/lună", "after": "265/lună", "growth": "+180%" },
+            { "label": "CPL", "before": "320 lei", "after": "85 lei", "growth": "-73%" },
+            { "label": "TOP-3", "before": "5 căutări", "after": "45 căutări", "growth": "+800%" },
+            { "label": "ROAS", "before": "2.0", "after": "3.9", "growth": "+95%" }
+          ],
+          "quote": {
+            "text": "Canalul digital a devenit sursa principală de vânzări. Acum clienții ne găsesc singuri și vin deja pregătiți pentru cumpărare.",
+            "author": "Igor Semenov",
+            "position": "Director Comercial City Realty"
+          }
+        }
+      },
+      "smart-homes": {
+        "title": "Smart Homes",
+        "subtitle": "Creștere de 320% a cererilor pentru imobiliare la țară",
+        "client": "Smart Homes",
+        "industry": "Imobiliare",
+        "period": "Martie - Mai 2024",
+        "tags": ["Instagram Ads", "YouTube", "Conținut"],
+        "hero": {
+          "stats": [
+            { "value": "320%", "label": "Creștere cereri" },
+            { "value": "120 lei", "label": "CPL" },
+            { "value": "1.5K", "label": "Cereri" },
+            { "value": "4.8", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Agenția de imobiliare la țară nu avea promovare online. Trebuia să atragem publicul înstărit și să ne evidențiem printre concurenți.",
+          "problems": [
+            "Absența marketingului online",
+            "Fără conținut și vizual",
+            "Public țintă îngust",
+            "Așteptări mari ale clienților"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat conținut premium și am lansat publicitate țintită în Instagram și YouTube.",
+          "steps": [
+            {
+              "title": "Strategie de conținut",
+              "description": "Am filmat tururi video profesionale ale obiectelor, am creat fotografii atmosferice și descrieri."
+            },
+            {
+              "title": "Promovare Instagram",
+              "description": "Am lansat un cont premium cu conținut lifestyle și publicitate țintită."
+            },
+            {
+              "title": "Publicitate YouTube",
+              "description": "Am plasat tururi video pe YouTube și am configurat publicitate pentru publicul înstărit."
+            },
+            {
+              "title": "Landing-catalog",
+              "description": "Am creat un site premium cu tururi virtuale și informații detaliate."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Cereri", "before": "120/lună", "after": "505/lună", "growth": "+320%" },
+            { "label": "CPL", "before": "450 lei", "after": "120 lei", "growth": "-73%" },
+            { "label": "Abonați", "before": "850", "after": "18.5K", "growth": "+2076%" },
+            { "label": "ROAS", "before": "1.5", "after": "4.8", "growth": "+220%" }
+          ],
+          "quote": {
+            "text": "Conținutul creat de băieții de la CLARO atrage exact publicul nostru țintă. Calitatea lead-urilor a crescut împreună cu cantitatea lor.",
+            "author": "Maria Volkova",
+            "position": "Fondator Smart Homes"
+          }
+        }
+      }
+    },
+    "medical": {
+      "zdorovie-plus": {
+        "title": "Sănătate+",
+        "subtitle": "Creștere de 180% a programărilor prin digital complex",
+        "client": "Clinica «Sănătate+»",
+        "industry": "Medicină",
+        "period": "Februarie - Aprilie 2024",
+        "tags": ["Google Ads", "SEO", "Analytics"],
+        "hero": {
+          "stats": [
+            { "value": "180%", "label": "Creștere programări" },
+            { "value": "120 lei", "label": "Cost programare" },
+            { "value": "850", "label": "Programări în 3 luni" },
+            { "value": "3.8", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Clinica privată se pierdea printre concurenți în rezultatele căutării și rețelele sociale. Trebuia să ne evidențiem și să atragem pacienți în direcții noi.",
+          "problems": [
+            "Site-ul nu este în TOP-10 Google",
+            "Site învechit fără adaptare",
+            "Fără sistem de programare online",
+            "Cost mare pe click în contextual"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am lansat optimizare SEO complexă, am dezvoltat un site nou și am configurat publicitate contextuală eficientă.",
+          "steps": [
+            {
+              "title": "Audit și optimizare SEO",
+              "description": "Am realizat audit tehnic, am corectat 150+ erori, am optimizat semantica pentru 40 de căutări cheie."
+            },
+            {
+              "title": "Site nou",
+              "description": "Am dezvoltat un site modern cu programare online, integrare cu CRM medical și cabinet personal al pacientului."
+            },
+            {
+              "title": "Google Ads",
+              "description": "Am configurat campanii de căutare și display cu targeting hiperlocal. Ne-am concentrat pe căutări de brand."
+            },
+            {
+              "title": "Analitică",
+              "description": "Am implementat call-tracking și analitică end-to-end pentru urmărirea tuturor canalelor de atragere."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Programări", "before": "95/lună", "after": "265/lună", "growth": "+180%" },
+            { "label": "CPL", "before": "450 lei", "after": "120 lei", "growth": "-73%" },
+            { "label": "TOP-10", "before": "3 căutări", "after": "28 căutări", "growth": "+833%" },
+            { "label": "ROAS", "before": "2.1", "after": "3.8", "growth": "+81%" }
+          ],
+          "quote": {
+            "text": "În sfârșit am primit infrastructură digitală modernă. Pacienții sunt mulțumiți, se programează online, iar noi vedem analitică completă pentru fiecare canal.",
+            "author": "Elena Sokolova",
+            "position": "Medic șef clinica «Sănătate+»"
+          }
+        }
+      },
+      "dental-clinic": {
+        "title": "Stomatologie SmilePro",
+        "subtitle": "Atragerea a 220% pacienți noi",
+        "client": "Stomatologie SmilePro",
+        "industry": "Medicină",
+        "period": "Martie - Mai 2024",
+        "tags": ["Instagram Ads", "Conținut", "Recenzii"],
+        "hero": {
+          "stats": [
+            { "value": "220%", "label": "Creștere pacienți" },
+            { "value": "95 lei", "label": "CPL" },
+            { "value": "980", "label": "Programări" },
+            { "value": "4.2", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Stomatologia lucra doar cu pacienți existenți. Trebuia să atragem clienți noi și să depășim frica de stomatolog.",
+          "problems": [
+            "Frica publicului de stomatolog",
+            "Fără prezență online",
+            "Concurență mare",
+            "Absența recenziilor"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat conținut de încredere, am colectat recenzii și am lansat publicitate țintită în Instagram.",
+          "steps": [
+            {
+              "title": "Strategie Instagram",
+              "description": "Am lansat un cont cu conținut educațional: cum să ai grijă de dinți, mituri despre stomatologie, povești pacienților."
+            },
+            {
+              "title": "Conținut video",
+              "description": "Am filmat o serie de clipuri cu procesele de tratament, cunoașterea medicilor și interviuri cu pacienții."
+            },
+            {
+              "title": "Colectare recenzii",
+              "description": "Am organizat un sistem de colectare a recenziilor cu fotografii înainte/după. Am colectat 120+ recenzii reale în 3 luni."
+            },
+            {
+              "title": "Publicitate țintită",
+              "description": "Am configurat publicitate pentru publicul cu probleme dentare și interes pentru sănătate."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Pacienți", "before": "110/lună", "after": "350/lună", "growth": "+220%" },
+            { "label": "CPL", "before": "380 lei", "after": "95 lei", "growth": "-75%" },
+            { "label": "Abonați", "before": "320", "after": "15.8K", "growth": "+4838%" },
+            { "label": "ROAS", "before": "1.7", "after": "4.2", "growth": "+147%" }
+          ],
+          "quote": {
+            "text": "Instagram a schimbat complet afacerea noastră. Pacienții vin deja având încredere în noi, pentru că au văzut poveștile și rezultatele noastre.",
+            "author": "Dmitri Kovalev",
+            "position": "Medic șef SmilePro"
+          }
+        }
+      }
+    },
+    "ecommerce": {
+      "gadget-store": {
+        "title": "Gadget Store",
+        "subtitle": "Automatizare și creștere a vânzărilor cu 320%",
+        "client": "Magazin online Gadget Store",
+        "industry": "E-commerce",
+        "period": "Martie - Mai 2024",
+        "tags": ["Meta Ads", "Telegram Bot", "Automatizare"],
+        "hero": {
+          "stats": [
+            { "value": "320%", "label": "Creștere vânzări" },
+            { "value": "35 lei", "label": "CAC" },
+            { "value": "2.5K", "label": "Comenzi în 3 luni" },
+            { "value": "5.6", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Magazinul online de gadget-uri pierdea clienți din cauza procesării lungi a comenzilor și lipsei automatizării. Trebuia să accelerăm procesele și să scalăm vânzările.",
+          "problems": [
+            "Procesare manuală a tuturor comenzilor",
+            "Pierdere de clienți în pâlnie",
+            "Fără notificări automate",
+            "Proces complicat de plasare a comenzii"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat un bot Telegram pentru automatizarea vânzărilor, am configurat Meta Ads și am optimizat pâlnia de vânzări.",
+          "steps": [
+            {
+              "title": "Bot Telegram magazin",
+              "description": "Am dezvoltat un bot inteligent cu catalog de produse, coș, plată și urmărire comenzi. Timpul de plasare s-a redus de la 8 la 2 minute."
+            },
+            {
+              "title": "Automatizare procese",
+              "description": "Am configurat notificări automate, integrare cu 1C, generare automată de facturi și trimitere la serviciul de curierat."
+            },
+            {
+              "title": "Meta Ads + retargeting",
+              "description": "Am lansat anunțuri dinamice cu produse din catalog. Am configurat pâlnie multi-step cu retargeting pentru coșuri abandonate."
+            },
+            {
+              "title": "Email și Push marketing",
+              "description": "Am implementat lanțuri automate de emailuri pentru returnarea clienților, upsell și colectarea recenziilor."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Vânzări", "before": "195/lună", "after": "820/lună", "growth": "+320%" },
+            { "label": "CAC", "before": "180 lei", "after": "35 lei", "growth": "-81%" },
+            { "label": "Conversie", "before": "2.1%", "after": "8.7%", "growth": "+314%" },
+            { "label": "ROAS", "before": "2.3", "after": "5.6", "growth": "+143%" }
+          ],
+          "quote": {
+            "text": "Bot-ul Telegram a schimbat totul! Clienții sunt încântați de comoditate, iar noi am uitat de procesarea rutinară a comenzilor. Acum ne concentrăm doar pe creștere.",
+            "author": "Dmitri Kovalev",
+            "position": "Proprietar Gadget Store"
+          }
+        }
+      },
+      "fashion-shop": {
+        "title": "Fashion Boutique",
+        "subtitle": "Creștere de 265% a comenzilor online",
+        "client": "Fashion Boutique",
+        "industry": "E-commerce",
+        "period": "Februarie - Aprilie 2024",
+        "tags": ["Instagram Shopping", "Influencer", "Conținut"],
+        "hero": {
+          "stats": [
+            { "value": "265%", "label": "Creștere comenzi" },
+            { "value": "55 lei", "label": "CAC" },
+            { "value": "1.8K", "label": "Comenzi" },
+            { "value": "5.2", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Magazinul de haine pierdea vânzări din cauza prezenței online slabe. Trebuia să creăm un brand puternic pe Instagram și să lansăm vânzări.",
+          "problems": [
+            "Prezență slabă pe Instagram",
+            "Fără stil recognoscibil",
+            "Calitate scăzută a conținutului",
+            "Absența marketingului cu influenceri"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat un stil recognoscibil al brandului pe Instagram, am lansat Shopping și colaborări cu bloggeri.",
+          "steps": [
+            {
+              "title": "Branding Instagram",
+              "description": "Am dezvoltat stil vizual, am creat plan de conținut și am lansat publicări regulate cu fotografii profesionale."
+            },
+            {
+              "title": "Instagram Shopping",
+              "description": "Am configurat Instagram Shopping cu catalog de produse, etichete pe fotografii și achiziții directe."
+            },
+            {
+              "title": "Marketing Influencer",
+              "description": "Am lansat colaborări cu 25 de micro-bloggeri. Am acoperit 500K+ din publicul țintă."
+            },
+            {
+              "title": "Stories și Reels",
+              "description": "Am creat o serie de Reels virale cu ținute și tendințe. Am obținut 2.5M+ vizualizări."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Comenzi", "before": "185/lună", "after": "675/lună", "growth": "+265%" },
+            { "label": "CAC", "before": "220 lei", "after": "55 lei", "growth": "-75%" },
+            { "label": "Abonați", "before": "2.5K", "after": "48K", "growth": "+1820%" },
+            { "label": "ROAS", "before": "1.8", "after": "5.2", "growth": "+189%" }
+          ],
+          "quote": {
+            "text": "Instagram a devenit canalul nostru principal de vânzări. Clienții se îndrăgostesc de brand înainte de cumpărare, iar bloggerii vor să colaboreze cu noi.",
+            "author": "Anna Belova",
+            "position": "Fondatoare Fashion Boutique"
+          }
+        }
+      }
+    },
+    "education": {
+      "speakup": {
+        "title": "SpeakUp",
+        "subtitle": "Atragerea a 680 de studenți prin SMM și target",
+        "client": "Școală de engleză «SpeakUp»",
+        "industry": "Educație",
+        "period": "Ianuarie - Martie 2024",
+        "tags": ["SMM", "Conținut", "Target"],
+        "hero": {
+          "stats": [
+            { "value": "195%", "label": "Creștere cereri" },
+            { "value": "90 lei", "label": "Cost cerere" },
+            { "value": "680", "label": "Studenți noi" },
+            { "value": "4.5", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Școala de engleză lucra doar prin recomandări și nu avea prezență digitală. Trebuia să creăm un brand recognoscibil și să stabilim un flux stabil de studenți.",
+          "problems": [
+            "Absența prezenței în rețelele sociale",
+            "Fără brand recognoscibil",
+            "Dependență de recomandări",
+            "Site învechit de vizitare"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am construit strategia SMM cu conținut captivant, am lansat publicitate țintită și am creat o comunitate activă.",
+          "steps": [
+            {
+              "title": "Strategie SMM",
+              "description": "Am creat plan de conținut pentru 3 luni: video educaționale, analiză greșeli, povești de succes ale studenților, quiz-uri interactive."
+            },
+            {
+              "title": "Producție conținut",
+              "description": "Am filmat 45 de clipuri educaționale, am creat o serie de meme-uri despre învățarea englezei și am lansat provocarea #30daysofEnglish."
+            },
+            {
+              "title": "Publicitate țintită",
+              "description": "Am configurat campanii în Instagram și Facebook cu formulare lead și webinarii. Am segmentat publicul după nivelul de engleză."
+            },
+            {
+              "title": "Comunitate și implicare",
+              "description": "Am creat canal Telegram cu lecții zilnice, am lansat cluburi de conversație online și întâlniri offline."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Studenți", "before": "85/lună", "after": "250/lună", "growth": "+195%" },
+            { "label": "CPL", "before": "350 lei", "after": "90 lei", "growth": "-74%" },
+            { "label": "Abonați", "before": "450", "after": "12.5K", "growth": "+2678%" },
+            { "label": "ROAS", "before": "1.9", "after": "4.5", "growth": "+137%" }
+          ],
+          "quote": {
+            "text": "În 3 luni am primit mai mulți studenți decât în tot anul trecut! Instagram a devenit canalul nostru principal de vânzări, iar comunitatea din Telegram trăiește propria sa viață.",
+            "author": "Anna Belova",
+            "position": "Fondator școală SpeakUp"
+          }
+        }
+      },
+      "coding-academy": {
+        "title": "Coding Academy",
+        "subtitle": "Creștere de 280% a elevilor prin marketing complex",
+        "client": "Școală de programare Coding Academy",
+        "industry": "Educație",
+        "period": "Februarie - Aprilie 2024",
+        "tags": ["YouTube", "Webinarii", "Email"],
+        "hero": {
+          "stats": [
+            { "value": "280%", "label": "Creștere elevi" },
+            { "value": "150 lei", "label": "CPL" },
+            { "value": "920", "label": "Elevi noi" },
+            { "value": "5.1", "label": "ROAS" }
+          ]
+        },
+        "challenge": {
+          "title": "Provocare",
+          "description": "Școala de programare concura cu platforme online mari. Trebuia să ne evidențiem prin calitatea învățării și să creăm o comunitate loială.",
+          "problems": [
+            "Concurență mare cu platforme mari",
+            "Fără recognoscibilitate de brand",
+            "Acoperire mică a publicului",
+            "Absența conținutului"
+          ]
+        },
+        "solution": {
+          "title": "Soluție",
+          "description": "Am creat conținut educațional pe YouTube, am lansat webinarii gratuite și am construit o pâlnie email.",
+          "steps": [
+            {
+              "title": "Canal YouTube",
+              "description": "Am lansat canal cu lecții gratuite de programare. Am filmat 60 de video, am obținut 250K+ vizualizări."
+            },
+            {
+              "title": "Webinarii",
+              "description": "Am organizat 15 webinarii gratuite cu sarcini practice. Am atras 3500 participanți, am convertit 28% în studenți."
+            },
+            {
+              "title": "Pâlnie Email",
+              "description": "Am creat serie automată de 12 emailuri pentru încălzirea lead-urilor. LTV studenților a crescut cu 65%."
+            },
+            {
+              "title": "Comunitate",
+              "description": "Am creat chat Telegram închis pentru studenți și absolvenți. Activitate 85%, NPS 9.2/10."
+            }
+          ]
+        },
+        "results": {
+          "title": "Rezultate",
+          "metrics": [
+            { "label": "Elevi", "before": "95/lună", "after": "360/lună", "growth": "+280%" },
+            { "label": "CPL", "before": "580 lei", "after": "150 lei", "growth": "-74%" },
+            { "label": "YouTube", "before": "0", "after": "25K abonați", "growth": "+∞" },
+            { "label": "ROAS", "before": "1.6", "after": "5.1", "growth": "+219%" }
+          ],
+          "quote": {
+            "text": "YouTube și webinariile ne-au ajutat să arătăm calitatea învățării. Studenții vin deja motivați și înțelegând ce vor.",
+            "author": "Pavel Sidorov",
+            "position": "Fondator Coding Academy"
+          }
+        }
+      }
     }
   }
 }
