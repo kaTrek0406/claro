@@ -1,27 +1,99 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 import LogoHover from "./LogoHover";
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const closeMenu = () => setIsMobileMenuOpen(false);
+
+  // Check if we're on a category or case study page
+  const isOnSubPage = location.pathname !== '/';
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+
+    if (isOnSubPage) {
+      // If on category/case page, navigate to home page portfolio section
+      navigate('/', { replace: true });
+      // Wait for navigation to complete, then scroll to portfolio
+      setTimeout(() => {
+        const portfolioSection = document.getElementById('portfolio');
+        if (portfolioSection) {
+          const headerOffset = 80;
+          const elementPosition = portfolioSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // If on home page, scroll to hero
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    closeMenu();
+
+    if (isOnSubPage) {
+      // If on subpage, navigate to home first, then scroll to section
+      navigate('/', { replace: true });
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const headerOffset = 80;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // If on home page, just scroll to section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const headerOffset = 80;
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 lg:h-28 flex items-center justify-between">
-          <a href="#hero" onClick={closeMenu}>
+          <a href="#" onClick={handleLogoClick} className="cursor-pointer">
             <LogoHover />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden sm:flex gap-4 md:gap-6 lg:gap-8 text-base md:text-lg lg:text-xl xl:text-2xl text-white font-bold">
-            <a href="#about" className="relative py-2 transition-colors hover:text-cyan-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.about")}</a>
-            <a href="#services" className="relative py-2 transition-colors hover:text-orange-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full">{t("nav.services")}</a>
-            <a href="#portfolio" className="relative py-2 transition-colors hover:text-pink-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.portfolio")}</a>
-            <a href="#contacts" className="relative py-2 transition-colors hover:text-purple-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.contacts")}</a>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="relative py-2 transition-colors hover:text-cyan-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.about")}</a>
+            <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="relative py-2 transition-colors hover:text-orange-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full">{t("nav.services")}</a>
+            <a href="#portfolio" onClick={(e) => handleNavClick(e, 'portfolio')} className="relative py-2 transition-colors hover:text-pink-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pink-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.portfolio")}</a>
+            <a href="#contacts" onClick={(e) => handleNavClick(e, 'contacts')} className="relative py-2 transition-colors hover:text-purple-400 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-400 after:transition-all after:duration-300 hover:after:w-full">{t("nav.contacts")}</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -85,28 +157,28 @@ export default function Header() {
           >
             <a
               href="#about"
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, 'about')}
               className="text-white hover:text-cyan-400 transition-colors"
             >
               {t("nav.about")}
             </a>
             <a
               href="#services"
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, 'services')}
               className="text-white hover:text-orange-500 transition-colors"
             >
               {t("nav.services")}
             </a>
             <a
               href="#portfolio"
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, 'portfolio')}
               className="text-white hover:text-pink-400 transition-colors"
             >
               {t("nav.portfolio")}
             </a>
             <a
               href="#contacts"
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, 'contacts')}
               className="text-white hover:text-purple-400 transition-colors"
             >
               {t("nav.contacts")}
