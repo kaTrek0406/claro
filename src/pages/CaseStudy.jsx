@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // Данные кейсов организованы по категориям и клиентам
@@ -933,6 +933,9 @@ export default function CaseStudy() {
     contact: '',
     message: ''
   });
+  const [currentCreativeIndex, setCurrentCreativeIndex] = useState(0);
+  const creativesPerPage = 3;
+  const carouselRef = useRef(null);
 
   // Получаем данные кейса по categoryId и clientId
   // Сначала пробуем получить из константы cases
@@ -989,6 +992,18 @@ export default function CaseStudy() {
       [e.target.name]: e.target.value
     });
   };
+
+  // Keyboard navigation for image modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedImage && e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
 
   if (!caseData) {
     return (
@@ -1228,7 +1243,22 @@ export default function CaseStudy() {
           )}
 
           {/* Creatives Section */}
-          {caseData.creatives && caseData.creatives.items && caseData.creatives.items.length > 0 && (
+          {caseData.creatives && caseData.creatives.items && caseData.creatives.items.length > 0 && (() => {
+            const totalPages = Math.ceil(caseData.creatives.items.length / creativesPerPage);
+            const visibleCreatives = caseData.creatives.items.slice(
+              currentCreativeIndex * creativesPerPage,
+              (currentCreativeIndex + 1) * creativesPerPage
+            );
+
+            const goToPrevious = () => {
+              setCurrentCreativeIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
+            };
+
+            const goToNext = () => {
+              setCurrentCreativeIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+            };
+
+            return (
           <div className="mb-12">
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mb-4 text-center">
               {caseData.creatives.title}
@@ -1238,27 +1268,82 @@ export default function CaseStudy() {
                 {caseData.creatives.description}
               </p>
             )}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-              {caseData.creatives.items.map((item, i) => (
-                <div
-                  key={i}
-                  className="group cursor-pointer"
-                >
-                  <div className="relative rounded-2xl overflow-hidden">
-                    <img
-                      src={item}
-                      alt={`${caseData.title} Creative ${i + 1}`}
-                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="text-white text-4xl">🎨</div>
+
+            {/* Carousel Container */}
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
+              {/* Navigation Arrows */}
+              {totalPages > 1 && (
+                <>
+                  <button
+                    onClick={goToPrevious}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                    aria-label="Previous"
+                  >
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                    aria-label="Next"
+                  >
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
+              )}
+
+              {/* Creatives Grid */}
+              <div
+                ref={carouselRef}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 transition-all duration-500"
+              >
+                {visibleCreatives.map((item, i) => (
+                  <div
+                    key={currentCreativeIndex * creativesPerPage + i}
+                    onClick={() => setSelectedImage({ url: item, title: `Creative ${currentCreativeIndex * creativesPerPage + i + 1}` })}
+                    className="group cursor-pointer animate-[fadeIn_0.5s_ease-out]"
+                  >
+                    <div className="relative rounded-2xl overflow-hidden aspect-square">
+                      <img
+                        src={item}
+                        alt={`${caseData.title} Creative ${currentCreativeIndex * creativesPerPage + i + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="text-white text-4xl sm:text-5xl">🔍</div>
+                          <div className="text-white text-sm font-bold">Нажмите для увеличения</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Dots Indicator */}
+              {totalPages > 1 && (
+                <div className="flex justify-center gap-2 mt-8">
+                  {Array.from({ length: totalPages }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentCreativeIndex(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === currentCreativeIndex
+                          ? 'w-8 h-3 bg-orange-500'
+                          : 'w-3 h-3 bg-white/30 hover:bg-white/50'
+                      }`}
+                      aria-label={`Go to page ${index + 1}`}
+                    />
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
           </div>
-          )}
+            );
+          })()}
 
           {/* Quote */}
           {caseData.results && caseData.results.quote && (
@@ -1304,18 +1389,32 @@ export default function CaseStudy() {
       {selectedImage && (
         <div
           onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
         >
-          <div className="max-w-5xl w-full">
-            <img
-              src={selectedImage.url}
-              alt={selectedImage.title}
-              className="w-full h-auto rounded-2xl"
-            />
-            <div className="mt-6 text-center">
-              <h3 className="text-2xl font-black mb-2">{selectedImage.title}</h3>
-              <p className="text-neutral-400">{selectedImage.description}</p>
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+            aria-label="Close"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="relative rounded-2xl overflow-hidden">
+              <img
+                src={selectedImage.url}
+                alt={selectedImage.title}
+                className="w-full h-auto max-h-[85vh] object-contain mx-auto"
+              />
             </div>
+            {selectedImage.description && (
+              <div className="mt-6 text-center">
+                <h3 className="text-xl sm:text-2xl font-black mb-2">{selectedImage.title}</h3>
+                <p className="text-neutral-400">{selectedImage.description}</p>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -1419,6 +1518,14 @@ export default function CaseStudy() {
           to {
             opacity: 1;
             transform: scale(1);
+          }
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
           }
         }
       `}</style>
