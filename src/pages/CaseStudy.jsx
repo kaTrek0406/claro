@@ -934,8 +934,23 @@ export default function CaseStudy() {
     message: ''
   });
   const [currentCreativeIndex, setCurrentCreativeIndex] = useState(0);
-  const creativesPerPage = 3;
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   const carouselRef = useRef(null);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640); // sm breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const creativesPerPage = isMobile ? 1 : 3;
 
   // Получаем данные кейса по categoryId и clientId
   // Сначала пробуем получить из константы cases
@@ -1004,6 +1019,33 @@ export default function CaseStudy() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImage]);
+
+  // Swipe handlers for mobile carousel
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (totalPages, goToNext, goToPrevious) => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrevious();
+    }
+
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
 
   if (!caseData) {
     return (
@@ -1276,20 +1318,24 @@ export default function CaseStudy() {
                 <>
                   <button
                     onClick={goToPrevious}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                    className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${
+                      isMobile ? 'w-12 h-12' : 'w-10 h-10 sm:w-12 sm:h-12'
+                    }`}
                     aria-label="Previous"
                   >
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <svg className={isMobile ? 'w-7 h-7' : 'w-5 h-5 sm:w-6 sm:h-6'} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <button
                     onClick={goToNext}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+                    className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black border-2 border-white/20 hover:border-orange-500 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${
+                      isMobile ? 'w-12 h-12' : 'w-10 h-10 sm:w-12 sm:h-12'
+                    }`}
                     aria-label="Next"
                   >
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <svg className={isMobile ? 'w-7 h-7' : 'w-5 h-5 sm:w-6 sm:h-6'} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
                 </>
@@ -1298,7 +1344,12 @@ export default function CaseStudy() {
               {/* Creatives Grid */}
               <div
                 ref={carouselRef}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 transition-all duration-500"
+                className={`grid gap-4 sm:gap-6 transition-all duration-500 ${
+                  isMobile ? 'grid-cols-1' : 'sm:grid-cols-2 lg:grid-cols-3'
+                }`}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={() => handleTouchEnd(totalPages, goToNext, goToPrevious)}
               >
                 {visibleCreatives.map((item, i) => (
                   <div
@@ -1323,21 +1374,29 @@ export default function CaseStudy() {
                 ))}
               </div>
 
-              {/* Dots Indicator */}
+              {/* Dots Indicator / Counter */}
               {totalPages > 1 && (
                 <div className="flex justify-center gap-2 mt-8">
-                  {Array.from({ length: totalPages }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentCreativeIndex(index)}
-                      className={`transition-all duration-300 rounded-full ${
-                        index === currentCreativeIndex
-                          ? 'w-8 h-3 bg-orange-500'
-                          : 'w-3 h-3 bg-white/30 hover:bg-white/50'
-                      }`}
-                      aria-label={`Go to page ${index + 1}`}
-                    />
-                  ))}
+                  {isMobile ? (
+                    // Mobile: Show counter
+                    <div className="text-white/60 text-sm font-bold">
+                      {currentCreativeIndex + 1} / {totalPages}
+                    </div>
+                  ) : (
+                    // Desktop: Show dots
+                    Array.from({ length: totalPages }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentCreativeIndex(index)}
+                        className={`transition-all duration-300 rounded-full ${
+                          index === currentCreativeIndex
+                            ? 'w-8 h-3 bg-orange-500'
+                            : 'w-3 h-3 bg-white/30 hover:bg-white/50'
+                        }`}
+                        aria-label={`Go to page ${index + 1}`}
+                      />
+                    ))
+                  )}
                 </div>
               )}
             </div>
