@@ -1,0 +1,1729 @@
+{
+  'travel-agency': {
+    'vivatour': {
+      'title': 'VivaTour',
+      'subtitle': 'Cum am asigurat 15+ mesaje pe zi pentru fiecare manager',
+      'client': 'VivaTour',
+      'industry': 'Agenție de turism',
+      'period': 'Din iunie 2025 până în prezent',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per mesaj'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul VivaTour exista un obiectiv practic: să asigure fiecare manager cu un volum stabil de solicitări primite — minimum 15 mesaje pe zi. La momentul lansării, compania era nouă și puțin cunoscută, iar site-ul nu exista.',
+        'problems': [
+          'Companie nouă și puțin cunoscută',
+          'Absența site-ului',
+          'Singura sursă de solicitări — publicitatea în Meta Ads',
+          'Necesitatea unui flux constant de solicitări'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am structurat lansarea în două etape: mai întâi am întărit rețelele sociale, apoi am lansat campanii pentru generarea de mesaje.',
+        'steps': [
+          {
+            'title': 'Încălzirea rețelelor sociale',
+            'description': 'Am pregătit o bază de conținut și oferte, astfel încât audiența să primească suficiente informații și încredere înainte de prima solicitare.'
+          },
+          {
+            'title': 'Lansarea pe 'Mesaje'',
+            'description': 'După încălzirea audienței am lansat campanii cu obiectivul principal — generarea de mesaje primite în messenger.'
+          },
+          {
+            'title': 'Optimizarea campaniilor',
+            'description': 'Am analizat și optimizat constant campaniile pentru reducerea costului pe solicitare și creșterea calității lead-urilor.'
+          },
+          {
+            'title': 'Scalare',
+            'description': 'Am crescut treptat bugetul, menținând eficiența și asigurând un flux stabil de solicitări.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru VivaTour',
+        'items': [
+          {
+            'title': 'Bannere publicitare',
+            'description': 'Stories și postări pentru Instagram'
+          },
+          {
+            'title': 'Video creative',
+            'description': 'Video-uri scurte pentru targeting'
+          },
+          {
+            'title': 'Carusele',
+            'description': 'Anunțuri multi-card'
+          },
+          {
+            'title': 'Formulare de lead',
+            'description': 'Formulare pentru colectarea solicitărilor'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Cost per mesaj',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Meta Ads a devenit pentru noi singura și principala sursă de solicitări. Fiecare manager primește un flux stabil de solicitări, ceea ce permite planificarea muncii și scalarea afacerii.',
+          'author': 'Reprezentant VivaTour',
+          'position': 'Șef departament vânzări'
+        }
+      }
+    }
+  },
+  'beauty-sphere': {
+    'kerashop': {
+      'title': 'KeraShop',
+      'subtitle': 'Creșterea recunoașterii brandului și atragerea de noi cumpărători',
+      'client': 'KeraShop',
+      'industry': 'Beauty-Sphere',
+      'period': 'Din septembrie 2025 până în prezent',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'Vizite site'
+          },
+          {
+            'label': 'CPC'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Să menținem recunoașterea brandului și să atragem mai mulți cumpărători noi — atât clienți retail, cât și maeștri care ar putea fi interesați de produsele KeraShop.',
+        'problems': [
+          'Necesitatea creșterii recunoașterii brandului',
+          'Atragerea cumpărătorilor retail',
+          'Atragerea maeștrilor pentru achiziții regulate',
+          'Stimularea primelor achiziții ale clienților noi'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat campanii publicitare cu focus pe recunoașterea brandului, acoperirea audienței țintă și atragerea de noi utilizatori pe site.',
+        'steps': [
+          {
+            'title': 'Recunoașterea brandului',
+            'description': 'Campanii pentru acoperire și contact cu audiența țintă pentru creșterea recunoașterii brandului KeraShop.'
+          },
+          {
+            'title': 'Trafic pe site',
+            'description': 'Atragerea de noi utilizatori pe site cu conținut de calitate și oferte avantajoase.'
+          },
+          {
+            'title': 'Segmentarea audienței',
+            'description': 'Împărțirea audienței în cumpărători retail și maeștri profesioniști pentru oferte personalizate.'
+          },
+          {
+            'title': 'Stimularea achizițiilor',
+            'description': 'Lansarea de promoții și oferte speciale pentru stimularea primelor și achizițiilor repetate.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru KeraShop',
+        'items': [
+          {
+            'title': 'Catalogul de produse',
+            'description': 'Bannere publicitare cu produse'
+          },
+          {
+            'title': 'Stories pentru maeștri',
+            'description': 'Conținut pentru profesioniști'
+          },
+          {
+            'title': 'Promoții și oferte',
+            'description': 'Materiale promoționale'
+          },
+          {
+            'title': 'Recenzii clienți',
+            'description': 'Conținut generat de utilizatori'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Vizite site',
+            'growth': 'Excelent'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Accesibil'
+          }
+        ],
+        'quote': {
+          'text': 'După lansarea publicității au crescut semnificativ vânzările pe site, se observă o creștere stabilă a vizitelor și crește numărul de achiziții noi. Publicitatea funcționează cu adevărat!',
+          'author': 'Reprezentant KeraShop',
+          'position': 'Șef marketing'
+        }
+      }
+    }
+  },
+  'carsharing': {
+    'getmancar': {
+      'title': 'Getmancar',
+      'subtitle': 'Atragerea de noi utilizatori în aplicație',
+      'client': 'Getmancar',
+      'industry': 'Carsharing',
+      'period': 'Din august până în noiembrie 2025',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Tranziții publicitare'
+          },
+          {
+            'label': 'Înregistrări noi/lună'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Să aducem noi utilizatori în aplicație și să îi încurajăm să facă călătorii cu mașina. Suplimentar — să menținem activitatea în rețelele sociale, astfel încât oamenii să afle la timp despre noile promoții, oferte și reduceri sezoniere la tarife.',
+        'problems': [
+          'Atragerea de noi instalări și înregistrări',
+          'Stimularea primelor și călătoriilor repetate',
+          'Menținerea activității în rețelele sociale',
+          'Informarea despre promoții și reduceri'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat campanii pentru atragerea audienței în aplicație și am construit comunicare pentru stimularea călătoriilor.',
+        'steps': [
+          {
+            'title': 'Trafic în aplicație',
+            'description': 'Am lansat campanii pentru atragerea audienței în aplicație cu focus pe acțiunea primară — instalarea și înregistrarea.'
+          },
+          {
+            'title': 'Stimularea călătoriilor',
+            'description': 'Am construit comunicare care motivează utilizatorii să treacă la călătorii prin promoții și oferte speciale.'
+          },
+          {
+            'title': 'Activitate în rețele',
+            'description': 'Am menținut comunicare regulată în rețelele sociale pentru informarea despre noile promoții și oferte sezoniere.'
+          },
+          {
+            'title': 'Optimizarea campaniilor',
+            'description': 'Am analizat constant eficiența și am optimizat creativele pentru reducerea costului de instalare.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru Getmancar',
+        'items': [
+          {
+            'title': 'Promo aplicație',
+            'description': 'Bannere publicitare pentru App Install'
+          },
+          {
+            'title': 'Promoții și oferte',
+            'description': 'Stories cu reduceri sezoniere'
+          },
+          {
+            'title': 'Video creative',
+            'description': 'Demonstrarea funcționării aplicației'
+          },
+          {
+            'title': 'User stories',
+            'description': 'Poveștile utilizatorilor'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Tranziții publicitare',
+            'growth': 'Excelent'
+          },
+          {
+            'label': 'Înregistrări noi',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          }
+        ],
+        'quote': {
+          'text': 'Campaniile Meta Ads ne-au ajutat să creștem semnificativ numărul de utilizatori noi în aplicație. Promoțiile regulate în rețelele sociale stimulează călătoriile repetate și mențin interesul pentru serviciu.',
+          'author': 'Reprezentant Getmancar',
+          'position': 'Șef marketing'
+        }
+      }
+    }
+  },
+  'gift': {
+    'ritzygift': {
+      'title': 'RitzyGift',
+      'subtitle': 'Creșterea vânzărilor prin mesaje și creșterea audienței',
+      'client': 'RitzyGift',
+      'industry': 'Cadouri și suveniruri',
+      'period': 'Din iulie 2025 până în prezent',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per mesaj'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Obiectivele principale pentru clientul RitzyGift — să primească mesaje de la clienți potențiali și să crească audiența paginilor Instagram și Facebook ale companiei.',
+        'problems': [
+          'Stimularea solicitărilor în mesaje',
+          'Creșterea audienței în rețelele sociale',
+          'Creșterea implicării',
+          'Asigurarea creșterii pe termen lung'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat în paralel campanii pentru obținerea de mesaje și creșterea audienței paginilor.',
+        'steps': [
+          {
+            'title': 'Campanii pe 'Mesaje'',
+            'description': 'Am lansat publicitate cu obiectivul de a primi mesaje primite de la clienți potențiali pentru contact rapid și consultații.'
+          },
+          {
+            'title': 'Creșterea audienței',
+            'description': 'În paralel am lansat promovarea pentru creșterea audienței Instagram și Facebook pentru creștere pe termen lung.'
+          },
+          {
+            'title': 'Strategie de conținut',
+            'description': 'Am creat conținut atractiv cu exemple de cadouri, recenzii ale clienților și oferte sezoniere.'
+          },
+          {
+            'title': 'Retargeting',
+            'description': 'Am configurat retargeting pentru returnarea utilizatorilor interesați și creșterea conversiei.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru RitzyGift',
+        'items': [
+          {
+            'title': 'Catalogul de cadouri',
+            'description': 'Carusele publicitare cu produse'
+          },
+          {
+            'title': 'Promoții sezoniere',
+            'description': 'Materiale promoționale pentru sărbători'
+          },
+          {
+            'title': 'Stories cu idei',
+            'description': 'Conținut cu idei de cadouri'
+          },
+          {
+            'title': 'Recenzii clienți',
+            'description': 'Conținut generat de utilizatori'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Cost per mesaj',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Lansarea paralelă a campaniilor a permis creșterea numărului de vânzări și extinderea audienței. Acum avem un flux stabil de solicitări și o bază în creștere de abonați loiali.',
+          'author': 'Reprezentant RitzyGift',
+          'position': 'Proprietar afacere'
+        }
+      }
+    }
+  },
+  'pharma': {
+    'heel': {
+      'title': 'Heel',
+      'subtitle': 'Creșterea abonaților și recunoașterii brandului',
+      'client': 'Heel',
+      'industry': 'Farmaceutică',
+      'period': 'Din august până în octombrie 2025',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per apreciere Facebook'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul Heel obiectivul principal era să atragă noi abonați pe paginile de rețele sociale Facebook și Instagram, pentru a crește recunoașterea brandului și a asigura creșterea audienței.',
+        'problems': [
+          'Recunoaștere scăzută a brandului',
+          'Audiență mică în rețelele sociale',
+          'Necesitatea formării unei baze de abonați',
+          'Absența comunicării stabile cu audiența'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat campanii publicitare cu obiectivul de a atrage noi abonați și de a crește acoperirea.',
+        'steps': [
+          {
+            'title': 'Atragerea abonaților',
+            'description': 'Am lansat campanii pentru atragerea de noi abonați pe Facebook și Instagram cu focus pe audiența țintă.'
+          },
+          {
+            'title': 'Creșterea acoperirii',
+            'description': 'Am crescut acoperirea și contactul cu audiența țintă pentru creșterea recunoașterii brandului Heel.'
+          },
+          {
+            'title': 'Planificarea conținutului',
+            'description': 'Am creat un plan de conținut cu informații utile despre produse și sănătate pentru implicarea audienței.'
+          },
+          {
+            'title': 'Community Management',
+            'description': 'Am construit comunicare regulată cu abonații prin comentarii, stories și postări.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru Heel',
+        'items': [
+          {
+            'title': 'Postări informative',
+            'description': 'Conținut educațional despre sănătate'
+          },
+          {
+            'title': 'Prezentarea produselor',
+            'description': 'Materiale publicitare despre preparate'
+          },
+          {
+            'title': 'Stories',
+            'description': 'Povești și sfaturi zilnice'
+          },
+          {
+            'title': 'Recenzii și recomandări',
+            'description': 'Conținut de la utilizatori'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'CPM',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Datorită campaniilor în Meta Ads am extins semnificativ audiența în rețelele sociale și am crescut recunoașterea brandului Heel. Acum avem o bază pentru comunicări ulterioare cu clienții.',
+          'author': 'Reprezentant Heel',
+          'position': 'Manager marketing'
+        }
+      }
+    }
+  },
+  'interior-design': {
+    'cdihome': {
+      'title': 'CDI Home',
+      'subtitle': 'Formarea bazei de abonați pentru campaniile viitoare',
+      'client': 'CDI Home',
+      'industry': 'Design interior',
+      'period': 'Din septembrie 2025 până în prezent',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per apreciere Facebook'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul CDI Home obiectivul principal era atragerea de noi abonați pe paginile Instagram și Facebook, pentru a forma o bază pentru viitoarele campanii publicitare pe mesaje și pentru a crește recunoașterea brandului.',
+        'problems': [
+          'Necesitatea formării audienței',
+          'Pregătirea pentru campaniile performance',
+          'Întărirea prezenței brandului în rețelele sociale',
+          'Recunoaștere scăzută pe piață'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat campanii publicitare cu focus pe creșterea audienței și creșterea recunoașterii brandului.',
+        'steps': [
+          {
+            'title': 'Creșterea audienței',
+            'description': 'Am lansat campanii pentru atragerea de abonați pe Instagram și Facebook cu targeting pe audiența țintă.'
+          },
+          {
+            'title': 'Creșterea recunoașterii',
+            'description': 'Am crescut recunoașterea brandului prin contact regulat cu audiența țintă și conținut de calitate.'
+          },
+          {
+            'title': 'Portofoliul de proiecte',
+            'description': 'Am creat conținut vizual atractiv cu exemple de proiecte de design realizate.'
+          },
+          {
+            'title': 'Pregătire pentru performance',
+            'description': 'Am format o bază pentru viitoarele campanii publicitare pe mesaje și lead generation.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru CDI Home',
+        'items': [
+          {
+            'title': 'Portofoliul de proiecte',
+            'description': 'Exemple de proiecte de design'
+          },
+          {
+            'title': 'Înainte/După',
+            'description': 'Transformarea interioarelor'
+          },
+          {
+            'title': 'Sfaturi de design',
+            'description': 'Conținut educațional'
+          },
+          {
+            'title': 'Procesul de lucru',
+            'description': 'Behind the scenes'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'CPM',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Am format o bază de calitate de abonați care manifestă deja interes pentru proiectele noastre. Acum suntem pregătiți pentru lansarea campaniilor performance pentru atragerea de clienți.',
+          'author': 'Reprezentant CDI Home',
+          'position': 'Șef studio'
+        }
+      }
+    }
+  },
+  'beauty-salon': {
+    'epilbar': {
+      'title': 'EpilBar',
+      'subtitle': 'Creșterea audienței și atragerea clienților pentru promoții',
+      'client': 'EpilBar',
+      'industry': 'Salon de înfrumusețare',
+      'period': 'Din iunie 2025 până în prezent',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per mesaj'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'CPM'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul EpilBar sarcina principală era atragerea de noi abonați pentru formarea cererii organice pentru servicii. De asemenea — lansarea campaniilor pe mesaje pentru ofertele promoționale și recrutarea pentru formare.',
+        'problems': [
+          'Creșterea audienței în rețelele sociale',
+          'Întărirea încrederii și cererii regulate',
+          'Primirea solicitărilor prin mesaje',
+          'Promovarea promoțiilor și recrutarea pentru formare'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am lansat simultan campanii pentru creșterea audienței și pentru obținerea de mesaje pentru oferte concrete.',
+        'steps': [
+          {
+            'title': 'Creșterea audienței',
+            'description': 'Am lansat campanii publicitare pentru atragerea de noi abonați pentru extinderea acoperirii și formarea bazei.'
+          },
+          {
+            'title': 'Campanii pe 'Mesaje'',
+            'description': 'În paralel am lansat campanii cu obiectivul 'Mesaje' pentru promovarea ofertelor promoționale.'
+          },
+          {
+            'title': 'Recrutare pentru formare',
+            'description': 'Campanii speciale pentru atragerea studenților la programele de formare în epilare.'
+          },
+          {
+            'title': 'Cerere organică',
+            'description': 'Formarea unei audienței loiale care revine regulat pentru servicii.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru EpilBar',
+        'items': [
+          {
+            'title': 'Oferte promoționale',
+            'description': 'Materiale promoționale cu reduceri'
+          },
+          {
+            'title': 'Recrutare pentru formare',
+            'description': 'Creative publicitare pentru cursuri'
+          },
+          {
+            'title': 'Înainte/După',
+            'description': 'Rezultatele lucrărilor'
+          },
+          {
+            'title': 'Recenzii clienți',
+            'description': 'Conținut generat de utilizatori'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Cost per mesaj',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Lansarea simultană a campaniilor pentru creșterea audienței și obținerea de mesaje ne-a permis să formăm un flux stabil de clienți. Promoțiile funcționează excelent, iar recrutarea pentru formare merge constant.',
+          'author': 'Reprezentant EpilBar',
+          'position': 'Proprietar salon'
+        }
+      }
+    }
+  },
+  'realtors': {
+    'connectimobil': {
+      'title': 'Connect Imobil',
+      'subtitle': 'Generarea de solicitări cu conversie pentru imobiliare',
+      'client': 'Connect Imobil',
+      'industry': 'Agenți imobiliari',
+      'period': 'Lucrăm activ',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per lead'
+          },
+          {
+            'label': 'Tranziții pe site'
+          },
+          {
+            'label': 'Vizitări profil'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul Connect Imobil obiectivul principal era să primească cât mai multe solicitări cu conversie pentru achiziționarea de apartamente în Chișinău și împrejurimi. Suplimentar — să mențină creșterea audienței noi în rețelele sociale și să crească numărul de tranziții pe site-ul companiei.',
+        'problems': [
+          'Generarea de solicitări cu conversie ridicată',
+          'Creșterea și reînnoirea audienței în rețelele sociale',
+          'Creșterea traficului pe site',
+          'Întărirea pâlniei de vânzări'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Lucru simultan pe trei direcții: solicitări, audiență și trafic pe site.',
+        'steps': [
+          {
+            'title': 'Solicitări cu conversie',
+            'description': 'Am lansat publicitate cu focus pe obținerea de solicitări de la audiența interesată în achiziționarea de imobiliare.'
+          },
+          {
+            'title': 'Creșterea audienței',
+            'description': 'În paralel am menținut creșterea audienței noi în rețelele sociale pentru extinderea acoperirii.'
+          },
+          {
+            'title': 'Trafic pe site',
+            'description': 'Suplimentar am lansat campanii pentru tranziții pe site pentru întărirea pâlniei de vânzări.'
+          },
+          {
+            'title': 'Creșterea recunoașterii',
+            'description': 'Contacte regulate cu audiența pentru consolidarea poziției brandului pe piață.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru Connect Imobil',
+        'items': [
+          {
+            'title': 'Catalogul de apartamente',
+            'description': 'Carusele publicitare cu obiecte'
+          },
+          {
+            'title': 'Formulare de lead',
+            'description': 'Formulare pentru colectarea solicitărilor'
+          },
+          {
+            'title': 'Tururi virtuale',
+            'description': 'Video-prezentări ale obiectelor'
+          },
+          {
+            'title': 'Recenzii clienți',
+            'description': 'Povești despre tranzacții de succes'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Cost per lead',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Tranziții pe site',
+            'growth': 'Excelent'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          }
+        ],
+        'quote': {
+          'text': 'Lucrul simultan pe trei direcții a dat un rezultat excelent. Primim solicitări de calitate, audiența crește, iar site-ul este vizitat de din ce în ce mai mulți cumpărători potențiali.',
+          'author': 'Reprezentant Connect Imobil',
+          'position': 'Șef departament vânzări'
+        }
+      }
+    }
+  },
+  'developers': {
+    'colinaverde': {
+      'title': 'Colina Verde',
+      'subtitle': 'Lead-uri de calitate prin calificare inteligentă',
+      'client': 'Colina Verde',
+      'industry': 'Dezvoltatori',
+      'period': 'Lucrăm activ',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Buget/lună'
+          },
+          {
+            'label': 'Cost per lead'
+          },
+          {
+            'label': 'Vizitări profil'
+          },
+          {
+            'label': 'Aprecieri Facebook'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Pentru clientul Colina Verde obiectivul principal era să primească cât mai multe lead-uri cu conversie. Suplimentar — să atragă noi abonați în rețelele sociale și să întărească recunoașterea brandului. Era important nu doar să creștem numărul de lead-uri, ci și să creștem calitatea lor — pentru a elimina solicitările care nu corespund cerințelor clientului.',
+        'problems': [
+          'Creșterea numărului de lead-uri cu conversie',
+          'Creșterea calității solicitărilor',
+          'Atragerea de noi abonați',
+          'Întărirea recunoașterii brandului'
+        ]
+      },
+      'solution': {
+        'title': 'Abordare',
+        'description': 'Am dezvoltat formulare de lead cu calificare și am lucrat în paralel la creșterea brandului.',
+        'steps': [
+          {
+            'title': 'Formulare de lead cu calificare',
+            'description': 'Am dezvoltat formulare de lead cu scenariu de întrebări, pentru a elimina contactele necorespunzătoare și a primi solicitări mai relevante.'
+          },
+          {
+            'title': 'Atragerea abonaților',
+            'description': 'Am lucrat la atragerea unei audiențe noi în rețelele sociale pentru extinderea bazei de clienți potențiali.'
+          },
+          {
+            'title': 'Creșterea recunoașterii',
+            'description': 'Am întărit recunoașterea brandului Colina Verde prin contacte regulate cu audiența țintă.'
+          },
+          {
+            'title': 'Optimizarea pâlniei',
+            'description': 'Am analizat constant datele și am îmbunătățit pâlnia pentru creșterea conversiei.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': 'Creativele noastre',
+        'description': 'Aici vor fi plasate exemple ale creativelor noastre publicitare pentru Colina Verde',
+        'items': [
+          {
+            'title': 'Prezentarea proiectului',
+            'description': 'Vizualizarea complexului rezidențial'
+          },
+          {
+            'title': 'Formulare de lead',
+            'description': 'Formulare interactive cu calificare'
+          },
+          {
+            'title': 'Planificări',
+            'description': 'Variante de apartamente'
+          },
+          {
+            'title': 'Video-tur',
+            'description': 'Prezentarea teritoriului'
+          }
+        ]
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Buget',
+            'growth': 'Stabil'
+          },
+          {
+            'label': 'Cost per lead',
+            'growth': 'Eficient'
+          },
+          {
+            'label': 'Vizitări profil Instagram',
+            'growth': 'Accesibil'
+          },
+          {
+            'label': 'Aprecieri Facebook',
+            'growth': 'Optim'
+          }
+        ],
+        'quote': {
+          'text': 'Formularele de lead cu calificare ne-au ajutat să primim doar solicitări relevante. Acum departamentul nostru de vânzări lucrează cu clienți interesați, nu pierde timpul cu contacte necorespunzătoare.',
+          'author': 'Reprezentant Colina Verde',
+          'position': 'Director marketing'
+        }
+      }
+    }
+  },
+  'nedvizhimost': {
+    'premium-estate': {
+      'title': 'Premium Estate',
+      'subtitle': 'Cum am crescut solicitările cu 245% în 3 luni',
+      'client': 'Agenție Premium Estate',
+      'industry': 'Imobiliare',
+      'period': 'Ianuarie - Martie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea solicitărilor'
+          },
+          {
+            'label': 'Costul solicitării'
+          },
+          {
+            'label': 'Solicitări în 3 luni'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Agenția imobiliară se confrunta cu un cost ridicat al solicitărilor și conversie scăzută. Publicitatea în Google Ads dădea CPL ₽280, iar conversia landing-ului era 1.2%.',
+        'problems': [
+          'Cost ridicat pe click în Google Ads',
+          'Design învechit al landing-ului',
+          'Absența sistemului de analiză',
+          'Fără integrare cu CRM'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am dezvoltat o strategie complexă cu focus pe Meta Ads și am creat un nou landing de vânzări cu integrare în AmoCRM.',
+        'steps': [
+          {
+            'title': 'Audit și strategie',
+            'description': 'Am efectuat o analiză profundă a concurenților, audienței țintă și pieței. Am identificat 3 segmente cheie: familii tinere, investitori și relocare.'
+          },
+          {
+            'title': 'Landing nou',
+            'description': 'Am creat un landing modern cu hartă interactivă a obiectelor, calculator de ipotecă și chat online. Conversia a crescut la 4.8%.'
+          },
+          {
+            'title': 'Campanii Meta Ads',
+            'description': 'Am configurat 12 campanii publicitare cu segmentare precisă a audienței. Am folosit creative dinamice și retargeting.'
+          },
+          {
+            'title': 'CRM și analiză',
+            'description': 'Am integrat AmoCRM cu distribuție automată a solicitărilor. Am configurat analiza end-to-end pentru urmărirea întregii pâlnii.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Solicitări',
+            'growth': '+245%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-84%'
+          },
+          {
+            'label': 'Conversie',
+            'growth': '+300%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+133%'
+          }
+        ],
+        'quote': {
+          'text': 'Băieții de la CLARO au schimbat complet abordarea noastră față de marketing. În prima lună am recuperat toate investițiile, iar acum lucrăm cu coadă de clienți!',
+          'author': 'Alexandru Popov',
+          'position': 'Director Premium Estate'
+        }
+      }
+    },
+    'city-realty': {
+      'title': 'City Realty',
+      'subtitle': 'Am crescut vânzările de apartamente noi cu 180%',
+      'client': 'City Realty',
+      'industry': 'Imobiliare',
+      'period': 'Februarie - Aprilie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea vânzărilor'
+          },
+          {
+            'label': 'CPL'
+          },
+          {
+            'label': 'Solicitări'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Dezvoltatorul vindea apartamente doar prin birouri offline. Era necesar să lansăm vânzările online și să atragem un public tânăr.',
+        'problems': [
+          'Absența prezenței online',
+          'Dependența de vânzările offline',
+          'Fără bază de clienți',
+          'Concurența cu dezvoltatori mari'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat un ecosistem digital cu site optimizat SEO, publicitate contextuală și email marketing.',
+        'steps': [
+          {
+            'title': 'Site-catalog',
+            'description': 'Am dezvoltat un site cu planificări 3D, tururi virtuale și rezervare online a apartamentelor.'
+          },
+          {
+            'title': 'Promovare SEO',
+            'description': 'Am optimizat pentru căutări geo și am ajuns în TOP-3 pentru 45 de fraze cheie.'
+          },
+          {
+            'title': 'Yandex.Direct',
+            'description': 'Am configurat publicitate de căutare și RSY cu retargeting și bannere smart.'
+          },
+          {
+            'title': 'Pâlnie Email',
+            'description': 'Am lansat lanțuri automate de emailuri pentru încălzire și upselling.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Vânzări',
+            'growth': '+180%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-73%'
+          },
+          {
+            'label': 'TOP-3',
+            'growth': '+800%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+95%'
+          }
+        ],
+        'quote': {
+          'text': 'Canalul digital a devenit principala sursă de vânzări. Acum clienții ne găsesc singuri și vin deja pregătiți pentru achiziție.',
+          'author': 'Igor Semenov',
+          'position': 'Director comercial City Realty'
+        }
+      }
+    },
+    'smart-homes': {
+      'title': 'Smart Homes',
+      'subtitle': 'Creșterea solicitărilor pentru imobiliare la țară cu 320%',
+      'client': 'Smart Homes',
+      'industry': 'Imobiliare',
+      'period': 'Martie - Mai 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea solicitărilor'
+          },
+          {
+            'label': 'CPL'
+          },
+          {
+            'label': 'Solicitări'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Agenția de imobiliare la țară nu avea promovare online. Era necesar să atragem un public înstărit și să ne diferențiem de concurenți.',
+        'problems': [
+          'Absența marketingului online',
+          'Fără conținut și vizual',
+          'Audiență țintă restrânsă',
+          'Așteptări ridicate ale clienților'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat conținut premium și am lansat publicitate țintită pe Instagram și YouTube.',
+        'steps': [
+          {
+            'title': 'Strategie de conținut',
+            'description': 'Am filmat tururi video profesionale ale obiectelor, am creat fotografii și descrieri atmosferice.'
+          },
+          {
+            'title': 'Promovare Instagram',
+            'description': 'Am lansat un cont premium cu conținut lifestyle și publicitate țintită.'
+          },
+          {
+            'title': 'Publicitate YouTube',
+            'description': 'Am plasat tururi video pe YouTube și am configurat publicitate pentru un public înstărit.'
+          },
+          {
+            'title': 'Landing-catalog',
+            'description': 'Am creat un site premium cu tururi virtuale și informații detaliate.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Solicitări',
+            'growth': '+320%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-73%'
+          },
+          {
+            'label': 'Abonați',
+            'growth': '+2076%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+220%'
+          }
+        ],
+        'quote': {
+          'text': 'Conținutul pe care l-au creat băieții de la CLARO atrage exact audiența noastră țintă. Calitatea lead-urilor a crescut odată cu cantitatea lor.',
+          'author': 'Maria Volkova',
+          'position': 'Fondator Smart Homes'
+        }
+      }
+    }
+  },
+  'medical': {
+    'zdorovie-plus': {
+      'title': 'Sănătate+',
+      'subtitle': 'Creșterea programărilor cu 180% prin digital complex',
+      'client': 'Clinica «Sănătate+»',
+      'industry': 'Medicină',
+      'period': 'Februarie - Aprilie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea programărilor'
+          },
+          {
+            'label': 'Costul programării'
+          },
+          {
+            'label': 'Programări în 3 luni'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Clinica privată se pierdea printre concurenți în căutare și rețele sociale. Era necesar să ne diferențiem și să atragem pacienți în direcțiile noi.',
+        'problems': [
+          'Site-ul nu este în TOP-10 Yandex și Google',
+          'Site învechit fără adaptare',
+          'Fără sistem de programare online',
+          'Cost ridicat pe click în context'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am lansat optimizare SEO complexă, am dezvoltat un site nou și am configurat publicitate contextuală eficientă.',
+        'steps': [
+          {
+            'title': 'Audit și optimizare SEO',
+            'description': 'Am efectuat audit tehnic, am corectat 150+ erori, am optimizat semantica pentru 40 de cereri cheie.'
+          },
+          {
+            'title': 'Site nou',
+            'description': 'Am dezvoltat un site modern cu programare online, integrare cu CRM medical și cabinet personal al pacientului.'
+          },
+          {
+            'title': 'Google Ads',
+            'description': 'Am configurat campanii de căutare și display cu targeting hiperlocal. Ne-am concentrat pe cereri de brand.'
+          },
+          {
+            'title': 'Analiză',
+            'description': 'Am implementat call-tracking și analiza end-to-end pentru urmărirea tuturor canalelor de atragere.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Programări',
+            'growth': '+180%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-73%'
+          },
+          {
+            'label': 'TOP-10',
+            'growth': '+833%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+81%'
+          }
+        ],
+        'quote': {
+          'text': 'În sfârșit am primit o infrastructură digitală modernă. Pacienții sunt mulțumiți, se programează online, iar noi vedem analiza completă pentru fiecare canal.',
+          'author': 'Elena Sokolova',
+          'position': 'Medic-șef clinica «Sănătate+»'
+        }
+      }
+    },
+    'dental-clinic': {
+      'title': 'Stomatologie SmilePro',
+      'subtitle': 'Atragerea de 220% pacienți noi',
+      'client': 'Stomatologie SmilePro',
+      'industry': 'Medicină',
+      'period': 'Martie - Mai 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea pacienților'
+          },
+          {
+            'label': 'CPL'
+          },
+          {
+            'label': 'Programări'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Stomatologia lucra doar cu pacienți existenți. Era necesar să atragem clienți noi și să depășim frica de stomatolog.',
+        'problems': [
+          'Frica audienței de stomatolog',
+          'Fără prezență online',
+          'Concurență ridicată',
+          'Absența recenziilor'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat conținut de încredere, am colectat recenzii și am lansat publicitate țintită pe Instagram.',
+        'steps': [
+          {
+            'title': 'Strategie Instagram',
+            'description': 'Am lansat un cont cu conținut educațional: cum să ai grijă de dinți, mituri despre stomatologie, povești de pacienți.'
+          },
+          {
+            'title': 'Video-conținut',
+            'description': 'Am filmat o serie de clipuri cu procesele de tratament, prezentarea medicilor și interviuri cu pacienții.'
+          },
+          {
+            'title': 'Colectarea recenziilor',
+            'description': 'Am organizat un sistem de colectare a recenziilor cu fotografii înainte/după. Am colectat 120+ recenzii reale în 3 luni.'
+          },
+          {
+            'title': 'Publicitate țintită',
+            'description': 'Am configurat publicitate pentru audiența cu probleme dentare și interes pentru sănătate.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Pacienți',
+            'growth': '+220%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-75%'
+          },
+          {
+            'label': 'Abonați',
+            'growth': '+4838%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+147%'
+          }
+        ],
+        'quote': {
+          'text': 'Instagram a schimbat complet afacerea noastră. Pacienții vin deja având încredere în noi, pentru că au văzut poveștile și rezultatele noastre.',
+          'author': 'Dmitri Kovalev',
+          'position': 'Medic-șef SmilePro'
+        }
+      }
+    }
+  },
+  'ecommerce': {
+    'gadget-store': {
+      'title': 'Gadget Store',
+      'subtitle': 'Automatizare și creșterea vânzărilor cu 320%',
+      'client': 'Magazin online Gadget Store',
+      'industry': 'E-commerce',
+      'period': 'Martie - Mai 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea vânzărilor'
+          },
+          {
+            'label': 'CAC'
+          },
+          {
+            'label': 'Comenzi în 3 luni'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Magazinul online de gadgeturi pierdea clienți din cauza procesării lente a comenzilor și absenței automatizării. Era necesar să accelerăm procesele și să scalăm vânzările.',
+        'problems': [
+          'Procesare manuală a tuturor comenzilor',
+          'Pierderea clienților în pâlnie',
+          'Fără notificări automate',
+          'Proces complicat de plasare a comenzii'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat un bot Telegram pentru automatizarea vânzărilor, am configurat Meta Ads și am optimizat pâlnia de vânzări.',
+        'steps': [
+          {
+            'title': 'Bot Telegram magazin',
+            'description': 'Am dezvoltat un bot inteligent cu catalog de produse, coș, plată și urmărire comenzi. Timpul de plasare s-a redus de la 8 la 2 minute.'
+          },
+          {
+            'title': 'Automatizarea proceselor',
+            'description': 'Am configurat notificări automate, integrare cu 1C, generare automată de facturi și trimitere la serviciul de curierat.'
+          },
+          {
+            'title': 'Meta Ads + retargeting',
+            'description': 'Am lansat anunțuri dinamice cu produse din catalog. Am configurat o pâlnie multi-step cu retargeting pentru coșuri abandonate.'
+          },
+          {
+            'title': 'Email și Push marketing',
+            'description': 'Am implementat lanțuri automate de emailuri pentru returnarea clienților, upselling și colectarea recenziilor.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Vânzări',
+            'growth': '+320%'
+          },
+          {
+            'label': 'CAC',
+            'growth': '-81%'
+          },
+          {
+            'label': 'Conversie',
+            'growth': '+314%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+143%'
+          }
+        ],
+        'quote': {
+          'text': 'Bot-ul Telegram a schimbat totul! Clienții sunt încântați de comoditate, iar noi am uitat de procesarea rutinară a comenzilor. Acum ne concentrăm doar pe creștere.',
+          'author': 'Dmitri Kovalev',
+          'position': 'Proprietar Gadget Store'
+        }
+      }
+    },
+    'fashion-shop': {
+      'title': 'Fashion Boutique',
+      'subtitle': 'Creșterea comenzilor online cu 265%',
+      'client': 'Fashion Boutique',
+      'industry': 'E-commerce',
+      'period': 'Februarie - Aprilie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea comenzilor'
+          },
+          {
+            'label': 'CAC'
+          },
+          {
+            'label': 'Comenzi'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Magazinul de haine pierdea vânzări din cauza prezenței slabe online. Era necesar să creăm un brand puternic pe Instagram și să lansăm vânzările.',
+        'problems': [
+          'Prezență slabă pe Instagram',
+          'Fără stil recognoscibil',
+          'Calitate scăzută a conținutului',
+          'Absența influencer marketingului'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat un stil recognoscibil al brandului pe Instagram, am lansat Shopping și colaborare cu bloggeri.',
+        'steps': [
+          {
+            'title': 'Branding Instagram',
+            'description': 'Am dezvoltat stil vizual, am creat plan de conținut și am lansat publicații regulate cu fotografii profesionale.'
+          },
+          {
+            'title': 'Instagram Shopping',
+            'description': 'Am configurat Instagram Shopping cu catalog de produse, etichete pe fotografii și achiziții directe.'
+          },
+          {
+            'title': 'Influencer marketing',
+            'description': 'Am lansat colaborări cu 25 de micro-bloggeri. Am acoperit 500K+ audiență țintă.'
+          },
+          {
+            'title': 'Stories și Reels',
+            'description': 'Am creat o serie de Reels virale cu ținute și trenduri. Am obținut 2.5M+ vizualizări.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Comenzi',
+            'growth': '+265%'
+          },
+          {
+            'label': 'CAC',
+            'growth': '-75%'
+          },
+          {
+            'label': 'Abonați',
+            'growth': '+1820%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+189%'
+          }
+        ],
+        'quote': {
+          'text': 'Instagram a devenit principalul nostru canal de vânzări. Clienții se îndrăgostesc de brand înainte de achiziție, iar bloggerii vor să colaboreze cu noi.',
+          'author': 'Ana Belova',
+          'position': 'Fondatoare Fashion Boutique'
+        }
+      }
+    }
+  },
+  'education': {
+    'speakup': {
+      'title': 'SpeakUp',
+      'subtitle': 'Atragerea a 680 de studenți prin SMM și targeting',
+      'client': 'Școala de engleză «SpeakUp»',
+      'industry': 'Educație',
+      'period': 'Ianuarie - Martie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea solicitărilor'
+          },
+          {
+            'label': 'Costul solicitării'
+          },
+          {
+            'label': 'Studenți noi'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Școala de engleză lucra doar prin recomandări și nu avea prezență digitală. Era necesar să creăm un brand recognoscibil și să stabilim un flux constant de studenți.',
+        'problems': [
+          'Absența prezenței în rețelele sociale',
+          'Fără brand recognoscibil',
+          'Dependența de recomandări',
+          'Site învechit tip vizitka'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am construit o strategie SMM cu conținut implicativ, am lansat publicitate țintită și am creat o comunitate activă.',
+        'steps': [
+          {
+            'title': 'Strategie SMM',
+            'description': 'Am creat un plan de conținut pentru 3 luni: video-uri educaționale, analiza greșelilor, povești de succes ale studenților, quiz-uri interactive.'
+          },
+          {
+            'title': 'Producție de conținut',
+            'description': 'Am filmat 45 de clipuri educaționale, am creat o serie de meme-uri despre învățarea englezei și am lansat challenge-ul #30daysofEnglish.'
+          },
+          {
+            'title': 'Publicitate țintită',
+            'description': 'Am configurat campanii pe Instagram și Facebook cu formulare de lead și webinarii. Am segmentat audiența după nivelul de engleză.'
+          },
+          {
+            'title': 'Comunitate și implicare',
+            'description': 'Am creat canal Telegram cu lecții zilnice, am lansat cluburi de conversație online și întâlniri offline.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Studenți',
+            'growth': '+195%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-74%'
+          },
+          {
+            'label': 'Abonați',
+            'growth': '+2678%'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+137%'
+          }
+        ],
+        'quote': {
+          'text': 'În 3 luni am primit mai mulți studenți decât în tot anul trecut! Instagram a devenit principalul nostru canal de vânzări, iar comunitatea din Telegram trăiește propria sa viață.',
+          'author': 'Ana Belova',
+          'position': 'Fondator școala SpeakUp'
+        }
+      }
+    },
+    'coding-academy': {
+      'title': 'Coding Academy',
+      'subtitle': 'Creșterea elevilor cu 280% prin marketing complex',
+      'client': 'Școala de programare Coding Academy',
+      'industry': 'Educație',
+      'period': 'Februarie - Aprilie 2024',
+      'hero': {
+        'stats': [
+          {
+            'label': 'Creșterea elevilor'
+          },
+          {
+            'label': 'CPL'
+          },
+          {
+            'label': 'Elevi noi'
+          },
+          {
+            'label': 'ROAS'
+          }
+        ]
+      },
+      'challenge': {
+        'title': 'Sarcină',
+        'description': 'Școala de programare concura cu platforme mari online. Era necesar să ne diferențiem prin calitatea învățării și să creăm o comunitate loială.',
+        'problems': [
+          'Concurență ridicată cu Skillbox, GeekBrains',
+          'Fără recognoscibilitate de brand',
+          'Acoperire mică a audienței',
+          'Absența conținutului'
+        ]
+      },
+      'solution': {
+        'title': 'Soluție',
+        'description': 'Am creat conținut educațional pe YouTube, am lansat webinarii gratuite și am construit o pâlnie email.',
+        'steps': [
+          {
+            'title': 'Canal YouTube',
+            'description': 'Am lansat canal cu lecții gratuite de programare. Am filmat 60 de video-uri, am obținut 250K+ vizualizări.'
+          },
+          {
+            'title': 'Webinarii',
+            'description': 'Am desfășurat 15 webinarii gratuite cu sarcini practice. Am atras 3500 de participanți, am convertit 28% în studenți.'
+          },
+          {
+            'title': 'Pâlnie Email',
+            'description': 'Am creat o serie automată de 12 emailuri pentru încălzirea lead-urilor. LTV studenților a crescut cu 65%.'
+          },
+          {
+            'title': 'Comunitate',
+            'description': 'Am creat chat Telegram închis pentru studenți și absolvenți. Activitate 85%, NPS 9.2/10.'
+          }
+        ]
+      },
+      'creatives': {
+        'title': '',
+        'description': '',
+        'items': []
+      },
+      'results': {
+        'title': 'Rezultate',
+        'metrics': [
+          {
+            'label': 'Elevi',
+            'growth': '+280%'
+          },
+          {
+            'label': 'CPL',
+            'growth': '-74%'
+          },
+          {
+            'label': 'YouTube',
+            'growth': '+∞'
+          },
+          {
+            'label': 'ROAS',
+            'growth': '+219%'
+          }
+        ],
+        'quote': {
+          'text': 'YouTube și webinariile ne-au ajutat să arătăm calitatea învățării. Studenții vin deja motivați și înțelegând ce vor.',
+          'author': 'Pavel Sidorov',
+          'position': 'Fondator Coding Academy'
+        }
+      }
+    }
+  }
+}

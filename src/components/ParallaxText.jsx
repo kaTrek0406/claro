@@ -1,31 +1,69 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { throttle } from "../utils/throttle";
 
 export default function ParallaxText({ text, onServiceClick }) {
-  const [offsetX, setOffsetX] = useState(0);
   const [hoveredWord, setHoveredWord] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const row1Ref = useRef(null);
+  const row2Ref = useRef(null);
+  const isMobile = useRef(window.innerWidth < 768);
 
-  // Throttle mouse move handler to reduce state updates from 100+/sec to 60/sec
+  // Throttle mouse move handler (только на десктопе)
   const handleMouseMove = useCallback(
     throttle((e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (!isMobile.current) {
+        setMousePos({ x: e.clientX, y: e.clientY });
+      }
     }, 16), // 60fps
     []
   );
 
   useEffect(() => {
+    // На мобильных отключаем parallax, только на десктопе используем RAF
+    if (isMobile.current) {
+      // Только mousemove не нужен на мобильных
+      return;
+    }
+
+    // Десктоп: используем requestAnimationFrame для плавной анимации
+    let rafId;
+
     const handleScroll = () => {
-      const scrollProgress = window.scrollY;
-      setOffsetX(scrollProgress * 0.5); // Скорость параллакса
+      rafId = requestAnimationFrame(() => {
+        const scrollProgress = window.scrollY;
+        const offset = scrollProgress * 0.5;
+
+        if (row1Ref.current) {
+          row1Ref.current.style.transform = `translateX(${-2000 + offset}px)`;
+        }
+        if (row2Ref.current) {
+          row2Ref.current.style.transform = `translateX(${-2000 - offset}px)`;
+        }
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Проверка размера экрана
+    const handleResize = () => {
+      const wasMobile = isMobile.current;
+      isMobile.current = window.innerWidth < 768;
+
+      // Если переключились на мобильный, сбрасываем transform
+      if (!wasMobile && isMobile.current) {
+        if (row1Ref.current) row1Ref.current.style.transform = '';
+        if (row2Ref.current) row2Ref.current.style.transform = '';
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("mousemove", handleMouseMove);
+
     handleScroll(); // Инициализация
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [handleMouseMove]);
@@ -43,10 +81,11 @@ export default function ParallaxText({ text, onServiceClick }) {
     "text-cyan-400",    // МЕТРИКИ
   ];
 
-  // Memoize coloredWords array to prevent creating 600 objects every render
+  // Memoize coloredWords array - уменьшаем до 50 повторений для мобильных
   const coloredWords = useMemo(() => {
     const result = [];
-    for (let i = 0; i < 100; i++) {
+    const repeatCount = isMobile.current ? 50 : 100;
+    for (let i = 0; i < repeatCount; i++) {
       words.forEach((word, idx) => {
         result.push({
           text: word,
@@ -67,8 +106,8 @@ export default function ParallaxText({ text, onServiceClick }) {
 
   return (
     <div className="overflow-hidden py-8 bg-black relative">
-      {/* Плашка, следующая за курсором */}
-      {hoveredItem && (
+      {/* Плашка, следующая за курсором - только на десктопе */}
+      {hoveredItem && !isMobile.current && (
         <div
           className="fixed pointer-events-none z-50 transition-opacity duration-200"
           style={{
@@ -78,7 +117,7 @@ export default function ParallaxText({ text, onServiceClick }) {
           }}
         >
           <div className={`${hoveredItem.color} bg-neutral-900 border-2 border-current px-6 py-3 rounded-lg whitespace-nowrap`}>
-            <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-2">
+            <span className="text-2xl md:text-3xl font-bold uppercase tracking-tight flex items-center gap-2">
               {hoveredItem.text}
               <span className="text-xl">↗</span>
             </span>
@@ -88,47 +127,63 @@ export default function ParallaxText({ text, onServiceClick }) {
 
       {/* First Row */}
       <div
-        className="whitespace-nowrap mb-4"
+        ref={row1Ref}
+        className={`whitespace-nowrap mb-4 ${isMobile.current ? 'animate-[scroll-left_30s_linear_infinite]' : ''}`}
         style={{
-          transform: `translateX(${-2000 + offsetX}px)`,
+          transform: isMobile.current ? 'none' : 'translateX(-2000px)',
+          willChange: isMobile.current ? 'auto' : 'transform',
         }}
       >
         {coloredWords.map((item, idx) => (
           <span key={idx}>
             <button
-              onMouseEnter={() => setHoveredWord(`row1-${idx}`)}
-              onMouseLeave={() => setHoveredWord(null)}
+              onMouseEnter={() => !isMobile.current && setHoveredWord(`row1-${idx}`)}
+              onMouseLeave={() => !isMobile.current && setHoveredWord(null)}
               onClick={() => onServiceClick && onServiceClick(item.service)}
-              className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
+              className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 md:hover:text-neutral-600"
             >
               {item.text}
             </button>
-            <span className="text-neutral-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black"> • </span>
+            <span className="text-neutral-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"> • </span>
           </span>
         ))}
       </div>
 
       {/* Second Row - opposite direction */}
       <div
-        className="whitespace-nowrap"
+        ref={row2Ref}
+        className={`whitespace-nowrap ${isMobile.current ? 'animate-[scroll-right_30s_linear_infinite]' : ''}`}
         style={{
-          transform: `translateX(${-2000 - offsetX}px)`,
+          transform: isMobile.current ? 'none' : 'translateX(-2000px)',
+          willChange: isMobile.current ? 'auto' : 'transform',
         }}
       >
         {coloredWords.map((item, idx) => (
           <span key={idx}>
             <button
-              onMouseEnter={() => setHoveredWord(`row2-${idx}`)}
-              onMouseLeave={() => setHoveredWord(null)}
+              onMouseEnter={() => !isMobile.current && setHoveredWord(`row2-${idx}`)}
+              onMouseLeave={() => !isMobile.current && setHoveredWord(null)}
               onClick={() => onServiceClick && onServiceClick(item.service)}
-              className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 hover:text-neutral-600"
+              className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer text-neutral-800 md:hover:text-neutral-600"
             >
               {item.text}
             </button>
-            <span className="text-neutral-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black"> • </span>
+            <span className="text-neutral-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"> • </span>
           </span>
         ))}
       </div>
+
+      {/* CSS анимации для мобильных */}
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </div>
   );
 }

@@ -13,7 +13,6 @@ import ParallaxText from "../components/ParallaxText";
 import SocialSection from "../components/SocialSection";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
-import FloatingBrief from "../components/FloatingBrief";
 import ScrollReveal from "../components/ScrollReveal";
 import ParallaxShapes from "../components/ParallaxShapes";
 import CookieBanner from "../components/CookieBanner";
@@ -42,11 +41,11 @@ export default function HomePage() {
 
       <main className="pt-20 sm:pt-24 lg:pt-28 relative z-10 overflow-x-hidden w-full">
         {/* HERO */}
-        <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+        <section id="hero" className="min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16">
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-center text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[0.9] sm:leading-[0.95] font-black uppercase tracking-tight">
+            <h1 className="text-center text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[1.1] sm:leading-[0.95] font-bold uppercase tracking-tight px-2">
               {t("hero.mainTitle.line1")}{" "}
-              <span className="group relative inline-flex items-center text-yellow-400 cursor-default">
+              <span className="group relative inline-flex items-center text-yellow-400 cursor-default sm:whitespace-nowrap">
                 {t("hero.mainTitle.data")}
                 <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/data.svg`} alt="Data" className="w-full h-full" />
@@ -54,7 +53,7 @@ export default function HomePage() {
               </span>
               ,<br />
               {t("hero.mainTitle.line2")}{" "}
-              <span className="group relative inline-flex items-center text-cyan-400 cursor-default">
+              <span className="group relative inline-flex items-center text-cyan-400 cursor-default sm:whitespace-nowrap">
                 {t("hero.mainTitle.algorithms")}
                 <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/algorithms.svg`} alt="Algorithms" className="w-full h-full" />
@@ -62,7 +61,7 @@ export default function HomePage() {
               </span>
               ,<br />
               {t("hero.mainTitle.line3")}{" "}
-              <span className="group relative inline-flex items-center text-pink-400 cursor-default">
+              <span className="group relative inline-flex items-center text-pink-400 cursor-default sm:whitespace-nowrap">
                 {t("hero.mainTitle.result")}
                 <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/result.svg`} alt="Result" className="w-full h-full" />
@@ -70,7 +69,7 @@ export default function HomePage() {
               </span>
               ,<br />
               {t("hero.mainTitle.line4")}{" "}
-              <span className="group relative inline-flex items-center text-orange-500 cursor-default">
+              <span className="group relative inline-flex items-center text-orange-500 cursor-default sm:whitespace-nowrap">
                 {t("hero.mainTitle.leads")}
                 <span className="absolute left-[calc(100%-1rem)] -top-1 sm:-top-2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 transition-all duration-300 z-10">
                   <img src={`${import.meta.env.BASE_URL}icons/leads.svg`} alt="Leads" className="w-full h-full" />
@@ -80,9 +79,32 @@ export default function HomePage() {
             </h1>
           </div>
 
-          <div className="mt-12 sm:mt-16 lg:mt-20">
+          <div className="mt-20 sm:mt-24 lg:mt-28">
             <Marquee text={t("hero.marquee")} />
           </div>
+
+          {/* Scroll Down Arrow - Only on Mobile */}
+          <button
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                const offset = 80; // высота шапки
+                const elementPosition = aboutSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }}
+            className="lg:hidden mx-auto mt-16 mb-8 flex items-center justify-center w-14 h-14 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300 animate-bounce"
+            aria-label="Scroll to next section"
+          >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </button>
         </section>
 
         {/* ABOUT */}
@@ -91,7 +113,7 @@ export default function HomePage() {
             {/* Left Column - Title */}
             <ScrollReveal animation="fade-right" duration={1000}>
               <div>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[0.95] font-black uppercase tracking-tight mb-8">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[0.95] font-bold uppercase tracking-tight mb-8">
                   {t("about.mainTitle.part1")}{" "}
                   <span className="text-cyan-400">{t("about.mainTitle.part2")}</span>,{" "}
                   {t("about.mainTitle.part3")}{" "}
@@ -193,7 +215,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
             <ScrollReveal animation="fade-up" duration={1000}>
               <div>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[0.95] font-black uppercase tracking-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[0.95] font-bold uppercase tracking-tight">
                   {t("services.mainTitle.part1")}{" "}
                   <span className="text-orange-500">{t("services.mainTitle.part2")}</span>{" "}
                   {t("services.mainTitle.part3")}{" "}
@@ -216,7 +238,7 @@ export default function HomePage() {
 
         {/* PARALLAX TEXT */}
         <ParallaxText
-          text="ТАРГЕТ • РЕЗУЛЬТАТ • РОСТ • ЗАЯВКИ • КОНВЕРСИИ • МЕТРИКИ"
+          text={t('parallaxText')}
           onServiceClick={handleServiceClick}
         />
 
@@ -253,9 +275,6 @@ export default function HomePage() {
         }}
         preselectedService={selectedService}
       />
-
-      {/* Floating Brief Button */}
-      <FloatingBrief />
 
       {/* Cookie Banner */}
       <CookieBanner />

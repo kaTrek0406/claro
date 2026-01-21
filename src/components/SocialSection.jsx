@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import samoletImg from '/samolet.png';
 
 export default function SocialSection({ onContactClick }) {
+  const { t } = useTranslation();
   const [hoveredSocial, setHoveredSocial] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
@@ -104,10 +106,10 @@ export default function SocialSection({ onContactClick }) {
 
         {/* Верхний текст с иконками соц сетей */}
         <div className="mb-16 relative">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight font-black uppercase tracking-tight max-w-6xl mx-auto text-center">
-            <span className="inline-block">Мы наиболее</span>{" "}
-            <span className="inline-block text-yellow-400">активны</span>{" "}
-            <span className="inline-block">в</span>{" "}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight font-bold uppercase tracking-tight max-w-6xl mx-auto text-center">
+            <span className="inline-block">{t('socialSection.title1')}</span>{" "}
+            <span className="inline-block text-yellow-400">{t('socialSection.title2')}</span>{" "}
+            <span className="inline-block">{t('socialSection.title3')}</span>{" "}
             <button
               onClick={(e) => handleSocialClick("threads", e)}
               onMouseEnter={(e) => handleMouseEnter("threads", e)}
@@ -140,7 +142,7 @@ export default function SocialSection({ onContactClick }) {
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </button>
-            <span> и </span>
+            <span> {t('socialSection.title4')} </span>
             <button
               onClick={(e) => handleSocialClick("instagram", e)}
               onMouseEnter={(e) => handleMouseEnter("instagram", e)}
@@ -151,34 +153,34 @@ export default function SocialSection({ onContactClick }) {
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
             </button>
-            <span>. Здесь мы делимся</span>{" "}
-            <span className="inline-block text-cyan-400">кейсами</span>
+            <span>. {t('socialSection.title5')}</span>{" "}
+            <span className="inline-block text-cyan-400">{t('socialSection.cases')}</span>
             <span>,</span>{" "}
-            <span className="inline-block text-pink-400">инсайтами</span>
+            <span className="inline-block text-pink-400">{t('socialSection.insights')}</span>
             <span>,</span>{" "}
-            <span className="inline-block">показываем</span>{" "}
-            <span className="inline-block text-orange-500">результаты</span>{" "}
-            <span className="inline-block">наших клиентов и рассказываем о</span>{" "}
-            <span className="inline-block text-purple-400">digital-трендах</span>
+            <span className="inline-block">{t('socialSection.showResults')}</span>{" "}
+            <span className="inline-block text-orange-500">{t('socialSection.results')}</span>{" "}
+            <span className="inline-block">{t('socialSection.ourClients')}</span>{" "}
+            <span className="inline-block text-purple-400">{t('socialSection.digitalTrends')}</span>
             <span>.</span>
           </h2>
         </div>
 
         {/* Призыв к действию */}
         <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl leading-[0.95] font-black uppercase tracking-tight mb-8 max-w-4xl mx-auto">
-            Давайте создадим{" "}
-            <span className="text-cyan-400">что-то крутое!</span>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl leading-[0.95] font-bold uppercase tracking-tight mb-8 max-w-4xl mx-auto">
+            {t('socialSection.ctaTitle')}{" "}
+            <span className="text-cyan-400">{t('socialSection.ctaTitleHighlight')}</span>
           </h3>
 
           <div className="relative inline-flex mb-8">
             <a
-              href="https://t.me/Grigorii314"
+              href="https://t.me/Claro_md"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-orange-500 text-white font-black uppercase tracking-tight rounded-full hover:bg-orange-600 transition-all duration-300 text-base md:text-xl lg:text-2xl relative z-10 overflow-visible"
             >
-              Связаться с нами
+              {t('socialSection.ctaButton')}
               <span className="text-2xl md:text-3xl transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
 
               {/* Иконка самолетика */}
@@ -192,9 +194,7 @@ export default function SocialSection({ onContactClick }) {
           </div>
 
           <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
-            Мы всегда открыты для новых возможностей, сотрудничества и связей. Если у вас есть проект,
-            которым вы хотели бы поделиться, хотите обсудить работу или просто поздороваться -
-            свяжитесь с нами!
+            {t('socialSection.ctaDescription')}
           </p>
         </div>
       </div>

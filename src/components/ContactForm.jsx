@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { sendToTelegram } from "../utils/telegram";
 
 export default function ContactForm({ isOpen, onClose }) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -83,10 +85,10 @@ export default function ContactForm({ isOpen, onClose }) {
 
             {/* Success Message */}
             <h3 className="text-3xl font-black text-white mb-2 text-center animate-[slideUp_0.5s_ease-out]">
-              Спасибо!
+              {t('contactForm.successTitle')}
             </h3>
             <p className="text-neutral-400 text-center animate-[slideUp_0.5s_ease-out_0.1s_both]">
-              Мы свяжемся с вами в ближайшее время
+              {t('contactForm.successMessage')}
             </p>
 
             {/* Confetti Animation */}
@@ -111,8 +113,8 @@ export default function ContactForm({ isOpen, onClose }) {
         ) : (
           <>
             {/* Title */}
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight mb-8">
-              Начать <span className="text-cyan-400">проект</span>
+            <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-8">
+              {t('contactForm.title')} <span className="text-cyan-400">{t('contactForm.titleHighlight')}</span>
             </h3>
 
             {/* Form */}
@@ -120,7 +122,7 @@ export default function ContactForm({ isOpen, onClose }) {
           {/* Name */}
           <div>
             <label className="block text-sm font-bold uppercase tracking-tight text-neutral-400 mb-2">
-              Имя
+              {t('contactForm.nameLabel')}
             </label>
             <input
               type="text"
@@ -129,14 +131,14 @@ export default function ContactForm({ isOpen, onClose }) {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="Ваше имя"
+              placeholder={t('contactForm.namePlaceholder')}
             />
           </div>
 
           {/* Email */}
           <div>
             <label className="block text-sm font-bold uppercase tracking-tight text-neutral-400 mb-2">
-              Почта
+              {t('contactForm.emailLabel')}
             </label>
             <input
               type="email"
@@ -145,14 +147,14 @@ export default function ContactForm({ isOpen, onClose }) {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="your@email.com"
+              placeholder={t('contactForm.emailPlaceholder')}
             />
           </div>
 
           {/* Phone */}
           <div>
             <label className="block text-sm font-bold uppercase tracking-tight text-neutral-400 mb-2">
-              Телефон
+              {t('contactForm.phoneLabel')}
             </label>
             <input
               type="tel"
@@ -161,14 +163,14 @@ export default function ContactForm({ isOpen, onClose }) {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="+373 XX XXX XXX"
+              placeholder={t('contactForm.phonePlaceholder')}
             />
           </div>
 
           {/* Service */}
           <div>
             <label className="block text-sm font-bold uppercase tracking-tight text-neutral-400 mb-2">
-              Услуга
+              {t('contactForm.serviceLabel')}
             </label>
             <select
               name="service"
@@ -177,12 +179,12 @@ export default function ContactForm({ isOpen, onClose }) {
               required
               className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-cyan-400 transition-colors"
             >
-              <option value="" className="bg-black">Выберите услугу</option>
-              <option value="target" className="bg-black">Таргетированная реклама</option>
-              <option value="smm" className="bg-black">SMM и коммуникация</option>
-              <option value="website" className="bg-black">Создание сайтов</option>
-              <option value="bots" className="bg-black">Чат-боты и автоматизация</option>
-              <option value="ai" className="bg-black">Нейросети и новые инструменты</option>
+              <option value="" disabled className="bg-black">{t('contactForm.servicePlaceholder')}</option>
+              <option value="target" className="bg-black">{t('contactForm.services.target')}</option>
+              <option value="smm" className="bg-black">{t('contactForm.services.smm')}</option>
+              <option value="website" className="bg-black">{t('contactForm.services.website')}</option>
+              <option value="bots" className="bg-black">{t('contactForm.services.bots')}</option>
+              <option value="ai" className="bg-black">{t('contactForm.services.ai')}</option>
             </select>
           </div>
 
@@ -191,7 +193,7 @@ export default function ContactForm({ isOpen, onClose }) {
             type="submit"
             className="w-full px-8 py-4 bg-white text-black font-black uppercase tracking-tight rounded-full hover:bg-neutral-200 transition-colors text-lg group"
           >
-            Отправить
+            {t('contactForm.submitButton')}
             <span className="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
           </button>
         </form>

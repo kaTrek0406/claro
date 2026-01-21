@@ -266,7 +266,7 @@ export default function PrivacyPolicy() {
               {t('privacy.section10.contact')} <a href="mailto:contact@claro-plus.md" className="text-orange-500 hover:underline font-bold">contact@claro-plus.md</a>
             </p>
             <a
-              href="tel:+37379950191"
+              href="tel:+37376909069"
               className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-black uppercase tracking-tight rounded-full hover:scale-105 transition-all shadow-lg"
             >
               {t('footer.callUs')}

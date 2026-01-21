@@ -935,7 +935,44 @@ export default function CaseStudy() {
   });
 
   // Получаем данные кейса по categoryId и clientId
-  const caseData = cases[categoryId]?.[clientId];
+  // Сначала пробуем получить из константы cases
+  let caseData = cases[categoryId]?.[clientId];
+
+  // Если данных нет в константе, пробуем получить из локализации
+  if (!caseData) {
+    try {
+      const translatedCase = t(`cases.${categoryId}.${clientId}`, { returnObjects: true });
+
+      console.log('Loading case data:', { categoryId, clientId });
+      console.log('Translated case:', translatedCase);
+      console.log('Type:', typeof translatedCase);
+
+      // Проверяем, что данные действительно существуют и это не строка
+      if (translatedCase &&
+          typeof translatedCase === 'object' &&
+          !Array.isArray(translatedCase) &&
+          typeof translatedCase !== 'string' &&
+          translatedCase.title) {
+
+        caseData = {
+          ...translatedCase,
+          id: clientId,
+          // Добавляем дефолтные значения, если их нет
+          tags: translatedCase.tags || [],
+          color: translatedCase.color || 'yellow',
+          emoji: translatedCase.emoji || '📊'
+        };
+
+        console.log('Case data loaded successfully:', caseData);
+      } else {
+        console.error('Invalid case data structure:', translatedCase);
+      }
+    } catch (error) {
+      console.error('Error loading case data from translations:', error);
+    }
+  } else {
+    console.log('Case data from static cases:', caseData);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -969,7 +1006,12 @@ export default function CaseStudy() {
     );
   }
 
-  const colors = colorVariants[caseData.color];
+  const colors = colorVariants[caseData.color] || colorVariants.yellow;
+
+  // Helper функция для безопасного получения цветов
+  const getColors = (color) => {
+    return colorVariants[color] || colorVariants.yellow;
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -1055,6 +1097,7 @@ export default function CaseStudy() {
       </section>
 
       {/* Challenge Section */}
+      {caseData.challenge && (
       <section className="py-16 px-4 sm:px-6 border-t border-white/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-8">
@@ -1063,6 +1106,7 @@ export default function CaseStudy() {
           <p className="text-neutral-300 text-lg sm:text-xl leading-relaxed mb-8 font-normal">
             {caseData.challenge.description}
           </p>
+          {caseData.challenge.problems && caseData.challenge.problems.length > 0 && (
           <div className="grid sm:grid-cols-2 gap-4">
             {caseData.challenge.problems.map((problem, i) => (
               <div
@@ -1084,19 +1128,53 @@ export default function CaseStudy() {
               </div>
             ))}
           </div>
+          )}
         </div>
       </section>
+      )}
+
+      {/* Solution Section */}
+      {caseData.solution && (
+      <section className="py-16 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-8">
+            {caseData.solution.title}
+          </h2>
+          <p className="text-neutral-300 text-lg sm:text-xl leading-relaxed mb-12 font-normal">
+            {caseData.solution.description}
+          </p>
+          {caseData.solution.steps && caseData.solution.steps.length > 0 && (
+          <div className="grid sm:grid-cols-2 gap-6">
+            {caseData.solution.steps.map((step, i) => (
+              <div
+                key={i}
+                className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/30 hover:bg-cyan-400/5 transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{step.icon}</div>
+                <h3 className="text-xl font-black mb-3">{step.title}</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+          )}
+        </div>
+      </section>
+      )}
 
       {/* Results Section */}
+      {caseData.results && (
       <section className="py-16 px-4 sm:px-6 border-t border-white/10 bg-black">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight mb-12 text-center">
             {caseData.results.title}
           </h2>
 
+          {caseData.results.metrics && caseData.results.metrics.length > 0 && (
           <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            {caseData.results.metrics.map((metric, i) => (
-              <div key={i} className={`p-8 rounded-2xl bg-black border-2 ${colorVariants[metric.color].border} ${colorVariants[metric.color].hoverShadow} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2`}>
+            {caseData.results.metrics.map((metric, i) => {
+              const metricColors = getColors(metric.color);
+              return (
+              <div key={i} className={`p-8 rounded-2xl bg-black border-2 ${metricColors.border} ${metricColors.hoverShadow} transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2`}>
                 <div className="text-neutral-400 text-sm mb-3">{metric.label}</div>
                 <div className="flex items-end gap-6 mb-3">
                   <div>
@@ -1106,17 +1184,20 @@ export default function CaseStudy() {
                   <div className="text-3xl text-neutral-600">→</div>
                   <div>
                     <div className="text-neutral-400 text-xs mb-1">Стало</div>
-                    <div className={`text-3xl font-black ${colorVariants[metric.color].text}`}>{metric.after}</div>
+                    <div className={`text-3xl font-black ${metricColors.text}`}>{metric.after}</div>
                   </div>
                 </div>
-                <div className={`inline-block px-4 py-2 rounded-full ${colorVariants[metric.color].bg} ${colorVariants[metric.color].text} text-sm font-black`}>
+                <div className={`inline-block px-4 py-2 rounded-full ${metricColors.bg} ${metricColors.text} text-sm font-black`}>
                   {metric.growth}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
+          )}
 
           {/* Gallery */}
+          {caseData.gallery && caseData.gallery.length > 0 && (
           <div className="mb-12">
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mb-8 text-center">
               {t('caseStudy.galleryTitle')}
@@ -1144,8 +1225,43 @@ export default function CaseStudy() {
               ))}
             </div>
           </div>
+          )}
+
+          {/* Creatives Section */}
+          {caseData.creatives && caseData.creatives.items && caseData.creatives.items.length > 0 && (
+          <div className="mb-12">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mb-4 text-center">
+              {caseData.creatives.title}
+            </h3>
+            {caseData.creatives.description && (
+              <p className="text-neutral-400 text-center mb-8 max-w-3xl mx-auto">
+                {caseData.creatives.description}
+              </p>
+            )}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {caseData.creatives.items.map((item, i) => (
+                <div
+                  key={i}
+                  className="group cursor-pointer"
+                >
+                  <div className="relative rounded-2xl overflow-hidden">
+                    <img
+                      src={item}
+                      alt={`${caseData.title} Creative ${i + 1}`}
+                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white text-4xl">🎨</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          )}
 
           {/* Quote */}
+          {caseData.results && caseData.results.quote && (
           <div className="p-8 sm:p-12 rounded-2xl bg-black/50 border-2 border-white/10 backdrop-blur-sm">
             <div className={`text-6xl mb-6 ${colors.text}`}>"</div>
             <p className="text-xl sm:text-2xl leading-relaxed mb-6 italic">
@@ -1161,8 +1277,10 @@ export default function CaseStudy() {
               </div>
             </div>
           </div>
+          )}
         </div>
       </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 border-t border-white/10">

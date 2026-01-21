@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { sendToTelegram } from "../utils/telegram";
 
@@ -22,6 +22,7 @@ const MOLDOVAN_PHONE_REGEX = /^\+373[0-9]{8}$/;
 
 export default function PriceCalculator() {
   const { t } = useTranslation();
+  const calculatorRef = useRef(null);
 
   // State management
   const [step, setStep] = useState(1); // 1 = selection, 2 = phone/submit
@@ -78,6 +79,20 @@ export default function PriceCalculator() {
   // Smooth step transition with crossfade
   const changeStep = useCallback((newStep) => {
     if (transitioning || step === newStep) return;
+
+    // Scroll to calculator top on mobile (только если нужно)
+    if (calculatorRef.current && window.innerWidth < 1024) {
+      const rect = calculatorRef.current.getBoundingClientRect();
+      const isVisible = rect.top >= 0 && rect.top <= window.innerHeight * 0.3;
+
+      // Скроллим только если калькулятор не в верхней части экрана
+      if (!isVisible) {
+        calculatorRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
 
     setNextStep(newStep);
     setTransitioning(true);
@@ -239,15 +254,46 @@ export default function PriceCalculator() {
     try {
       setIsSubmitting(true);
 
-      const lines = calculation.breakdown.map(row => {
-        return `${row.service.icon} ${row.service.name}: $${Math.round(row.lineTotal)}`;
+      // Формируем детальное сообщение
+      let message = `🧮 *КАЛЬКУЛЯТОР СТОИМОСТИ*\n\n`;
+      message += `📱 *Телефон:* ${phone}\n`;
+      message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+      // Детализация по каждой услуге
+      calculation.breakdown.forEach((row, index) => {
+        message += `${row.service.icon} *${row.service.name}*\n`;
+        message += `├ База: $${row.service.base}\n`;
+
+        // Дополнительные услуги
+        if (row.addons.length > 0) {
+          row.addons.forEach((addon, i) => {
+            const prefix = i === row.addons.length - 1 && !row.budget ? '└' : '├';
+            message += `${prefix} ${addon.name}: +$${addon.price}\n`;
+          });
+        }
+
+        // Бюджет
+        if (row.budget) {
+          message += `└ ${row.budget.name}: +$${row.budget.fee}\n`;
+        }
+
+        message += `*Итого: $${Math.round(row.lineTotal)}*\n`;
+
+        if (index < calculation.breakdown.length - 1) {
+          message += `\n`;
+        }
       });
 
+      message += `\n━━━━━━━━━━━━━━━━━━━━\n`;
+
+      // Финальный расчет
       if (calculation.discountPercent > 0) {
-        lines.push(`Скидка: -$${Math.round(calculation.discount)} (только базы)`);
+        message += `Сумма без скидки: $${Math.round(calculation.oldTotal)}\n`;
+        message += `🎉 Скидка ${calculation.discountPercent}% (на базы): -$${Math.round(calculation.discount)}\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━\n`;
       }
 
-      const message = `Калькулятор стоимости:\n\n📱 Телефон: ${phone}\n\n${lines.join('\n')}\n\nИтого: $${Math.round(calculation.newTotal)}`;
+      message += `💰 *ИТОГО К ОПЛАТЕ: $${Math.round(calculation.newTotal)}*`;
 
       await sendToTelegram({ message }, "Price Calculator");
 
@@ -271,10 +317,10 @@ export default function PriceCalculator() {
 
   return (
     <div className="px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
+      <div ref={calculatorRef} className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-bold uppercase tracking-tight mb-4">
             {t("calculator.title.part1")}{" "}
             <span className="text-cyan-400">{t("calculator.title.part2")}</span>
           </h2>

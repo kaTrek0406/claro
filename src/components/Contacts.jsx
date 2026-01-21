@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Contacts() {
   const { t } = useTranslation();
-  const phoneRaw = "+37379950191";
+  const phoneRaw = "+37376909069";
 
   return (
     <div className="grid md:grid-cols-12 gap-8">
@@ -18,7 +18,7 @@ export default function Contacts() {
         </div>
 
         <div className="flex flex-wrap gap-3 text-sm text-neutral-300">
-          <a className="underline underline-offset-4" href="https://t.me/" target="_blank" rel="noreferrer">Telegram</a>
+          <a className="underline underline-offset-4" href="https://t.me/Claro_md" target="_blank" rel="noreferrer">Telegram</a>
           <a className="underline underline-offset-4" href={`https://wa.me/${phoneRaw.replace("+", "")}`} target="_blank" rel="noreferrer">WhatsApp</a>
           <a className="underline underline-offset-4" href={`viber://chat?number=%2B${phoneRaw.replace("+", "")}`}>Viber</a>
         </div>

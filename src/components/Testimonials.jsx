@@ -1,35 +1,20 @@
 import { useState, useEffect, useRef, useMemo, memo } from "react";
+import { useTranslation } from "react-i18next";
 
-const testimonials = [
+const testimonialColors = [
   {
-    quote: "Работает с данными как никто другой. Полный контроль над проектом и внимание к деталям на высшем уровне.",
-    author: "Александр Попов",
-    position: "CEO, TechStart",
-    company: "TechStart",
     bgColor: "bg-emerald-400",
     textColor: "text-emerald-950",
   },
   {
-    quote: "Всегда ищет новые решения для каждого проекта. Любопытство и проактивность добавляют огромную ценность нашим кампаниям.",
-    author: "Мария Ионеску",
-    position: "Marketing Director",
-    company: "ZUDDI",
     bgColor: "bg-purple-500",
     textColor: "text-purple-950",
   },
   {
-    quote: "Основа нашей дизайн-команды. Невероятное внимание к деталям и исследованиям приносит магию в каждый проект.",
-    author: "Сергей Волков",
-    position: "Lead Designer",
-    company: "Creative Lab",
     bgColor: "bg-amber-400",
     textColor: "text-amber-950",
   },
   {
-    quote: "Выдающееся внимание к деталям. Ключевая роль в редизайне нашего сайта - результат просто потрясающий!",
-    author: "Анна Михайлова",
-    position: "Product Manager",
-    company: "ZUDDI",
     bgColor: "bg-rose-400",
     textColor: "text-rose-950",
   },
@@ -70,8 +55,17 @@ const TestimonialCard = memo(({ testimonial, id, hoveredIndex, onHover }) => (
 TestimonialCard.displayName = 'TestimonialCard';
 
 export default function Testimonials() {
+  const { t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const scrollRef = useRef(null);
+
+  const testimonials = useMemo(() => {
+    const items = t('testimonials.items', { returnObjects: true });
+    return items.map((item, index) => ({
+      ...item,
+      ...testimonialColors[index]
+    }));
+  }, [t]);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -148,8 +142,8 @@ export default function Testimonials() {
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12 sm:mb-16">
         <div className="inline-block text-5xl sm:text-6xl mb-4 sm:mb-6">💬</div>
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight max-w-4xl mx-auto">
-          Добрые слова, <span className="text-cyan-400">большой буст</span>.
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-bold uppercase tracking-tight max-w-4xl mx-auto">
+          {t('testimonials.title')} <span className="text-cyan-400">{t('testimonials.titleHighlight')}</span>.
         </h2>
       </div>
 

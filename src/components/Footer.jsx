@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t } = useTranslation();
-  const phoneRaw = "+37379950191";
-  const telegramLink = "https://t.me/claro_plus";
-  const whatsappLink = "https://wa.me/37379950191";
+  const phoneRaw = "+37376909069";
+  const telegramLink = "https://t.me/Claro_md";
+  const whatsappLink = "https://wa.me/37376909069";
   const instagramLink = "https://instagram.com/claro_md";
   const addressLink = "https://www.google.com/maps/search/?api=1&query=Valea+Trandafirilor+20%2C+Chisinau%2C+Moldova";
 
@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 flex-wrap">
                 <a href={`tel:${phoneRaw}`} className="text-xs md:text-sm font-bold hover:underline">
-                  +373 79 950 191
+                  +373 76 909 069
                 </a>
                 <span className="text-black/40">•</span>
                 <a
@@ -31,7 +31,7 @@ export default function Footer() {
                   rel="noreferrer"
                   className="text-xs md:text-sm font-bold hover:underline"
                 >
-                  @claro_plus
+                  @Claro_md
                 </a>
               </div>
 
@@ -41,7 +41,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="text-xs md:text-sm font-semibold hover:underline block"
               >
-                Valea Trandafirilor, 20, Кишинев, Молдова
+                {t('contacts.address')}
               </a>
 
               {/* Социальные сети */}

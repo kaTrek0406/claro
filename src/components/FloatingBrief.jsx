@@ -52,8 +52,19 @@ export default function FloatingBrief() {
       }
     };
 
+    // Обработчик кастомного события для открытия формы
+    const handleOpenBrief = () => {
+      setIsOpen(true);
+      setStep(0);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("openBriefForm", handleOpenBrief);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("openBriefForm", handleOpenBrief);
+    };
   }, [scrolled, isTransitioning]);
 
   const questions = [
@@ -126,8 +137,8 @@ export default function FloatingBrief() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed bottom-6 z-[150] transition-all duration-500 ease-in-out ${
-          isOpen
-            ? "scale-0 opacity-0"
+          isOpen || isNearFooter
+            ? "scale-0 opacity-0 pointer-events-none"
             : isTransitioning
             ? "scale-90 opacity-0"
             : "scale-100 opacity-100"

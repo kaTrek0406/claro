@@ -4,77 +4,112 @@ import { useTranslation } from "react-i18next";
 
 // Данные по категориям (статические: иконки, цвета, изображения, лого)
 const categoriesData = {
-  "nedvizhimost": {
-    id: "nedvizhimost",
+  "travel-agency": {
+    id: "travel-agency",
+    icon: "✈️",
+    color: "yellow",
+    clients: [
+      {
+        id: "vivatour",
+        logo: "✈️",
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80"
+      }
+    ]
+  },
+  "beauty-sphere": {
+    id: "beauty-sphere",
+    icon: "💅",
+    color: "cyan",
+    clients: [
+      {
+        id: "kerashop",
+        logo: "💅",
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80"
+      }
+    ]
+  },
+  "carsharing": {
+    id: "carsharing",
+    icon: "🚗",
+    color: "pink",
+    clients: [
+      {
+        id: "getmancar",
+        logo: "🚗",
+        image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
+      }
+    ]
+  },
+  "gift": {
+    id: "gift",
+    icon: "🎁",
+    color: "orange",
+    clients: [
+      {
+        id: "ritzygift",
+        logo: "🎁",
+        image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=800&q=80"
+      }
+    ]
+  },
+  "pharma": {
+    id: "pharma",
+    icon: "💊",
+    color: "purple",
+    clients: [
+      {
+        id: "heel",
+        logo: "💊",
+        image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800&q=80"
+      }
+    ]
+  },
+  "interior-design": {
+    id: "interior-design",
     icon: "🏠",
     color: "yellow",
     clients: [
       {
-        id: "premium-estate",
-        logo: "🏢",
-        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80",
-      },
-      {
-        id: "city-realty",
-        logo: "🏘️",
-        image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
-      },
-      {
-        id: "smart-homes",
-        logo: "🏡",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
-      },
+        id: "cdihome",
+        logo: "🏠",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80"
+      }
     ]
   },
-  "medical": {
-    id: "medical",
-    icon: "⚕️",
+  "beauty-salon": {
+    id: "beauty-salon",
+    icon: "💇",
+    color: "yellow",
+    clients: [
+      {
+        id: "epilbar",
+        logo: "💇",
+        image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80"
+      }
+    ]
+  },
+  "realtors": {
+    id: "realtors",
+    icon: "🏡",
     color: "cyan",
     clients: [
       {
-        id: "zdorovie-plus",
-        logo: "🏥",
-        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80",
-      },
-      {
-        id: "dental-clinic",
-        logo: "🦷",
-        image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80",
-      },
+        id: "connectimobil",
+        logo: "🏡",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+      }
     ]
   },
-  "ecommerce": {
-    id: "ecommerce",
-    icon: "🛍️",
+  "developers": {
+    id: "developers",
+    icon: "🏗️",
     color: "pink",
     clients: [
       {
-        id: "gadget-store",
-        logo: "📱",
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&q=80",
-      },
-      {
-        id: "fashion-shop",
-        logo: "👗",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80",
-      },
-    ]
-  },
-  "education": {
-    id: "education",
-    icon: "📚",
-    color: "orange",
-    clients: [
-      {
-        id: "speakup",
-        logo: "🗣️",
-        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
-      },
-      {
-        id: "coding-academy",
-        logo: "💻",
-        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80",
-      },
+        id: "colinaverde",
+        logo: "🏗️",
+        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
+      }
     ]
   },
 };
@@ -108,6 +143,13 @@ const colorVariants = {
     hoverBorder: "hover:border-orange-500",
     gradient: "from-orange-600/20 to-yellow-600/20",
   },
+  purple: {
+    text: "text-purple-400",
+    bg: "bg-purple-400/10",
+    border: "border-purple-400/30",
+    hoverBorder: "hover:border-purple-400",
+    gradient: "from-purple-600/20 to-pink-600/20",
+  },
 };
 
 export default function CategoryPage() {
@@ -122,7 +164,7 @@ export default function CategoryPage() {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-black mb-4">{t('categoryPage.notFound')}</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('categoryPage.notFound')}</h1>
           <button
             onClick={() => navigate('/')}
             className="px-6 py-3 bg-orange-500 text-white rounded-full font-bold hover:bg-orange-600"
@@ -161,7 +203,7 @@ export default function CategoryPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-8xl mb-6 animate-bounce-slow">{category.icon}</div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-black uppercase tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl leading-[0.95] font-bold uppercase tracking-tight mb-6">
               <span className={colors.text}>{categoryName}</span>
             </h1>
             <p className="text-xl sm:text-2xl text-neutral-400 max-w-3xl mx-auto">
@@ -170,26 +212,26 @@ export default function CategoryPage() {
           </div>
 
           {/* Stats */}
-          <div className={`max-w-4xl mx-auto p-8 rounded-3xl border-2 ${colors.border} ${colors.bg} backdrop-blur-sm mb-16`}>
-            <div className="grid grid-cols-3 gap-6 text-center">
+          <div className={`max-w-4xl mx-auto p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-2 ${colors.border} ${colors.bg} backdrop-blur-sm mb-16`}>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 text-center">
               <div>
-                <div className={`text-4xl font-black ${colors.text} mb-2`}>{category.clients.length}</div>
-                <div className="text-neutral-400 text-sm">{t('categoryPage.stats.clients')}</div>
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${colors.text} mb-1 sm:mb-2`}>{category.clients.length}</div>
+                <div className="text-neutral-400 text-xs sm:text-sm leading-tight">{t('categoryPage.stats.clients')}</div>
               </div>
               <div>
-                <div className={`text-4xl font-black ${colors.text} mb-2`}>100%</div>
-                <div className="text-neutral-400 text-sm">{t('categoryPage.stats.satisfied')}</div>
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${colors.text} mb-1 sm:mb-2`}>100%</div>
+                <div className="text-neutral-400 text-xs sm:text-sm leading-tight">{t('categoryPage.stats.satisfied')}</div>
               </div>
               <div>
-                <div className={`text-4xl font-black ${colors.text} mb-2`}>+250%</div>
-                <div className="text-neutral-400 text-sm">{t('categoryPage.stats.growth')}</div>
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${colors.text} mb-1 sm:mb-2`}>+250%</div>
+                <div className="text-neutral-400 text-xs sm:text-sm leading-tight">{t('categoryPage.stats.growth')}</div>
               </div>
             </div>
           </div>
 
           {/* Clients Grid */}
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight mb-8 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight mb-8 text-center">
               {t('categoryPage.ourClients')}
             </h2>
 
@@ -232,7 +274,7 @@ export default function CategoryPage() {
 
                     {/* Content */}
                     <div className="p-6">
-                      <h3 className={`text-2xl font-black uppercase tracking-tight mb-2 transition-colors duration-300 ${
+                      <h3 className={`text-2xl font-bold uppercase tracking-tight mb-2 transition-colors duration-300 ${
                         hoveredIndex === idx ? colors.text : "text-white"
                       }`}>
                         {clientName}
@@ -255,15 +297,17 @@ export default function CategoryPage() {
       {/* CTA */}
       <section className="py-20 px-4 sm:px-6 border-t border-white/10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-black uppercase mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold uppercase mb-6">
             {t('categoryPage.cta.title')}
           </h2>
           <p className="text-neutral-400 text-lg mb-8">
             {t('categoryPage.cta.description')}
           </p>
           <button
-            onClick={() => navigate('/')}
-            className={`px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-black uppercase tracking-tight rounded-full hover:scale-105 transition-all shadow-lg`}
+            onClick={() => {
+              window.dispatchEvent(new Event('openBriefForm'));
+            }}
+            className={`px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold uppercase tracking-tight rounded-full hover:scale-105 transition-all shadow-lg`}
           >
             {t('categoryPage.cta.button')}
           </button>
