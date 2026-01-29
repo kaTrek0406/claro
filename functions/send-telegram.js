@@ -8,9 +8,25 @@ export async function onRequestPost(context) {
 
     // Токены из переменных окружения (настраиваются в Cloudflare Dashboard)
     const TELEGRAM_BOT_TOKEN = context.env.TELEGRAM_BOT_TOKEN;
-    const TELEGRAM_CHAT_ID = context.env.TELEGRAM_CHAT_ID;
+    const TELEGRAM_CHAT_IDS_ENV = context.env.TELEGRAM_CHAT_IDS; // Строка с ID через запятую
 
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    // Список получателей из переменных окружения или fallback
+    let TELEGRAM_CHAT_IDS = [];
+
+    if (TELEGRAM_CHAT_IDS_ENV) {
+      // Если есть в env - используем из env
+      TELEGRAM_CHAT_IDS = TELEGRAM_CHAT_IDS_ENV.split(',').map(id => id.trim());
+    } else {
+      // Fallback если забыли настроить в Cloudflare
+      TELEGRAM_CHAT_IDS = [
+        '709195195',   // Основной получатель
+        '8431791891',  // Дополнительный получатель
+        '758348467',   // Дополнительный получатель
+        '506221717'    // Дополнительный получатель
+      ];
+    }
+
+    if (!TELEGRAM_BOT_TOKEN) {
       return new Response(JSON.stringify({
         ok: false,
         error: 'Telegram credentials not configured'
@@ -34,27 +50,117 @@ export async function onRequestPost(context) {
 
     text += `\n⏰ *Время:* ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Chisinau' })}`;
 
-    // Отправляем в Telegram
+    // Отправляем в Telegram на все ID
     const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const sendResults = [];
 
-    const response = await fetch(telegramUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: text,
-        parse_mode: 'Markdown'
-      })
-    });
+    for (const chatId of TELEGRAM_CHAT_IDS) {
+      try {
+        const response = await fetch(telegramUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        });
 
-    const result = await response.json();
-
-    if (!result.ok) {
-      throw new Error(result.description || 'Telegram API error');
+        const result = await response.json();
+        sendResults.push({ chatId, success: result.ok, result });
+      } catch (error) {
+        sendResults.push({ chatId, success: false, error: error.message });
+      }
     }
 
-    return new Response(JSON.stringify({ ok: true, result }), {
-      status: 200,
+    // Отправляем на email (из переменной окружения или fallback)
+    const emailRecipient = context.env.EMAIL_RECIPIENT || 'juraveli.photo@gmail.com';
+    let emailResult = null;
+
+    try {
+      console.log('📧 Attempting to send email to:', emailRecipient);
+
+      // Формируем HTML письмо
+      const emailHtml = `
+        <h2>🔔 Новая заявка с сайта!</h2>
+        <p><strong>📍 Источник:</strong> ${source || 'Неизвестно'}</p>
+        ${name ? `<p><strong>👤 Имя:</strong> ${name}</p>` : ''}
+        ${service ? `<p><strong>🎯 Услуга:</strong> ${service}</p>` : ''}
+        ${budget ? `<p><strong>💰 Бюджет:</strong> ${budget}</p>` : ''}
+        ${contact ? `<p><strong>📱 Контакт:</strong> ${contact}</p>` : ''}
+        ${message ? `<p><strong>💬 Сообщение:</strong> ${message}</p>` : ''}
+        <p><strong>⏰ Время:</strong> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Chisinau' })}</p>
+      `;
+
+      const emailPayload = {
+        personalizations: [
+          {
+            to: [{ email: emailRecipient }]
+          }
+        ],
+        from: {
+          email: 'noreply@claro.md',
+          name: 'Claro Website'
+        },
+        subject: `Новая заявка с сайта - ${source || 'Контакт'}`,
+        content: [
+          {
+            type: 'text/html',
+            value: emailHtml
+          }
+        ]
+      };
+
+      console.log('📤 Sending email payload:', JSON.stringify(emailPayload));
+
+      const emailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Custom-Header': 'Cloudflare-Pages'
+        },
+        body: JSON.stringify(emailPayload)
+      });
+
+      console.log('📬 MailChannels response status:', emailResponse.status);
+
+      if (emailResponse.ok) {
+        console.log('✅ Email sent successfully!');
+        emailResult = {
+          success: true,
+          status: emailResponse.status,
+          recipient: emailRecipient
+        };
+      } else {
+        const errorText = await emailResponse.text();
+        console.error('❌ MailChannels error response:', errorText);
+        console.error('❌ Status code:', emailResponse.status);
+        emailResult = {
+          success: false,
+          status: emailResponse.status,
+          error: errorText,
+          recipient: emailRecipient
+        };
+      }
+    } catch (error) {
+      console.error('❌ Email sending exception:', error.message);
+      console.error('❌ Full error:', error);
+      emailResult = {
+        success: false,
+        error: error.message,
+        recipient: emailRecipient
+      };
+    }
+
+    // Проверяем успешность хотя бы одной отправки в Telegram
+    const anyTelegramSuccess = sendResults.some(r => r.success);
+
+    return new Response(JSON.stringify({
+      ok: anyTelegramSuccess,
+      telegram: sendResults,
+      email: emailResult
+    }), {
+      status: anyTelegramSuccess ? 200 : 500,
       headers: { 'Content-Type': 'application/json' }
     });
 
