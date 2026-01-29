@@ -74,7 +74,7 @@ export async function onRequestPost(context) {
     }
 
     // Отправляем на email (из переменной окружения или fallback)
-    const emailRecipient = context.env.EMAIL_RECIPIENT || 'juraveli.photo@gmail.com';
+    const emailRecipient = (context.env.EMAIL_RECIPIENT || 'juraveli.photo@gmail.com').trim();
     let emailResult = null;
 
     try {
