@@ -73,81 +73,79 @@ export async function onRequestPost(context) {
       }
     }
 
-    // Отправляем на email (из переменной окружения или fallback)
+    // Отправляем на email через Resend API
     const emailRecipient = (context.env.EMAIL_RECIPIENT || 'vladislav.caireac17@gmail.com').trim();
+    const RESEND_API_KEY = context.env.RESEND_API_KEY;
     let emailResult = null;
 
-    try {
-      console.log('📧 Attempting to send email to:', emailRecipient);
+    if (RESEND_API_KEY) {
+      try {
+        console.log('📧 Attempting to send email via Resend to:', emailRecipient);
 
-      // Формируем HTML письмо
-      const emailHtml = `
-        <h2>🔔 Новая заявка с сайта!</h2>
-        <p><strong>📍 Источник:</strong> ${source || 'Неизвестно'}</p>
-        ${name ? `<p><strong>👤 Имя:</strong> ${name}</p>` : ''}
-        ${service ? `<p><strong>🎯 Услуга:</strong> ${service}</p>` : ''}
-        ${budget ? `<p><strong>💰 Бюджет:</strong> ${budget}</p>` : ''}
-        ${contact ? `<p><strong>📱 Контакт:</strong> ${contact}</p>` : ''}
-        ${message ? `<p><strong>💬 Сообщение:</strong> ${message}</p>` : ''}
-        <p><strong>⏰ Время:</strong> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Chisinau' })}</p>
-      `;
+        // Формируем HTML письмо
+        const emailHtml = `
+          <h2>🔔 Новая заявка с сайта!</h2>
+          <p><strong>📍 Источник:</strong> ${source || 'Неизвестно'}</p>
+          ${name ? `<p><strong>👤 Имя:</strong> ${name}</p>` : ''}
+          ${service ? `<p><strong>🎯 Услуга:</strong> ${service}</p>` : ''}
+          ${budget ? `<p><strong>💰 Бюджет:</strong> ${budget}</p>` : ''}
+          ${contact ? `<p><strong>📱 Контакт:</strong> ${contact}</p>` : ''}
+          ${message ? `<p><strong>💬 Сообщение:</strong> ${message}</p>` : ''}
+          <p><strong>⏰ Время:</strong> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Chisinau' })}</p>
+        `;
 
-      const emailPayload = {
-        personalizations: [
-          {
-            to: [{ email: emailRecipient }]
-          }
-        ],
-        from: {
-          email: 'noreply@claro.md',
-          name: 'Claro Website'
-        },
-        subject: `Новая заявка с сайта - ${source || 'Контакт'}`,
-        content: [
-          {
-            type: 'text/html',
-            value: emailHtml
-          }
-        ]
-      };
-
-      console.log('📤 Sending email payload:', JSON.stringify(emailPayload));
-
-      const emailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Custom-Header': 'Cloudflare-Pages'
-        },
-        body: JSON.stringify(emailPayload)
-      });
-
-      console.log('📬 MailChannels response status:', emailResponse.status);
-
-      if (emailResponse.ok) {
-        console.log('✅ Email sent successfully!');
-        emailResult = {
-          success: true,
-          status: emailResponse.status,
-          recipient: emailRecipient
+        const emailPayload = {
+          from: 'Claro Website <onboarding@resend.dev>',
+          to: [emailRecipient],
+          subject: `Новая заявка с сайта - ${source || 'Контакт'}`,
+          html: emailHtml
         };
-      } else {
-        const errorText = await emailResponse.text();
-        console.error('❌ MailChannels error response:', errorText);
-        console.error('❌ Status code:', emailResponse.status);
+
+        console.log('📤 Sending via Resend to:', emailRecipient);
+
+        const emailResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(emailPayload)
+        });
+
+        const responseData = await emailResponse.json();
+        console.log('📬 Resend response:', JSON.stringify(responseData));
+
+        if (emailResponse.ok) {
+          console.log('✅ Email sent successfully via Resend!');
+          emailResult = {
+            success: true,
+            status: emailResponse.status,
+            recipient: emailRecipient,
+            messageId: responseData.id
+          };
+        } else {
+          console.error('❌ Resend error:', responseData);
+          emailResult = {
+            success: false,
+            status: emailResponse.status,
+            error: responseData.message || JSON.stringify(responseData),
+            recipient: emailRecipient
+          };
+        }
+      } catch (error) {
+        console.error('❌ Email sending exception:', error.message);
+        console.error('❌ Full error:', error);
         emailResult = {
           success: false,
-          status: emailResponse.status,
-          error: errorText,
+          error: error.message,
           recipient: emailRecipient
         };
       }
-    } catch (error) {
-      console.error('❌ Email sending exception:', error.message);
-      console.error('❌ Full error:', error);
+    } else {
+      console.log('⚠️ RESEND_API_KEY not configured, skipping email');
       emailResult = {
         success: false,
-        error: error.message,
+        error: 'RESEND_API_KEY not configured',
         recipient: emailRecipient
       };
     }
