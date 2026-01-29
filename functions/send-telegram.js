@@ -74,7 +74,7 @@ export async function onRequestPost(context) {
     }
 
     // Отправляем на email через Resend API
-    const emailRecipient = (context.env.EMAIL_RECIPIENT || 'vladislav.caireac17@gmail.com').trim();
+    const emailRecipient = (context.env.EMAIL_RECIPIENT || 'juraveli.photo@gmail.com').trim();
     const RESEND_API_KEY = context.env.RESEND_API_KEY;
     let emailResult = null;
 
